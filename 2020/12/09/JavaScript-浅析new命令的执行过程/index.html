@@ -20,12 +20,12 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="本文的目的是简单的解析在new命令执行的过程中发生了什么，以及如何自己封装一个new命令。">
+  <meta name="description" content="本文简单的分析了在new命令执行的过程中发生了什么，以及如何自己封装一个new命令。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript-浅析new命令的执行过程">
 <meta property="og:url" content="http://example.com/2020/12/09/JavaScript-%E6%B5%85%E6%9E%90new%E5%91%BD%E4%BB%A4%E7%9A%84%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B/index.html">
 <meta property="og:site_name" content="CalDey-Blog">
-<meta property="og:description" content="本文的目的是简单的解析在new命令执行的过程中发生了什么，以及如何自己封装一个new命令。">
+<meta property="og:description" content="本文简单的分析了在new命令执行的过程中发生了什么，以及如何自己封装一个new命令。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://gitee.com/caldey/BlogImage/raw/master/img/img1.PNG">
 <meta property="og:image" content="https://gitee.com/caldey/BlogImage/raw/master/img/img2.PNG">
@@ -33,7 +33,7 @@
 <meta property="og:image" content="https://gitee.com/caldey/BlogImage/raw/master/img/202012092217.PNG">
 <meta property="og:image" content="https://gitee.com/caldey/BlogImage/raw/master/img/202012092241.PNG">
 <meta property="article:published_time" content="2020-12-09T12:20:03.000Z">
-<meta property="article:modified_time" content="2020-12-10T12:50:48.771Z">
+<meta property="article:modified_time" content="2020-12-16T14:02:39.494Z">
 <meta property="article:author" content="CalDey">
 <meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary">
@@ -198,7 +198,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-12-10 20:50:48" itemprop="dateModified" datetime="2020-12-10T20:50:48+08:00">2020-12-10</time>
+                <time title="修改时间：2020-12-16 22:02:39" itemprop="dateModified" datetime="2020-12-16T22:02:39+08:00">2020-12-16</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -221,7 +221,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>本文的目的是简单的解析在new命令执行的过程中发生了什么，以及如何自己封装一个new命令。</p>
+        <p>本文简单的分析了在new命令执行的过程中发生了什么，以及如何自己封装一个new命令。</p>
 <hr>
 <a id="more"></a>
 
@@ -233,14 +233,14 @@
 <p><img src="https://gitee.com/caldey/BlogImage/raw/master/img/img1.PNG"></p>
 <p>我们可以看到，输出结果里有属性name，age和每个对象都拥有的属性__proto__</p>
 <p>想要弄清楚new的执行过程，我们首先花一点时间来了解一下原型和原型链：</p>
-<p>当我们用obj(对象名).XXX的方式访问一个属性时，JavaScript引擎首先会在当前对象上查找该属性，如果没找到，就会到它的原型对象上去找，如果还没有找到，会一直层层查找直到Object.prototype对象，如果仍未找到属性，那么就会返回undefined，这个查找过程叫做原型链。</p>
+<p>当我们用obj(对象名).XXX的方式访问一个属性时，JavaScript引擎首先会在当前对象上查找该属性，如果没找到，就会到它的原型对象上去找，如果还没有找到，会一直层层查找直到Object.prototype对象，如果仍未找到属性，那么就会返回null，这个查找过程叫做原型链。</p>
 <p>下面举一个简单的例子：</p>
 <p>我们创建一个Array对象arr，通过reverse方法将其翻转：</p>
 <div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="built_in">console</span>.log(arr.reverse()); <span class="comment">// 3,2,1</span></span><br></pre></td></tr></table></figure></div>
 
 <p>请注意，我们创建的arr对象本身是不包含reverse方法的，为什么它可以直接使用reverse方法呢？那么该方法只能来自它的原型对象上了，我们先看一下arr的原型链：</p>
 <p>arr -&gt; Array.prototype -&gt; Object.prototype -&gt; null</p>
-<p>该方法不属于arr，那么首先会来到它的原型对象Array上查找，我们通过代码验证Array上是否存在reserse方法：</p>
+<p>该方法不属于arr，那么首先会来到它的原型对象Array.prototype上查找，我们通过代码验证Array上是否存在reserse方法：</p>
 <div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Array</span>.prototype);</span><br><span class="line"><span class="built_in">console</span>.log(arr.__proto__);</span><br></pre></td></tr></table></figure></div>
 
 <p><img src="https://gitee.com/caldey/BlogImage/raw/master/img/img2.PNG"></p>
@@ -393,7 +393,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-count">9</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
