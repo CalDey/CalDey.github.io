@@ -20,19 +20,23 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
+  <meta name="description" content="《JavaScript高级程序设计》中对基本类型和引用类型值的复制过程有着详尽的讲解，但我个人感觉太过繁琐抽象，希望这篇文章能够用尽可能精炼的语言描述清楚这个难点。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://example.com/2020/12/02/hello-world/index.html">
+<meta property="og:title" content="JavaScript-两张图弄懂基本类型和引用类型的复制过程">
+<meta property="og:url" content="http://example.com/2020/12/17/JavaScript-%E4%B8%A4%E5%BC%A0%E5%9B%BE%E5%BC%84%E6%87%82%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%A4%8D%E5%88%B6%E8%BF%87%E7%A8%8B/index.html">
 <meta property="og:site_name" content="CalDey-Blog">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
+<meta property="og:description" content="《JavaScript高级程序设计》中对基本类型和引用类型值的复制过程有着详尽的讲解，但我个人感觉太过繁琐抽象，希望这篇文章能够用尽可能精炼的语言描述清楚这个难点。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-12-02T08:21:24.399Z">
-<meta property="article:modified_time" content="2020-12-03T11:38:41.094Z">
+<meta property="og:image" content="https://gitee.com/caldey/BlogImage/raw/master/img/%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B.PNG">
+<meta property="og:image" content="https://gitee.com/caldey/BlogImage/raw/master/img/%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B.PNG">
+<meta property="article:published_time" content="2020-12-17T10:47:07.000Z">
+<meta property="article:modified_time" content="2020-12-18T04:54:53.737Z">
 <meta property="article:author" content="CalDey">
+<meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/caldey/BlogImage/raw/master/img/%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B.PNG">
 
-<link rel="canonical" href="http://example.com/2020/12/02/hello-world/">
+<link rel="canonical" href="http://example.com/2020/12/17/JavaScript-%E4%B8%A4%E5%BC%A0%E5%9B%BE%E5%BC%84%E6%87%82%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%A4%8D%E5%88%B6%E8%BF%87%E7%A8%8B/">
 
 
 <script id="page-configurations">
@@ -45,7 +49,7 @@
   };
 </script>
 
-  <title>Hello World | CalDey-Blog</title>
+  <title>JavaScript-两张图弄懂基本类型和引用类型的复制过程 | CalDey-Blog</title>
   
 
 
@@ -161,7 +165,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/02/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/17/JavaScript-%E4%B8%A4%E5%BC%A0%E5%9B%BE%E5%BC%84%E6%87%82%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%A4%8D%E5%88%B6%E8%BF%87%E7%A8%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://gitee.com/caldey/BlogImage/raw/master/img/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20201202195621.jpg">
@@ -174,7 +178,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Hello World
+          JavaScript-两张图弄懂基本类型和引用类型的复制过程
         </h1>
 
         <div class="post-meta">
@@ -184,15 +188,24 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-12-02 16:21:24" itemprop="dateCreated datePublished" datetime="2020-12-02T16:21:24+08:00">2020-12-02</time>
+              <time title="创建时间：2020-12-17 18:47:07" itemprop="dateCreated datePublished" datetime="2020-12-17T18:47:07+08:00">2020-12-17</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-12-03 19:38:41" itemprop="dateModified" datetime="2020-12-03T19:38:41+08:00">2020-12-03</time>
+                <time title="修改时间：2020-12-18 12:54:53" itemprop="dateModified" datetime="2020-12-18T12:54:53+08:00">2020-12-18</time>
               </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
 
           
 
@@ -205,21 +218,23 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+        <p>《JavaScript高级程序设计》中对基本类型和引用类型值的复制过程有着详尽的讲解，但我个人感觉太过繁琐抽象，希望这篇文章能够用尽可能精炼的语言描述清楚这个难点。</p>
+<hr>
 <a id="more"></a>
 
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure></div>
+<h1 id="1-基本类型值的复制"><a href="#1-基本类型值的复制" class="headerlink" title="1.基本类型值的复制"></a>1.基本类型值的复制</h1><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">var</span> num1 = &#123;</span><br><span class="line">    num: <span class="number">5</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> num2 = num1;</span><br><span class="line"><span class="built_in">console</span>.log(num1, num2); <span class="comment">// 5,5</span></span><br><span class="line"><span class="keyword">var</span> num2 = <span class="number">50</span>;</span><br><span class="line"><span class="built_in">console</span>.log(num1, num2); <span class="comment">// 5,50</span></span><br></pre></td></tr></table></figure></div>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure></div>
+<p><img src="https://gitee.com/caldey/BlogImage/raw/master/img/%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B.PNG"></p>
+<p>我们设置num1中的值为5，声明一个新变量num2复制num1中的值，num2的值也是5，但这两个5是相互独立，互不影响的，如果我们修改num2中的值，num1的值不会发生改变。</p>
+<hr>
+<h1 id="2-引用类型值的复制"><a href="#2-引用类型值的复制" class="headerlink" title="2.引用类型值的复制"></a>2.引用类型值的复制</h1><p>相比于基本类型来说，引用类型就显得稍微复杂了:</p>
+<p>与基本类型不同，基本类型存储的是值，而引用类型存储的是地址（指针）。基本类型的值保存在栈中，而引用类型的值是同时保存在栈内存和堆内存的对象。当创建对象后，计算机会在内存中开辟一个空间存放数据，而我们要想找到这个空间，就需要一个地址（指针）。</p>
+<p>这个概念听起来很抽象，我们结合代码分析整个过程：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Obj1 = &#123;&#125;;</span><br><span class="line"><span class="keyword">var</span> Obj2 = Obj1;</span><br><span class="line">Obj2.name = <span class="string">&#x27;CalDey&#x27;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(Obj1.name) <span class="comment">// CalDey</span></span><br></pre></td></tr></table></figure></div>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure></div>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure></div>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<p><img src="https://gitee.com/caldey/BlogImage/raw/master/img/%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B.PNG"></p>
+<p>从图中我们可以看出，复制前的Obj1和复制后的Obj2其实都指向内存中同一个地址，相当于一个指针，指向内存中对应的地址，也就是说这两个对象在内存中的地址相同。当我们改变其中任意一个的值，另一个也会发生改变：当为Obj2添加name属性后，可以通过Obj1来访问这个这个属性，因为这两个变量引用的都是同一个对象。</p>
+<hr>
 
     </div>
 
@@ -248,16 +263,22 @@
 
 
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          </div>
 
         
 
 
         
     <div class="post-nav">
-      <div class="post-nav-item"></div>
       <div class="post-nav-item">
-    <a href="/2020/12/03/Hexo%20markdown%E8%AF%AD%E6%B3%95/" rel="next" title="Hexo markdown语法">
-      Hexo markdown语法 <i class="fa fa-chevron-right"></i>
+    <a href="/2020/12/17/JavaScript-%E4%BB%80%E4%B9%88%E6%98%AF%E9%97%AD%E5%8C%85%EF%BC%9F/" rel="prev" title="JavaScript-什么是闭包？">
+      <i class="fa fa-chevron-left"></i> JavaScript-什么是闭包？
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/12/17/JavaScript-%E6%B5%85%E8%B0%88%E6%B7%B1%E6%B5%85%E6%8B%B7%E8%B4%9D/" rel="next" title="JavaScript-浅谈深浅拷贝">
+      JavaScript-浅谈深浅拷贝 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -317,7 +338,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B%E5%80%BC%E7%9A%84%E5%A4%8D%E5%88%B6"><span class="nav-text">1.基本类型值的复制</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E5%80%BC%E7%9A%84%E5%A4%8D%E5%88%B6"><span class="nav-text">2.引用类型值的复制</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
