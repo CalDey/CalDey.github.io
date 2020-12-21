@@ -20,23 +20,21 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="《JavaScript高级程序设计》中对基本类型和引用类型值的复制过程有着详尽的讲解，但我个人感觉太过繁琐抽象，希望这篇文章能够用尽可能精炼的语言描述清楚这个难点。">
+  <meta name="description" content="实现CSS水平垂直居中是一道面试的必考题，看似简单，其实是对CSS基础知识的全面检测。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JavaScript-两张图弄懂基本类型和引用类型的复制过程">
-<meta property="og:url" content="http://example.com/2020/12/17/JavaScript-%E4%B8%A4%E5%BC%A0%E5%9B%BE%E5%BC%84%E6%87%82%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%A4%8D%E5%88%B6%E8%BF%87%E7%A8%8B/index.html">
+<meta property="og:title" content="实现CSS水平垂直居中的8种方法">
+<meta property="og:url" content="http://example.com/2020/12/20/%E5%AE%9E%E7%8E%B0CSS%E6%B0%B4%E5%B9%B3%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD%E7%9A%8410-10%E4%B8%AA%E6%96%B9%E5%BC%8F/index.html">
 <meta property="og:site_name" content="CalDey-Blog">
-<meta property="og:description" content="《JavaScript高级程序设计》中对基本类型和引用类型值的复制过程有着详尽的讲解，但我个人感觉太过繁琐抽象，希望这篇文章能够用尽可能精炼的语言描述清楚这个难点。">
+<meta property="og:description" content="实现CSS水平垂直居中是一道面试的必考题，看似简单，其实是对CSS基础知识的全面检测。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://gitee.com/caldey/BlogImage/raw/master/img/%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B.PNG">
-<meta property="og:image" content="https://gitee.com/caldey/BlogImage/raw/master/img/%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B.PNG">
-<meta property="article:published_time" content="2020-12-17T10:47:07.000Z">
-<meta property="article:modified_time" content="2020-12-18T04:54:53.737Z">
+<meta property="article:published_time" content="2020-12-20T14:01:04.000Z">
+<meta property="article:modified_time" content="2020-12-20T15:16:02.457Z">
 <meta property="article:author" content="CalDey">
-<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="CSS">
+<meta property="article:tag" content="CSS布局">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://gitee.com/caldey/BlogImage/raw/master/img/%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B.PNG">
 
-<link rel="canonical" href="http://example.com/2020/12/17/JavaScript-%E4%B8%A4%E5%BC%A0%E5%9B%BE%E5%BC%84%E6%87%82%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%A4%8D%E5%88%B6%E8%BF%87%E7%A8%8B/">
+<link rel="canonical" href="http://example.com/2020/12/20/%E5%AE%9E%E7%8E%B0CSS%E6%B0%B4%E5%B9%B3%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD%E7%9A%8410-10%E4%B8%AA%E6%96%B9%E5%BC%8F/">
 
 
 <script id="page-configurations">
@@ -49,7 +47,7 @@
   };
 </script>
 
-  <title>JavaScript-两张图弄懂基本类型和引用类型的复制过程 | CalDey-Blog</title>
+  <title>实现CSS水平垂直居中的8种方法 | CalDey-Blog</title>
   
 
 
@@ -165,7 +163,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/17/JavaScript-%E4%B8%A4%E5%BC%A0%E5%9B%BE%E5%BC%84%E6%87%82%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%A4%8D%E5%88%B6%E8%BF%87%E7%A8%8B/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/20/%E5%AE%9E%E7%8E%B0CSS%E6%B0%B4%E5%B9%B3%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD%E7%9A%8410-10%E4%B8%AA%E6%96%B9%E5%BC%8F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://gitee.com/caldey/BlogImage/raw/master/img/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20201202195621.jpg">
@@ -178,7 +176,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          JavaScript-两张图弄懂基本类型和引用类型的复制过程
+          实现CSS水平垂直居中的8种方法
         </h1>
 
         <div class="post-meta">
@@ -187,23 +185,17 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2020-12-17 18:47:07" itemprop="dateCreated datePublished" datetime="2020-12-17T18:47:07+08:00">2020-12-17</time>
+              <time title="创建时间：2020-12-20 22:01:04 / 修改时间：23:16:02" itemprop="dateCreated datePublished" datetime="2020-12-20T22:01:04+08:00">2020-12-20</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-12-18 12:54:53" itemprop="dateModified" datetime="2020-12-18T12:54:53+08:00">2020-12-18</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                  <a href="/categories/CSS/" itemprop="url" rel="index"><span itemprop="name">CSS</span></a>
                 </span>
             </span>
 
@@ -218,22 +210,68 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>《JavaScript高级程序设计》中对基本类型和引用类型值的复制过程有着详尽的讲解，但我个人感觉太过繁琐抽象，希望这篇文章能够用尽可能精炼的语言描述清楚这个难点。</p>
+        <p>实现CSS水平垂直居中是一道面试的必考题，看似简单，其实是对CSS基础知识的全面检测。</p>
 <hr>
 <a id="more"></a>
 
-<h1 id="1-基本类型值的复制"><a href="#1-基本类型值的复制" class="headerlink" title="1.基本类型值的复制"></a>1.基本类型值的复制</h1><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">var</span> num1 = &#123;</span><br><span class="line">    num: <span class="number">5</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> num2 = num1;</span><br><span class="line"><span class="built_in">console</span>.log(num1, num2); <span class="comment">// 5,5</span></span><br><span class="line"><span class="keyword">var</span> num2 = <span class="number">50</span>;</span><br><span class="line"><span class="built_in">console</span>.log(num1, num2); <span class="comment">// 5,50</span></span><br></pre></td></tr></table></figure></div>
-
-<p><img src="https://gitee.com/caldey/BlogImage/raw/master/img/%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B.PNG"></p>
-<p>我们设置num1中的值为5，声明一个新变量num2复制num1中的值，num2的值也是5，但这两个5是相互独立，互不影响的，如果我们修改num2中的值，num1的值不会发生改变。</p>
+<h1 id="1-常见的CSS水平垂直居中方式"><a href="#1-常见的CSS水平垂直居中方式" class="headerlink" title="1.常见的CSS水平垂直居中方式"></a>1.常见的CSS水平垂直居中方式</h1><p>常见的CSS水平垂直居中的方式大概有以下两大类：</p>
+<p>元素居中定宽高：</p>
+<ul>
+<li>absolute + 负margin</li>
+<li>absolute + margin:auto</li>
+<li>absolute + calc</li>
+</ul>
+<p>元素居中不定宽高：</p>
+<ul>
+<li>absolute + transform</li>
+<li>lineheight</li>
+<li>css-table</li>
+<li>flex</li>
+<li>grid</li>
+</ul>
 <hr>
-<h1 id="2-引用类型值的复制"><a href="#2-引用类型值的复制" class="headerlink" title="2.引用类型值的复制"></a>2.引用类型值的复制</h1><p>相比于基本类型来说，引用类型就显得稍微复杂了:</p>
-<p>与基本类型不同，基本类型存储的是值，而引用类型存储的是地址（指针）。基本类型的值保存在栈中，而引用类型的值是同时保存在栈内存和堆内存的对象。当创建对象后，计算机会在内存中开辟一个空间存放数据，而我们要想找到这个空间，就需要一个地址（指针）。</p>
-<p>这个概念听起来很抽象，我们结合代码分析整个过程：</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Obj1 = &#123;&#125;;</span><br><span class="line"><span class="keyword">var</span> Obj2 = Obj1;</span><br><span class="line">Obj2.name = <span class="string">&#x27;CalDey&#x27;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(Obj1.name) <span class="comment">// CalDey</span></span><br></pre></td></tr></table></figure></div>
+<h1 id="2-元素居中定宽高"><a href="#2-元素居中定宽高" class="headerlink" title="2.元素居中定宽高"></a>2.元素居中定宽高</h1><h2 id="2-1-absolute-负margin"><a href="#2-1-absolute-负margin" class="headerlink" title="2.1.absolute + 负margin"></a>2.1.absolute + 负margin</h2><p>我们通过绝对定位将子元素基于左上角居中定位，通过负外边距让子元素反方向移动自身的一般距离，实现居中定位：</p>
+<iframe width="100%" height="300" src="//jsrun.net/jUIKp/embedded/all/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 
-<p><img src="https://gitee.com/caldey/BlogImage/raw/master/img/%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B.PNG"></p>
-<p>从图中我们可以看出，复制前的Obj1和复制后的Obj2其实都指向内存中同一个地址，相当于一个指针，指向内存中对应的地址，也就是说这两个对象在内存中的地址相同。当我们改变其中任意一个的值，另一个也会发生改变：当为Obj2添加name属性后，可以通过Obj1来访问这个这个属性，因为这两个变量引用的都是同一个对象。</p>
+<p>这是一种非常常用的方式，缺点是需要提前知道子元素宽高。</p>
+<hr>
+<h2 id="2-2-absolute-margin-auto"><a href="#2-2-absolute-margin-auto" class="headerlink" title="2.2.absolute + margin:auto"></a>2.2.absolute + margin:auto</h2><p>这种方式通过设置各方向距离为0，再设置margin:auto，实现各方向上的居中：</p>
+<iframe width="100%" height="300" src="//jsrun.net/RUIKp/embedded/all/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<p>本方法缺点也是需要提前知道子元素宽高。</p>
+<hr>
+<h2 id="2-3-absolute-calc"><a href="#2-3-absolute-calc" class="headerlink" title="2.3.absolute + calc"></a>2.3.absolute + calc</h2><p>这种方式其实是第一种的优化，CSS3为我们添加了calc计算属性，因此我们能够直接用（50%-宽高的一半）轻松实现布局：</p>
+<iframe width="100%" height="300" src="//jsrun.net/K9IKp/embedded/all/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<p>本方法需要兼容CSS3，需要提前知道子元素宽高。</p>
+<hr>
+<h1 id="3-元素居中不定宽高"><a href="#3-元素居中不定宽高" class="headerlink" title="3.元素居中不定宽高"></a>3.元素居中不定宽高</h1><h2 id="3-1-absolute-transform"><a href="#3-1-absolute-transform" class="headerlink" title="3.1.absolute + transform"></a>3.1.absolute + transform</h2><p>这种方式仍然基于绝对定位，不同的是该方法使用CSS新增的transform，其属性translate也可以设定百分比，是相对于自身大小的宽和高，不再需要提前知道子元素宽高：</p>
+<iframe width="100%" height="300" src="//jsrun.net/q9IKp/embedded/all/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<hr>
+<h2 id="3-2-lineheight"><a href="#3-2-lineheight" class="headerlink" title="3.2.lineheight"></a>3.2.lineheight</h2><p>利用行内元素居中属性也可以做到水平垂直对齐：</p>
+<iframe width="100%" height="300" src="//jsrun.net/f9IKp/embedded/all/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<hr>
+<h2 id="3-3-css-table"><a href="#3-3-css-table" class="headerlink" title="3.3.css-table"></a>3.3.css-table</h2><p>CSS的display:table-cell可以帮我们将普通元素转化为table元素，通过这个特性也可以实现水平垂直居中：</p>
+<iframe width="100%" height="300" src="//jsrun.net/29IKp/embedded/all/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<hr>
+<h2 id="3-4-flex"><a href="#3-4-flex" class="headerlink" title="3.4.flex"></a>3.4.flex</h2><p>flex布局作为现代布局方式，可以通过几行代码优雅的实现水平垂直居中：</p>
+<iframe width="100%" height="300" src="//jsrun.net/v9IKp/embedded/all/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<p>缺点：需要考虑兼容性。</p>
+<hr>
+<h2 id="3-5-grid"><a href="#3-5-grid" class="headerlink" title="3.5.grid"></a>3.5.grid</h2><p>与flex布局相似，但兼容性不如flex：</p>
+<iframe width="100%" height="300" src="//jsrun.net/w9IKp/embedded/all/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<hr>
+<h1 id="4-总结"><a href="#4-总结" class="headerlink" title="4.总结"></a>4.总结</h1><ul>
+<li>PC端有兼容性要求，宽高固定，推荐absolute + 负margin</li>
+<li>PC端有兼容性要求，宽高不固定，推荐css-table</li>
+<li>PC端无兼容性要求，推荐flex</li>
+<li>移动端推荐flex</li>
+</ul>
 <hr>
 
     </div>
@@ -264,7 +302,8 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+              <a href="/tags/CSS/" rel="tag"># CSS</a>
+              <a href="/tags/CSS%E5%B8%83%E5%B1%80/" rel="tag"># CSS布局</a>
           </div>
 
         
@@ -273,12 +312,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/12/17/JavaScript-%E4%BB%80%E4%B9%88%E6%98%AF%E9%97%AD%E5%8C%85%EF%BC%9F/" rel="prev" title="JavaScript-什么是闭包？">
-      <i class="fa fa-chevron-left"></i> JavaScript-什么是闭包？
+    <a href="/2020/12/20/%E5%AE%9E%E7%8E%B0CSS%E6%B0%B4%E5%B9%B3%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD%E7%9A%848%E7%A7%8D%E6%96%B9%E6%B3%95/" rel="prev" title="实现CSS水平垂直居中的8种方法">
+      <i class="fa fa-chevron-left"></i> 实现CSS水平垂直居中的8种方法
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020/12/17/JavaScript-%E6%B5%85%E8%B0%88%E6%B7%B1%E6%B5%85%E6%8B%B7%E8%B4%9D/" rel="next" title="JavaScript-浅谈深浅拷贝">
-      JavaScript-浅谈深浅拷贝 <i class="fa fa-chevron-right"></i>
+    <a href="/2020/12/21/CSS-%E6%B8%85%E9%99%A4%E6%B5%AE%E5%8A%A8/" rel="next" title="CSS-清除浮动">
+      CSS-清除浮动 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -338,7 +377,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B%E5%80%BC%E7%9A%84%E5%A4%8D%E5%88%B6"><span class="nav-text">1.基本类型值的复制</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E5%80%BC%E7%9A%84%E5%A4%8D%E5%88%B6"><span class="nav-text">2.引用类型值的复制</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E5%B8%B8%E8%A7%81%E7%9A%84CSS%E6%B0%B4%E5%B9%B3%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD%E6%96%B9%E5%BC%8F"><span class="nav-text">1.常见的CSS水平垂直居中方式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-%E5%85%83%E7%B4%A0%E5%B1%85%E4%B8%AD%E5%AE%9A%E5%AE%BD%E9%AB%98"><span class="nav-text">2.元素居中定宽高</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-absolute-%E8%B4%9Fmargin"><span class="nav-text">2.1.absolute + 负margin</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-absolute-margin-auto"><span class="nav-text">2.2.absolute + margin:auto</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-absolute-calc"><span class="nav-text">2.3.absolute + calc</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-%E5%85%83%E7%B4%A0%E5%B1%85%E4%B8%AD%E4%B8%8D%E5%AE%9A%E5%AE%BD%E9%AB%98"><span class="nav-text">3.元素居中不定宽高</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-absolute-transform"><span class="nav-text">3.1.absolute + transform</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-lineheight"><span class="nav-text">3.2.lineheight</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-css-table"><span class="nav-text">3.3.css-table</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-4-flex"><span class="nav-text">3.4.flex</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-5-grid"><span class="nav-text">3.5.grid</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-%E6%80%BB%E7%BB%93"><span class="nav-text">4.总结</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
