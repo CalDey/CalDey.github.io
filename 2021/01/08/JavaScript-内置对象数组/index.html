@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico">
+  <link rel="mask-icon" href="/images/logo.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="阅读全文，了解更多">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript-内置对象数组">
+<meta property="og:url" content="http://example.com/2021/01/08/JavaScript-%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1%E6%95%B0%E7%BB%84/index.html">
+<meta property="og:site_name" content="CalDey-Blog">
+<meta property="og:description" content="阅读全文，了解更多">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/caldey/BlogImage/raw/master/img/Array.prototype.PNG">
+<meta property="article:published_time" content="2021-01-08T12:36:33.000Z">
+<meta property="article:modified_time" content="2021-01-09T15:54:39.167Z">
+<meta property="article:author" content="CalDey">
+<meta property="article:tag" content="JavaScript">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/caldey/BlogImage/raw/master/img/Array.prototype.PNG">
+
+<link rel="canonical" href="http://example.com/2021/01/08/JavaScript-%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1%E6%95%B0%E7%BB%84/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>JavaScript-内置对象数组 | CalDey-Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+    <a target="_blank" rel="noopener" href="https://github.com/CalDey" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">CalDey-Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/08/JavaScript-%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1%E6%95%B0%E7%BB%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://gitee.com/caldey/BlogImage/raw/master/img/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20201202195621.jpg">
+      <meta itemprop="name" content="CalDey">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CalDey-Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          JavaScript-内置对象数组
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-01-08 20:36:33" itemprop="dateCreated datePublished" datetime="2021-01-08T20:36:33+08:00">2021-01-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-01-09 23:54:39" itemprop="dateModified" datetime="2021-01-09T23:54:39+08:00">2021-01-09</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>阅读全文，了解更多</p>
+<hr>
+<a id="more"></a>
+
+<p>可以通过Array.prototype查看数组一共有多少种内置方法：</p>
+<p><img src="https://gitee.com/caldey/BlogImage/raw/master/img/Array.prototype.PNG"></p>
+<p>下面我们来一一介绍这些方法</p>
+<hr>
+<h1 id="1-Array方法"><a href="#1-Array方法" class="headerlink" title="1.Array方法"></a>1.Array方法</h1><h2 id="1-1-Array-from"><a href="#1-1-Array-from" class="headerlink" title="1.1.Array.from()"></a>1.1.Array.from()</h2><p>从一个类数组或可迭代对象中创建一个新的，浅拷贝数组实例</p>
+<iframe width="100%" height="120" src="//jsrun.net/MBIKp/embedded/js/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<hr>
+<h2 id="1-2-Array-isArray"><a href="#1-2-Array-isArray" class="headerlink" title="1.2.Array.isArray()"></a>1.2.Array.isArray()</h2><p>判断一个某个变量是否是数组对象</p>
+<iframe width="100%" height="100" src="//jsrun.net/SBIKp/embedded/js/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<hr>
+<h2 id="1-3-Array-of"><a href="#1-3-Array-of" class="headerlink" title="1.3.Array.of()"></a>1.3.Array.of()</h2><p>创建一个拥有不定参数的新数组，且不考虑参数的类型</p>
+<iframe width="100%" height="140" src="//jsrun.net/4BIKp/embedded/js/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<hr>
+<h1 id="2-Array-prototype方法"><a href="#2-Array-prototype方法" class="headerlink" title="2.Array.prototype方法"></a>2.Array.prototype方法</h1><p>所有数组实例都通过原型链从Array.prototype继承属性和方法，这些方法主要分为两种，修改原数组值的方法和不会修改原数组值的方法，下面来分别介绍：</p>
+<h2 id="2-1-会修改属性值的方法"><a href="#2-1-会修改属性值的方法" class="headerlink" title="2.1.会修改属性值的方法"></a>2.1.会修改属性值的方法</h2><h3 id="2-1-1-Array-prototype-copyWithin"><a href="#2-1-1-Array-prototype-copyWithin" class="headerlink" title="2.1.1.Array.prototype.copyWithin()"></a>2.1.1.Array.prototype.copyWithin()</h3><p>arr.copyWithin(target,start,end) (start,end可为空)</p>
+<p>复制数组中某个区间的数据到指定位置，<font color=#ff503e><strong>会修改原数组</strong></font></p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/copyWithin">点我了解更多</a></p>
+<hr>
+<h3 id="2-1-2-Array-prototype-fill"><a href="#2-1-2-Array-prototype-fill" class="headerlink" title="2.1.2.Array.prototype.fill()"></a>2.1.2.Array.prototype.fill()</h3><p>用一个固定值填充数组从起始索引到终止索引的值，<font color=#ff503e><strong>不包括终止索引，原数组会改变</strong></font></p>
+<iframe width="100%" height="150" src="//jsrun.net/pRIKp/embedded/js/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<hr>
+<h3 id="2-1-3-Array-prototype-pop"><a href="#2-1-3-Array-prototype-pop" class="headerlink" title="2.1.3.Array.prototype.pop()"></a>2.1.3.Array.prototype.pop()</h3><p>从数组中删除最后一个元素的值，然后返回删除元素的值，<font color=#ff503e><strong>会修改原数组</strong></font></p>
+<iframe width="100%" height="180" src="//jsrun.net/YRIKp/embedded/js/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<hr>
+<h3 id="2-1-4-Array-prototype-push"><a href="#2-1-4-Array-prototype-push" class="headerlink" title="2.1.4.Array.prototype.push()"></a>2.1.4.Array.prototype.push()</h3><p>在数组末尾添加一个或多个元素，并返回新数组的长度，<font color=#ff503e><strong>会修改原数组</strong></font></p>
+<iframe width="100%" height="150" src="//jsrun.net/iRIKp/embedded/js/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<hr>
+<h3 id="2-1-5-Array-prototype-reverse"><a href="#2-1-5-Array-prototype-reverse" class="headerlink" title="2.1.5.Array.prototype.reverse()"></a>2.1.5.Array.prototype.reverse()</h3><p>翻转数组，<font color=#ff503e><strong>会修改原数组</strong></font></p>
+<iframe width="100%" height="150" src="//jsrun.net/qRIKp/embedded/js/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<hr>
+<h3 id="2-1-6-Array-prototype-shift"><a href="#2-1-6-Array-prototype-shift" class="headerlink" title="2.1.6.Array.prototype.shift()"></a>2.1.6.Array.prototype.shift()</h3><p>删除数组第一个元素，并返回这个元素，<font color=#ff503e><strong>会修改原数组</strong></font></p>
+<iframe width="100%" height="150" src="//jsrun.net/ZRIKp/embedded/js/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<hr>
+<h3 id="2-1-7-Array-prototype-sort"><a href="#2-1-7-Array-prototype-sort" class="headerlink" title="2.1.7.Array.prototype.sort()"></a>2.1.7.Array.prototype.sort()</h3><p>对数组进行排序，并返回当前数组，<font color=#ff503e><strong>会修改原数组</strong></font></p>
+<iframe width="100%" height="150" src="//jsrun.net/gRIKp/embedded/js/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<hr>
+<h3 id="2-1-8-Array-prototype-splice"><a href="#2-1-8-Array-prototype-splice" class="headerlink" title="2.1.8.Array.prototype.splice()"></a>2.1.8.Array.prototype.splice()</h3><p>替换删除或添加元素来修改数组，<font color=#ff503e><strong>会修改原数组</strong></font></p>
+<iframe width="100%" height="280" src="//jsrun.net/hRIKp/embedded/js/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<hr>
+<h3 id="2-1-9-Array-prototype-unshift"><a href="#2-1-9-Array-prototype-unshift" class="headerlink" title="2.1.9.Array.prototype.unshift()"></a>2.1.9.Array.prototype.unshift()</h3><p>添加一个或多个元素到数组的首部，并返回新数组的长度，<font color=#ff503e><strong>会修改原数组</strong></font></p>
+<iframe width="100%" height="150" src="//jsrun.net/6uIKp/embedded/js/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<hr>
+<h2 id="2-2-不会修改原数组的方法"><a href="#2-2-不会修改原数组的方法" class="headerlink" title="2.2.不会修改原数组的方法"></a>2.2.不会修改原数组的方法</h2><h3 id="2-2-1-Array-prototype-concat"><a href="#2-2-1-Array-prototype-concat" class="headerlink" title="2.2.1.Array.prototype.concat()"></a>2.2.1.Array.prototype.concat()</h3><p>返回一个由当前数组和若干个其他数组组成的新数组，<font color=#1C90F3><strong>不会修改原数组</strong></font></p>
+<iframe width="100%" height="150" src="//jsrun.net/uBIKp/embedded/js/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<hr>
+<h3 id="2-2-2-Array-prototype-includes"><a href="#2-2-2-Array-prototype-includes" class="headerlink" title="2.2.2.Array.prototype.includes()"></a>2.2.2.Array.prototype.includes()</h3><p>判断一个数组是否含有某一特定值，根据情况返回true或者false，<font color=#1C90F3><strong>不会修改原数组</strong></font></p>
+<iframe width="100%" height="150" src="//jsrun.net/wuIKp/embedded/js/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<hr>
+<h3 id="2-2-3-Array-prototype-join"><a href="#2-2-3-Array-prototype-join" class="headerlink" title="2.2.3.Array.prototype.join()"></a>2.2.3.Array.prototype.join()</h3><p>将一个数组的所有元素连接成一个字符串并返回这个字符串，<font color=#1C90F3><strong>不会修改原数组</strong></font></p>
+<iframe width="100%" height="150" src="//jsrun.net/IuIKp/embedded/js/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<hr>
+<h3 id="2-2-4-Array-prototype-slice"><a href="#2-2-4-Array-prototype-slice" class="headerlink" title="2.2.4.Array.prototype.slice()"></a>2.2.4.Array.prototype.slice()</h3><p>返回一个新数组，是由begin和end决定的对原数组的浅拷贝，数组中包括begin不包括end，<font color=#1C90F3><strong>不会修改原数组</strong></font></p>
+<iframe width="100%" height="150" src="//jsrun.net/3uIKp/embedded/js/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<hr>
+<h3 id="2-2-5-Array-prototype-toString"><a href="#2-2-5-Array-prototype-toString" class="headerlink" title="2.2.5.Array.prototype.toString()"></a>2.2.5.Array.prototype.toString()</h3><p>返回数组的字符串形式，<font color=#1C90F3><strong>不会修改原数组</strong></font></p>
+<iframe width="100%" height="150" src="//jsrun.net/VuIKp/embedded/js/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<hr>
+<h3 id="2-2-6-Array-prototype-indexOf"><a href="#2-2-6-Array-prototype-indexOf" class="headerlink" title="2.2.6.Array.prototype.indexOf()"></a>2.2.6.Array.prototype.indexOf()</h3><p>返回一个指定元素在数组中的第一个索引，不存在返回-1，<font color=#1C90F3><strong>不会修改原数组</strong></font></p>
+<iframe width="100%" height="150" src="//jsrun.net/8uIKp/embedded/js/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<hr>
+<h2 id="2-3-迭代方法"><a href="#2-3-迭代方法" class="headerlink" title="2.3.迭代方法"></a>2.3.迭代方法</h2><p>在下面这些遍历方法中，有许多方法需要指定一个回调函数作为参数</p>
+<h3 id="2-3-1-Array-prototype-forEach"><a href="#2-3-1-Array-prototype-forEach" class="headerlink" title="2.3.1.Array.prototype.forEach()"></a>2.3.1.Array.prototype.forEach()</h3><p>对数组内每个元素都执行一次给定的函数</p>
+<iframe width="100%" height="200" src="//jsrun.net/TuIKp/embedded/js/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<p><font color=#ff503e><strong>forEach可以改变原数组</strong></font></p>
+<iframe width="100%" height="200" src="//jsrun.net/PuIKp/embedded/js/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<hr>
+<h3 id="2-3-2-Array-prototype-filter"><a href="#2-3-2-Array-prototype-filter" class="headerlink" title="2.3.2.Array.prototype.filter()"></a>2.3.2.Array.prototype.filter()</h3><p>创建一个新数组，其包含的元素是通过filter提供的函数测试通过后的所有元素</p>
+<p><font color=#ff503e><strong>通俗的讲，就是对数组元素进行指定条件的筛选</strong></font></p>
+<p>筛选数组中所有长度大于4的元素：</p>
+<iframe width="100%" height="150" src="//jsrun.net/UuIKp/embedded/js/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<p>自定义函数对数组进行筛选：</p>
+<iframe width="100%" height="200" src="//jsrun.net/9uIKp/embedded/js/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<p>筛选json中的有效数据：</p>
+<iframe width="100%" height="300" src="//jsrun.net/euIKp/embedded/js/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<p>实现简单的搜索功能：</p>
+<iframe width="100%" height="300" src="//jsrun.net/zuIKp/embedded/js/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<hr>
+<h3 id="2-3-3-Array-prototype-map"><a href="#2-3-3-Array-prototype-map" class="headerlink" title="2.3.3.Array.prototype.map()"></a>2.3.3.Array.prototype.map()</h3><p>创建一个新数组，其结果是该数组中每个元素调用一次提供函数后的返回值，<font color=#ff503e><strong>不会修改原数组</strong></font></p>
+<iframe width="100%" height="200" src="//jsrun.net/EuIKp/embedded/js/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<hr>
+<h3 id="2-3-4-Array-prototype-reduce"><a href="#2-3-4-Array-prototype-reduce" class="headerlink" title="2.3.4.Array.prototype.reduce()"></a>2.3.4.Array.prototype.reduce()</h3><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce">点我了解更多</a></p>
+<hr>
+<blockquote>
+<p>本文章简单的介绍了常用的数组api，如果想了解全部内置方法或进阶用法，<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array">点击此处</a></p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>博主，再写五块钱的~</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="https://gitee.com/caldey/BlogImage/raw/master/img/wechat.jpg" alt="CalDey 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="https://gitee.com/caldey/BlogImage/raw/master/img/aliplay.jpg" alt="CalDey 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/01/08/%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E7%AE%80%E6%98%93%E7%9A%84%E5%BE%AE%E4%BF%A1%E6%9C%8B%E5%8F%8B%E5%9C%88Demo/" rel="prev" title="实现一个简易的微信朋友圈Demo">
+      <i class="fa fa-chevron-left"></i> 实现一个简易的微信朋友圈Demo
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Array%E6%96%B9%E6%B3%95"><span class="nav-text">1.Array方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-Array-from"><span class="nav-text">1.1.Array.from()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-Array-isArray"><span class="nav-text">1.2.Array.isArray()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-Array-of"><span class="nav-text">1.3.Array.of()</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Array-prototype%E6%96%B9%E6%B3%95"><span class="nav-text">2.Array.prototype方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-%E4%BC%9A%E4%BF%AE%E6%94%B9%E5%B1%9E%E6%80%A7%E5%80%BC%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-text">2.1.会修改属性值的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-1-Array-prototype-copyWithin"><span class="nav-text">2.1.1.Array.prototype.copyWithin()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-2-Array-prototype-fill"><span class="nav-text">2.1.2.Array.prototype.fill()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-3-Array-prototype-pop"><span class="nav-text">2.1.3.Array.prototype.pop()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-4-Array-prototype-push"><span class="nav-text">2.1.4.Array.prototype.push()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-5-Array-prototype-reverse"><span class="nav-text">2.1.5.Array.prototype.reverse()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-6-Array-prototype-shift"><span class="nav-text">2.1.6.Array.prototype.shift()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-7-Array-prototype-sort"><span class="nav-text">2.1.7.Array.prototype.sort()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-8-Array-prototype-splice"><span class="nav-text">2.1.8.Array.prototype.splice()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-9-Array-prototype-unshift"><span class="nav-text">2.1.9.Array.prototype.unshift()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-%E4%B8%8D%E4%BC%9A%E4%BF%AE%E6%94%B9%E5%8E%9F%E6%95%B0%E7%BB%84%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-text">2.2.不会修改原数组的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-1-Array-prototype-concat"><span class="nav-text">2.2.1.Array.prototype.concat()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-2-Array-prototype-includes"><span class="nav-text">2.2.2.Array.prototype.includes()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-3-Array-prototype-join"><span class="nav-text">2.2.3.Array.prototype.join()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-4-Array-prototype-slice"><span class="nav-text">2.2.4.Array.prototype.slice()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-5-Array-prototype-toString"><span class="nav-text">2.2.5.Array.prototype.toString()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-6-Array-prototype-indexOf"><span class="nav-text">2.2.6.Array.prototype.indexOf()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-%E8%BF%AD%E4%BB%A3%E6%96%B9%E6%B3%95"><span class="nav-text">2.3.迭代方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-1-Array-prototype-forEach"><span class="nav-text">2.3.1.Array.prototype.forEach()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-2-Array-prototype-filter"><span class="nav-text">2.3.2.Array.prototype.filter()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-3-Array-prototype-map"><span class="nav-text">2.3.3.Array.prototype.map()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-4-Array-prototype-reduce"><span class="nav-text">2.3.4.Array.prototype.reduce()</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="CalDey"
+      src="https://gitee.com/caldey/BlogImage/raw/master/img/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20201202195621.jpg">
+  <p class="site-author-name" itemprop="name">CalDey</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/CalDey" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;CalDey" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">CalDey</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.1.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/velocity-animate@1/velocity.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/velocity-animate@1/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
