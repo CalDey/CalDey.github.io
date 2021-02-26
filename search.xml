@@ -301,6 +301,46 @@
       </tags>
   </entry>
   <entry>
+    <title>ES6-数组遍历方法</title>
+    <url>/2021/02/02/ES6-%E6%95%B0%E7%BB%84%E9%81%8D%E5%8E%86%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<p>阅读全文，了解更多</p>
+<hr>
+<a id="more"></a>
+
+<h1 id="ES6中的数组遍历方法"><a href="#ES6中的数组遍历方法" class="headerlink" title="ES6中的数组遍历方法"></a>ES6中的数组遍历方法</h1><h2 id="1-find"><a href="#1-find" class="headerlink" title="1.find()"></a>1.find()</h2><p>返回通过筛选的第一个元素的值</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line">arr = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line"><span class="keyword">let</span> res = arr.find(<span class="function"><span class="keyword">function</span>(<span class="params">elem</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> elem &gt; <span class="number">2</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(arr)   <span class="comment">// [0, 1, 3, 4, 5]</span></span><br><span class="line"><span class="built_in">console</span>.log(res)   <span class="comment">// 3</span></span><br></pre></td></tr></table></figure></div>
+
+<hr>
+<h2 id="2-findIndex"><a href="#2-findIndex" class="headerlink" title="2.findIndex()"></a>2.findIndex()</h2><p>返回通过筛选的第一个元素的索引</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line">arr = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line"><span class="keyword">let</span> res = arr.findIndex(<span class="function"><span class="keyword">function</span>(<span class="params">elem</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> elem &gt; <span class="number">2</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(arr)   <span class="comment">// [0, 1, 3, 4, 5]</span></span><br><span class="line"><span class="built_in">console</span>.log(res)   <span class="comment">// 2</span></span><br></pre></td></tr></table></figure></div>
+
+<hr>
+<h2 id="3-for-…-of"><a href="#3-for-…-of" class="headerlink" title="3.for … of"></a>3.for … of</h2><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line">arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i <span class="keyword">of</span> arr)&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(i)  <span class="comment">// 1, 2, 3</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>values() 值 -&gt; 元素值</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line">arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i <span class="keyword">of</span> arr.values())&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(i)  <span class="comment">// 1, 2, 3</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>keys()  键 -&gt; 索引</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line">arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i <span class="keyword">of</span> arr.keys())&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(i)  <span class="comment">// 0, 1, 2</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>entries() 创建一个可迭代对象，这个对象包含数组的键值对</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> [index, item] <span class="keyword">of</span> arr.entries())&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(index, item)  <span class="comment">// 0 1  1 2  2 3</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<hr>
+<blockquote>
+<p>内容参考自：<a href="http://es.xiecheng.live/">ECMAScript2015~2020语法全解析</a></p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+        <category>ES6</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+        <tag>ES6</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ES6-原型继承和Class继承</title>
     <url>/2020/12/18/ES6-%E5%8E%9F%E5%9E%8B%E7%BB%A7%E6%89%BF%E5%92%8CClass%E7%BB%A7%E6%89%BF/</url>
     <content><![CDATA[<p>原型如何实现继承？Class 如何实现继承？Class 本质是什么？</p>
@@ -360,46 +400,6 @@
       </tags>
   </entry>
   <entry>
-    <title>ES6-数组遍历方法</title>
-    <url>/2021/02/02/ES6-%E6%95%B0%E7%BB%84%E9%81%8D%E5%8E%86%E6%96%B9%E6%B3%95/</url>
-    <content><![CDATA[<p>阅读全文，了解更多</p>
-<hr>
-<a id="more"></a>
-
-<h1 id="ES6中的数组遍历方法"><a href="#ES6中的数组遍历方法" class="headerlink" title="ES6中的数组遍历方法"></a>ES6中的数组遍历方法</h1><h2 id="1-find"><a href="#1-find" class="headerlink" title="1.find()"></a>1.find()</h2><p>返回通过筛选的第一个元素的值</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line">arr = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line"><span class="keyword">let</span> res = arr.find(<span class="function"><span class="keyword">function</span>(<span class="params">elem</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> elem &gt; <span class="number">2</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(arr)   <span class="comment">// [0, 1, 3, 4, 5]</span></span><br><span class="line"><span class="built_in">console</span>.log(res)   <span class="comment">// 3</span></span><br></pre></td></tr></table></figure></div>
-
-<hr>
-<h2 id="2-findIndex"><a href="#2-findIndex" class="headerlink" title="2.findIndex()"></a>2.findIndex()</h2><p>返回通过筛选的第一个元素的索引</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line">arr = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line"><span class="keyword">let</span> res = arr.findIndex(<span class="function"><span class="keyword">function</span>(<span class="params">elem</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> elem &gt; <span class="number">2</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(arr)   <span class="comment">// [0, 1, 3, 4, 5]</span></span><br><span class="line"><span class="built_in">console</span>.log(res)   <span class="comment">// 2</span></span><br></pre></td></tr></table></figure></div>
-
-<hr>
-<h2 id="3-for-…-of"><a href="#3-for-…-of" class="headerlink" title="3.for … of"></a>3.for … of</h2><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line">arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i <span class="keyword">of</span> arr)&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(i)  <span class="comment">// 1, 2, 3</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-<p>values() 值 -&gt; 元素值</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line">arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i <span class="keyword">of</span> arr.values())&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(i)  <span class="comment">// 1, 2, 3</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-<p>keys()  键 -&gt; 索引</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line">arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i <span class="keyword">of</span> arr.keys())&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(i)  <span class="comment">// 0, 1, 2</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-<p>entries() 创建一个可迭代对象，这个对象包含数组的键值对</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> [index, item] <span class="keyword">of</span> arr.entries())&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(index, item)  <span class="comment">// 0 1  1 2  2 3</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-<hr>
-<blockquote>
-<p>内容参考自：<a href="http://es.xiecheng.live/">ECMAScript2015~2020语法全解析</a></p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-        <category>ES6</category>
-      </categories>
-      <tags>
-        <tag>JavaScript</tag>
-        <tag>ES6</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Flex-六面骰子</title>
     <url>/2021/02/03/Flex-%E5%85%AD%E9%9D%A2%E9%AA%B0%E5%AD%90/</url>
     <content><![CDATA[<p>阅读全文，了解更多</p>
@@ -427,6 +427,27 @@
       <tags>
         <tag>CSS</tag>
         <tag>CSS布局</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JavaSciprt-手写call，apply，bind</title>
+    <url>/2021/02/20/JavaSciprt-%E6%89%8B%E5%86%99call%EF%BC%8Capply%EF%BC%8Cbind/</url>
+    <content><![CDATA[<p>阅读全文，了解更多</p>
+<hr>
+<a id="more"></a>
+
+<h1 id="1-call"><a href="#1-call" class="headerlink" title="1.call"></a>1.call</h1><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Function</span>.prototype.myCall = <span class="function"><span class="keyword">function</span>(<span class="params">t, ...args</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> _self = <span class="built_in">this</span></span><br><span class="line">    <span class="keyword">return</span> (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> _self.apply(t, args)</span><br><span class="line">    &#125;)()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn1</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">this</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(a, b)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fn2 = fn1.myCall(&#123;<span class="attr">x</span>:<span class="number">100</span>&#125;,<span class="number">10</span>,<span class="number">20</span>)</span><br></pre></td></tr></table></figure></div>
+
+<hr>
+<h1 id="2-apply"><a href="#2-apply" class="headerlink" title="2.apply"></a>2.apply</h1><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Function</span>.prototype.myApply = <span class="function"><span class="keyword">function</span>(<span class="params">t, args</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> _self = <span class="built_in">this</span></span><br><span class="line">    <span class="keyword">return</span> (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(...args)</span><br><span class="line">        <span class="keyword">return</span> _self.call(t, ...args)</span><br><span class="line">    &#125;)()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn1</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">this</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(a, b)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fn2 = fn1.myApply(&#123;<span class="attr">x</span>:<span class="number">100</span>&#125;,[<span class="number">10</span>,<span class="number">20</span>])</span><br></pre></td></tr></table></figure></div>
+
+<hr>
+<h1 id="3-bind"><a href="#3-bind" class="headerlink" title="3.bind"></a>3.bind</h1><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Function</span>.prototype.myBind = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> args = <span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">arguments</span>);</span><br><span class="line">    <span class="keyword">const</span> t = args.unshift();</span><br><span class="line">    <span class="keyword">const</span> _self = <span class="built_in">this</span></span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> _self.bind(t, args)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn1</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">this</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(a, b)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> fn2 = fn1.bind(&#123;<span class="attr">x</span>:<span class="number">100</span>&#125;,<span class="number">10</span>,<span class="number">20</span>)</span><br><span class="line">fn2()</span><br></pre></td></tr></table></figure></div>]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
       </tags>
   </entry>
   <entry>
@@ -484,19 +505,29 @@
       </tags>
   </entry>
   <entry>
-    <title>JavaSciprt-手写call，apply，bind</title>
-    <url>/2021/02/20/JavaSciprt-%E6%89%8B%E5%86%99call%EF%BC%8Capply%EF%BC%8Cbind/</url>
+    <title>JavaScipt-跨域</title>
+    <url>/2021/02/21/JavaScipt-%E8%B7%A8%E5%9F%9F/</url>
     <content><![CDATA[<p>阅读全文，了解更多</p>
 <hr>
 <a id="more"></a>
 
-<h1 id="1-call"><a href="#1-call" class="headerlink" title="1.call"></a>1.call</h1><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Function</span>.prototype.myCall = <span class="function"><span class="keyword">function</span>(<span class="params">t, ...args</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> _self = <span class="built_in">this</span></span><br><span class="line">    <span class="keyword">return</span> (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> _self.apply(t, args)</span><br><span class="line">    &#125;)()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn1</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">this</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(a, b)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fn2 = fn1.myCall(&#123;<span class="attr">x</span>:<span class="number">100</span>&#125;,<span class="number">10</span>,<span class="number">20</span>)</span><br></pre></td></tr></table></figure></div>
+<h1 id="1-什么是跨域？"><a href="#1-什么是跨域？" class="headerlink" title="1.什么是跨域？"></a>1.什么是跨域？</h1><p>ajax请求时，浏览器要求当前网页和server必须同源（保证安全，同源策略）<br>同源：协议，域名，端口三者必须一致<br>不同源的请求会被浏览器禁止</p>
+<p>https(协议)://<a href="http://www.baidu.com(域名)/">www.baidu.com(域名)</a> :443(端口号)</p>
+<p>只有浏览器才会出现跨域问题</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> url = <span class="string">&#x27;https://www.baidu.com&#x27;</span></span><br><span class="line"><span class="keyword">const</span> xhr = <span class="keyword">new</span> XMLHttpRequest()</span><br><span class="line">xhr.open(<span class="string">&#x27;GET&#x27;</span>, url, <span class="literal">true</span>)</span><br><span class="line">xhr.send(<span class="literal">null</span>)</span><br><span class="line"><span class="comment">// Access to XMLHttpRequest at &#x27;https://www.baidu.com/&#x27; from origin &#x27;http://127.0.0.1:5500&#x27; has been blocked by CORS policy: No &#x27;Access-Control-Allow-Origin&#x27; header is present on the requested resource.</span></span><br></pre></td></tr></table></figure></div>
+
+<h1 id="2-解决跨域"><a href="#2-解决跨域" class="headerlink" title="2.解决跨域"></a>2.解决跨域</h1><h2 id="2-1-CORS跨域资源共享（后端）"><a href="#2-1-CORS跨域资源共享（后端）" class="headerlink" title="2.1.CORS跨域资源共享（后端）"></a>2.1.CORS跨域资源共享（后端）</h2><p>Access-Control-Allow-Origin:*<br>允许所有域名来跨域请求，*是通配符，没有任何限制</p>
+<p>Access-Control-Allow-Origin:<a href="http://127.0.0.1:5500/">http://127.0.0.1:5500</a><br>只允许指定域名的跨域请求</p>
+<p>CORS跨域过程：</p>
+<p>①浏览器发送跨域请求<br>②后端在响应头中添加Access-Control-Allow-Origin<br>③浏览器接收到响应<br>④同域请求，前后端交互完成<br>⑤如果允许跨域，前后端交互完成<br>⑥不满足跨域条件，前后端交互失败</p>
+<p>CORS兼容性：IE10↑</p>
+<h2 id="2-2-JSONP"><a href="#2-2-JSONP" class="headerlink" title="2.2.JSONP"></a>2.2.JSONP</h2><p>JSONP实现原理： script标签</p>
+<p>使用JSONP实现跨域：</p>
+<p>①服务器端准备好JSONP接口<br>②手动加载JSONP或动态加载（script标签）<br>③声明函数</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    <span class="comment">// 手动加载</span></span><br><span class="line">    <span class="comment">// const handleResponse = data =&gt; &#123;</span></span><br><span class="line">    <span class="comment">//     console.log(data)</span></span><br><span class="line">    <span class="comment">// &#125;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 自动加载</span></span><br><span class="line">    <span class="keyword">const</span> script = <span class="built_in">document</span>.createElement(<span class="string">&#x27;script&#x27;</span>);</span><br><span class="line">    script.src = <span class="string">&#x27;https://www.imooc.com/api/http/jsonp?callback=handleResponse&#x27;</span></span><br><span class="line">    <span class="built_in">document</span>.body.appendChild(script);</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;script src=<span class="string">&quot;https://www.imooc.com/api/http/jsonp?callback=handleResponse&quot;</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure></div>
 
 <hr>
-<h1 id="2-apply"><a href="#2-apply" class="headerlink" title="2.apply"></a>2.apply</h1><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Function</span>.prototype.myApply = <span class="function"><span class="keyword">function</span>(<span class="params">t, args</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> _self = <span class="built_in">this</span></span><br><span class="line">    <span class="keyword">return</span> (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(...args)</span><br><span class="line">        <span class="keyword">return</span> _self.call(t, ...args)</span><br><span class="line">    &#125;)()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn1</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">this</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(a, b)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fn2 = fn1.myApply(&#123;<span class="attr">x</span>:<span class="number">100</span>&#125;,[<span class="number">10</span>,<span class="number">20</span>])</span><br></pre></td></tr></table></figure></div>
-
-<hr>
-<h1 id="3-bind"><a href="#3-bind" class="headerlink" title="3.bind"></a>3.bind</h1><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Function</span>.prototype.myBind = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> args = <span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">arguments</span>);</span><br><span class="line">    <span class="keyword">const</span> t = args.unshift();</span><br><span class="line">    <span class="keyword">const</span> _self = <span class="built_in">this</span></span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> _self.bind(t, args)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn1</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">this</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(a, b)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> fn2 = fn1.bind(&#123;<span class="attr">x</span>:<span class="number">100</span>&#125;,<span class="number">10</span>,<span class="number">20</span>)</span><br><span class="line">fn2()</span><br></pre></td></tr></table></figure></div>]]></content>
+]]></content>
       <categories>
         <category>JavaScript</category>
       </categories>
@@ -669,37 +700,6 @@
       </tags>
   </entry>
   <entry>
-    <title>JavaScipt-跨域</title>
-    <url>/2021/02/21/JavaScipt-%E8%B7%A8%E5%9F%9F/</url>
-    <content><![CDATA[<p>阅读全文，了解更多</p>
-<hr>
-<a id="more"></a>
-
-<h1 id="1-什么是跨域？"><a href="#1-什么是跨域？" class="headerlink" title="1.什么是跨域？"></a>1.什么是跨域？</h1><p>ajax请求时，浏览器要求当前网页和server必须同源（保证安全，同源策略）<br>同源：协议，域名，端口三者必须一致<br>不同源的请求会被浏览器禁止</p>
-<p>https(协议)://<a href="http://www.baidu.com(域名)/">www.baidu.com(域名)</a> :443(端口号)</p>
-<p>只有浏览器才会出现跨域问题</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> url = <span class="string">&#x27;https://www.baidu.com&#x27;</span></span><br><span class="line"><span class="keyword">const</span> xhr = <span class="keyword">new</span> XMLHttpRequest()</span><br><span class="line">xhr.open(<span class="string">&#x27;GET&#x27;</span>, url, <span class="literal">true</span>)</span><br><span class="line">xhr.send(<span class="literal">null</span>)</span><br><span class="line"><span class="comment">// Access to XMLHttpRequest at &#x27;https://www.baidu.com/&#x27; from origin &#x27;http://127.0.0.1:5500&#x27; has been blocked by CORS policy: No &#x27;Access-Control-Allow-Origin&#x27; header is present on the requested resource.</span></span><br></pre></td></tr></table></figure></div>
-
-<h1 id="2-解决跨域"><a href="#2-解决跨域" class="headerlink" title="2.解决跨域"></a>2.解决跨域</h1><h2 id="2-1-CORS跨域资源共享（后端）"><a href="#2-1-CORS跨域资源共享（后端）" class="headerlink" title="2.1.CORS跨域资源共享（后端）"></a>2.1.CORS跨域资源共享（后端）</h2><p>Access-Control-Allow-Origin:*<br>允许所有域名来跨域请求，*是通配符，没有任何限制</p>
-<p>Access-Control-Allow-Origin:<a href="http://127.0.0.1:5500/">http://127.0.0.1:5500</a><br>只允许指定域名的跨域请求</p>
-<p>CORS跨域过程：</p>
-<p>①浏览器发送跨域请求<br>②后端在响应头中添加Access-Control-Allow-Origin<br>③浏览器接收到响应<br>④同域请求，前后端交互完成<br>⑤如果允许跨域，前后端交互完成<br>⑥不满足跨域条件，前后端交互失败</p>
-<p>CORS兼容性：IE10↑</p>
-<h2 id="2-2-JSONP"><a href="#2-2-JSONP" class="headerlink" title="2.2.JSONP"></a>2.2.JSONP</h2><p>JSONP实现原理： script标签</p>
-<p>使用JSONP实现跨域：</p>
-<p>①服务器端准备好JSONP接口<br>②手动加载JSONP或动态加载（script标签）<br>③声明函数</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    <span class="comment">// 手动加载</span></span><br><span class="line">    <span class="comment">// const handleResponse = data =&gt; &#123;</span></span><br><span class="line">    <span class="comment">//     console.log(data)</span></span><br><span class="line">    <span class="comment">// &#125;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 自动加载</span></span><br><span class="line">    <span class="keyword">const</span> script = <span class="built_in">document</span>.createElement(<span class="string">&#x27;script&#x27;</span>);</span><br><span class="line">    script.src = <span class="string">&#x27;https://www.imooc.com/api/http/jsonp?callback=handleResponse&#x27;</span></span><br><span class="line">    <span class="built_in">document</span>.body.appendChild(script);</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;script src=<span class="string">&quot;https://www.imooc.com/api/http/jsonp?callback=handleResponse&quot;</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure></div>
-
-<hr>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>JavaScript</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>JavaScript-Promise</title>
     <url>/2021/02/20/JavaScript-Promise/</url>
     <content><![CDATA[<p>阅读全文，了解更多</p>
@@ -842,24 +842,21 @@
       </tags>
   </entry>
   <entry>
-    <title>JavaScript-json与对象相互转化</title>
-    <url>/2021/02/01/JavaScript-json%E4%B8%8E%E5%AF%B9%E8%B1%A1%E7%9B%B8%E4%BA%92%E8%BD%AC%E5%8C%96/</url>
+    <title>JavaScript-axios</title>
+    <url>/2021/02/22/JavaScript-axios/</url>
     <content><![CDATA[<p>阅读全文，了解更多</p>
 <hr>
 <a id="more"></a>
 
-<h1 id="1-JSON转对象"><a href="#1-JSON转对象" class="headerlink" title="1.JSON转对象"></a>1.JSON转对象</h1><p>JSON.parse()</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="HTML"><figure class="iseeu highlight /html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">data-info</span>=<span class="string">&#x27;&#123;&quot;name&quot;: &quot;CalDey&quot;, &quot;age&quot;: 25&#125;&#x27;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></div>
-
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// JSON.parse() -&gt; JSON转对象</span></span><br><span class="line"><span class="keyword">var</span> oDiv = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&#x27;div&#x27;</span>)[<span class="number">0</span>],</span><br><span class="line">    info = oDiv.getAttribute(<span class="string">&#x27;data-info&#x27;</span>);</span><br><span class="line">    </span><br><span class="line"><span class="keyword">var</span> jsonData = <span class="built_in">JSON</span>.parse(info);</span><br><span class="line"><span class="built_in">console</span>.log(jsonData);</span><br><span class="line"><span class="comment">// &#123;name: &quot;CalDey&quot;, age: 25&#125;</span></span><br></pre></td></tr></table></figure></div>
-
-<hr>
-<h1 id="2-对象转JSON"><a href="#2-对象转JSON" class="headerlink" title="2.对象转JSON"></a>2.对象转JSON</h1><p>JSON.stringify()</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="HTML"><figure class="iseeu highlight /html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></div>
-
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// JSON.stringify() -&gt; 对象转JSON</span></span><br><span class="line"><span class="keyword">var</span> oDiv = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&#x27;div&#x27;</span>)[<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    name: <span class="string">&#x27;CalDey&#x27;</span>,</span><br><span class="line">    age: <span class="number">23</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> str = <span class="built_in">JSON</span>.stringify(obj);</span><br><span class="line">oDiv.setAttribute(<span class="string">&#x27;data-info&#x27;</span>, str);</span><br></pre></td></tr></table></figure></div>
+<h1 id="1-axios"><a href="#1-axios" class="headerlink" title="1.axios"></a>1.axios</h1><p>axios是一个基于Promise的HTTP库，第三方Ajax库</p>
+<p><a href="http://www.axios-js.com/zh-cn/docs">axios中文文档</a></p>
+<h1 id="1-1-GET"><a href="#1-1-GET" class="headerlink" title="1.1.GET"></a>1.1.GET</h1><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line">&lt;script src=<span class="string">&quot;https://unpkg.com/axios@0.19.2/dist/axios.min.js&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line"><span class="keyword">const</span> url = <span class="string">&#x27;https://www.imooc.com/api/http/search/suggest?words=js&#x27;</span>;</span><br><span class="line">axios.get(url, &#123;</span><br><span class="line">    params: &#123;</span><br><span class="line">    username: <span class="string">&#x27;alex&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line">.then(<span class="function"><span class="params">response</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(response);</span><br><span class="line">&#125;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></div>
 
 <hr>
+<h2 id="1-2-POST"><a href="#1-2-POST" class="headerlink" title="1.2.POST"></a>1.2.POST</h2><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line">&lt;script src=<span class="string">&quot;https://unpkg.com/axios@0.19.2/dist/axios.min.js&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line"><span class="keyword">const</span> url = <span class="string">&#x27;https://www.imooc.com/api/http/search/suggest?words=js&#x27;</span>;</span><br><span class="line">axios.post(url, <span class="string">&#x27;username=alex&amp;age=18&#x27;</span>)</span><br><span class="line">.then(<span class="function"><span class="params">response</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(response);</span><br><span class="line">&#125;)</span><br><span class="line">.catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(err);</span><br><span class="line">&#125;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></div>
+
+<hr>
+<h2 id="1-3-PUT和DELETE"><a href="#1-3-PUT和DELETE" class="headerlink" title="1.3.PUT和DELETE"></a>1.3.PUT和DELETE</h2><hr>
 ]]></content>
       <categories>
         <category>JavaScript</category>
@@ -907,30 +904,6 @@
       </tags>
   </entry>
   <entry>
-    <title>JavaScript-axios</title>
-    <url>/2021/02/22/JavaScript-axios/</url>
-    <content><![CDATA[<p>阅读全文，了解更多</p>
-<hr>
-<a id="more"></a>
-
-<h1 id="1-axios"><a href="#1-axios" class="headerlink" title="1.axios"></a>1.axios</h1><p>axios是一个基于Promise的HTTP库，第三方Ajax库</p>
-<p><a href="http://www.axios-js.com/zh-cn/docs">axios中文文档</a></p>
-<h1 id="1-1-GET"><a href="#1-1-GET" class="headerlink" title="1.1.GET"></a>1.1.GET</h1><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line">&lt;script src=<span class="string">&quot;https://unpkg.com/axios@0.19.2/dist/axios.min.js&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line"><span class="keyword">const</span> url = <span class="string">&#x27;https://www.imooc.com/api/http/search/suggest?words=js&#x27;</span>;</span><br><span class="line">axios.get(url, &#123;</span><br><span class="line">    params: &#123;</span><br><span class="line">    username: <span class="string">&#x27;alex&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line">.then(<span class="function"><span class="params">response</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(response);</span><br><span class="line">&#125;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></div>
-
-<hr>
-<h2 id="1-2-POST"><a href="#1-2-POST" class="headerlink" title="1.2.POST"></a>1.2.POST</h2><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line">&lt;script src=<span class="string">&quot;https://unpkg.com/axios@0.19.2/dist/axios.min.js&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line"><span class="keyword">const</span> url = <span class="string">&#x27;https://www.imooc.com/api/http/search/suggest?words=js&#x27;</span>;</span><br><span class="line">axios.post(url, <span class="string">&#x27;username=alex&amp;age=18&#x27;</span>)</span><br><span class="line">.then(<span class="function"><span class="params">response</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(response);</span><br><span class="line">&#125;)</span><br><span class="line">.catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(err);</span><br><span class="line">&#125;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></div>
-
-<hr>
-<h2 id="1-3-PUT和DELETE"><a href="#1-3-PUT和DELETE" class="headerlink" title="1.3.PUT和DELETE"></a>1.3.PUT和DELETE</h2><hr>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>JavaScript</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>JavaScript-两张图弄懂基本类型和引用类型的复制过程</title>
     <url>/2020/12/17/JavaScript-%E4%B8%A4%E5%BC%A0%E5%9B%BE%E5%BC%84%E6%87%82%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%A4%8D%E5%88%B6%E8%BF%87%E7%A8%8B/</url>
     <content><![CDATA[<p>阅读全文，了解更多</p>
@@ -952,6 +925,40 @@
 <p>从图中我们可以看出，复制前的Obj1和复制后的Obj2的储存在栈内存中的值都是一个引用地址，指向堆内存中同一个对象。当我们改变对象的属性，Obj1和Obj2的值都会发生改变：当为Obj2添加name属性后，可以通过Obj1来访问这个这个属性。</p>
 <p>为什么这样设计？</p>
 <p>基本类型数据相对来说非常小，可以直接在栈中存储，且不会影响性能。但引用类型如JSON，能够存储许多数据，直接存储在栈中复制过程缓慢，影响性能</p>
+<hr>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JavaScript-从输入url到渲染出页面的整个过程</title>
+    <url>/2021/02/22/JavaScript-%E4%BB%8E%E8%BE%93%E5%85%A5url%E5%88%B0%E6%B8%B2%E6%9F%93%E5%87%BA%E9%A1%B5%E9%9D%A2%E7%9A%84%E6%95%B4%E4%B8%AA%E8%BF%87%E7%A8%8B/</url>
+    <content><![CDATA[<p>阅读全文，了解更多</p>
+<hr>
+<a id="more"></a>
+
+<h1 id="1-从输入url到渲染出页面的整个过程"><a href="#1-从输入url到渲染出页面的整个过程" class="headerlink" title="1.从输入url到渲染出页面的整个过程"></a>1.从输入url到渲染出页面的整个过程</h1><p>加载过程</p>
+<ul>
+<li>DNS解析：域名 -&gt; ip地址</li>
+<li>浏览器根据IP地址向服务器发起http请求</li>
+<li>服务器处理http请求，并返回给浏览器<br>渲染过程</li>
+<li>根据HTML代码生成DOM Tree（文档对象模型）</li>
+<li>根据CSS代码生成CSSOM（CSS对象模型）</li>
+<li>将DOM Tree和CSSOM整合成Render Tree</li>
+<li>根据Render Tree渲染页面</li>
+<li>遇到&lt;Script&gt;暂停渲染，并优先执行JS代码</li>
+<li>Render Tree渲染完成</li>
+</ul>
+<hr>
+<h1 id="2-为什么建议将link放到head里？"><a href="#2-为什么建议将link放到head里？" class="headerlink" title="2.为什么建议将link放到head里？"></a>2.为什么建议将link放到head里？</h1><p>从上向下渲染，根据CSS的代码生成CSSOM，渲染过程中遇到CSS代码会重新生成一个CSSOM</p>
+<p>避免重复渲染</p>
+<hr>
+<h1 id="3-window-onload和DOMContentLoaded"><a href="#3-window-onload和DOMContentLoaded" class="headerlink" title="3.window.onload和DOMContentLoaded"></a>3.window.onload和DOMContentLoaded</h1><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">window</span>.addEventListener(<span class="string">&#x27;load&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 页面资源全部加载完后执行，包括图片和视频</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.addEventListener(<span class="string">&#x27;DOMContentLoaded&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// DOM渲染完成后即可执行，此时图片和视频可能还没有加载完成</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div>
+
 <hr>
 ]]></content>
       <categories>
@@ -1012,40 +1019,6 @@
 <blockquote>
 <p>内容参考自：<br><a href="http://www.ruanyifeng.com/blog/2009/08/learning_javascript_closures.html">学习Javascript闭包（Closure）</a><br><a href="https://juejin.cn/book/6844733763675488269/section/6844733763759374350">前端面试之道</a><br><a href="https://zhuanlan.zhihu.com/p/22486908?refer=study-fe">「每日一题」JS 中的闭包是什么？</a></p>
 </blockquote>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>JavaScript</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JavaScript-从输入url到渲染出页面的整个过程</title>
-    <url>/2021/02/22/JavaScript-%E4%BB%8E%E8%BE%93%E5%85%A5url%E5%88%B0%E6%B8%B2%E6%9F%93%E5%87%BA%E9%A1%B5%E9%9D%A2%E7%9A%84%E6%95%B4%E4%B8%AA%E8%BF%87%E7%A8%8B/</url>
-    <content><![CDATA[<p>阅读全文，了解更多</p>
-<hr>
-<a id="more"></a>
-
-<h1 id="1-从输入url到渲染出页面的整个过程"><a href="#1-从输入url到渲染出页面的整个过程" class="headerlink" title="1.从输入url到渲染出页面的整个过程"></a>1.从输入url到渲染出页面的整个过程</h1><p>加载过程</p>
-<ul>
-<li>DNS解析：域名 -&gt; ip地址</li>
-<li>浏览器根据IP地址向服务器发起http请求</li>
-<li>服务器处理http请求，并返回给浏览器<br>渲染过程</li>
-<li>根据HTML代码生成DOM Tree（文档对象模型）</li>
-<li>根据CSS代码生成CSSOM（CSS对象模型）</li>
-<li>将DOM Tree和CSSOM整合成Render Tree</li>
-<li>根据Render Tree渲染页面</li>
-<li>遇到&lt;Script&gt;暂停渲染，并优先执行JS代码</li>
-<li>Render Tree渲染完成</li>
-</ul>
-<hr>
-<h1 id="2-为什么建议将link放到head里？"><a href="#2-为什么建议将link放到head里？" class="headerlink" title="2.为什么建议将link放到head里？"></a>2.为什么建议将link放到head里？</h1><p>从上向下渲染，根据CSS的代码生成CSSOM，渲染过程中遇到CSS代码会重新生成一个CSSOM</p>
-<p>避免重复渲染</p>
-<hr>
-<h1 id="3-window-onload和DOMContentLoaded"><a href="#3-window-onload和DOMContentLoaded" class="headerlink" title="3.window.onload和DOMContentLoaded"></a>3.window.onload和DOMContentLoaded</h1><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">window</span>.addEventListener(<span class="string">&#x27;load&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 页面资源全部加载完后执行，包括图片和视频</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.addEventListener(<span class="string">&#x27;DOMContentLoaded&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// DOM渲染完成后即可执行，此时图片和视频可能还没有加载完成</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div>
-
-<hr>
 ]]></content>
       <categories>
         <category>JavaScript</category>
@@ -1277,29 +1250,23 @@
       </tags>
   </entry>
   <entry>
-    <title>JavaScript-安全</title>
-    <url>/2021/02/22/JavaScript-%E5%AE%89%E5%85%A8/</url>
+    <title>JavaScript-json与对象相互转化</title>
+    <url>/2021/02/01/JavaScript-json%E4%B8%8E%E5%AF%B9%E8%B1%A1%E7%9B%B8%E4%BA%92%E8%BD%AC%E5%8C%96/</url>
     <content><![CDATA[<p>阅读全文，了解更多</p>
 <hr>
 <a id="more"></a>
 
-<p>常见的web前端攻击方式</p>
-<h1 id="1-XSS-跨站请求攻击"><a href="#1-XSS-跨站请求攻击" class="headerlink" title="1.XSS 跨站请求攻击"></a>1.XSS 跨站请求攻击</h1><p>博客网站，发表一篇博客，博客内容中嵌入script脚本</p>
-<p>脚本内容：获取cookie，发送到我的服务器（配合跨域）</p>
-<p>用户查看这篇博客，获取访问者的cookie信息</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="HTML"><figure class="iseeu highlight /html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>博客内容<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>博客内容<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>博客内容<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript">alert(<span class="built_in">document</span>.cookie)</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></div>
+<h1 id="1-JSON转对象"><a href="#1-JSON转对象" class="headerlink" title="1.JSON转对象"></a>1.JSON转对象</h1><p>JSON.parse()</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="HTML"><figure class="iseeu highlight /html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">data-info</span>=<span class="string">&#x27;&#123;&quot;name&quot;: &quot;CalDey&quot;, &quot;age&quot;: 25&#125;&#x27;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></div>
 
-<p>预防：替换&lt;&gt;特殊字符</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="TXT"><figure class="iseeu highlight /txt"><table><tr><td class="code"><pre><span class="line">&lt; 符号 -&gt; &amp;lt; </span><br><span class="line">&gt; 符号 -&gt; &amp;gt;</span><br></pre></td></tr></table></figure></div>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// JSON.parse() -&gt; JSON转对象</span></span><br><span class="line"><span class="keyword">var</span> oDiv = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&#x27;div&#x27;</span>)[<span class="number">0</span>],</span><br><span class="line">    info = oDiv.getAttribute(<span class="string">&#x27;data-info&#x27;</span>);</span><br><span class="line">    </span><br><span class="line"><span class="keyword">var</span> jsonData = <span class="built_in">JSON</span>.parse(info);</span><br><span class="line"><span class="built_in">console</span>.log(jsonData);</span><br><span class="line"><span class="comment">// &#123;name: &quot;CalDey&quot;, age: 25&#125;</span></span><br></pre></td></tr></table></figure></div>
 
-<p>前后端都要替换</p>
 <hr>
-<h1 id="2-CSRF-跨站请求伪造"><a href="#2-CSRF-跨站请求伪造" class="headerlink" title="2.CSRF 跨站请求伪造"></a>2.CSRF 跨站请求伪造</h1><p>资源网站中虚拟货币付费接口，没有任何验证</p>
-<p>img标签可以跨域，引导登录用户点击图片，其内容指向付费链接</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="HTML"><figure class="iseeu highlight /html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">xxx.com/pay?id</span>=<span class="string">200</span> /&gt;</span></span><br></pre></td></tr></table></figure></div>
+<h1 id="2-对象转JSON"><a href="#2-对象转JSON" class="headerlink" title="2.对象转JSON"></a>2.对象转JSON</h1><p>JSON.stringify()</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="HTML"><figure class="iseeu highlight /html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></div>
 
-<p>预防：使用POST接口(POST想要跨域需要后端认证)</p>
-<p>增加用户验证(密码，短信验证码)</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// JSON.stringify() -&gt; 对象转JSON</span></span><br><span class="line"><span class="keyword">var</span> oDiv = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&#x27;div&#x27;</span>)[<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    name: <span class="string">&#x27;CalDey&#x27;</span>,</span><br><span class="line">    age: <span class="number">23</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> str = <span class="built_in">JSON</span>.stringify(obj);</span><br><span class="line">oDiv.setAttribute(<span class="string">&#x27;data-info&#x27;</span>, str);</span><br></pre></td></tr></table></figure></div>
+
 <hr>
 ]]></content>
       <categories>
@@ -1339,17 +1306,29 @@
       </tags>
   </entry>
   <entry>
-    <title>JavaScript-数组去重和字符串去重</title>
-    <url>/2021/01/24/JavaScript-%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D%E5%92%8C%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8E%BB%E9%87%8D/</url>
-    <content><![CDATA[<p>面试常考题-数组去重和字符串去重</p>
+    <title>JavaScript-安全</title>
+    <url>/2021/02/22/JavaScript-%E5%AE%89%E5%85%A8/</url>
+    <content><![CDATA[<p>阅读全文，了解更多</p>
 <hr>
 <a id="more"></a>
 
-<h1 id="1-数组去重"><a href="#1-数组去重" class="headerlink" title="1.数组去重"></a>1.数组去重</h1><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> arr  = [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;a&#x27;</span>];</span><br><span class="line"></span><br><span class="line"><span class="built_in">Array</span>.prototype.unique = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> temp = &#123;&#125;,</span><br><span class="line">        newArr = [];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="built_in">this</span>.length; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span> (!temp.hasOwnProperty(<span class="built_in">this</span>[i])) &#123;</span><br><span class="line">            temp[<span class="built_in">this</span>[i]] = <span class="built_in">this</span>[i];</span><br><span class="line">            newArr.push(<span class="built_in">this</span>[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> newArr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> arr1 = arr.unique();</span><br><span class="line"><span class="built_in">console</span>.log(arr1);  <span class="comment">// [0, 1, 2, 3, &quot;a&quot;]</span></span><br></pre></td></tr></table></figure></div>
+<p>常见的web前端攻击方式</p>
+<h1 id="1-XSS-跨站请求攻击"><a href="#1-XSS-跨站请求攻击" class="headerlink" title="1.XSS 跨站请求攻击"></a>1.XSS 跨站请求攻击</h1><p>博客网站，发表一篇博客，博客内容中嵌入script脚本</p>
+<p>脚本内容：获取cookie，发送到我的服务器（配合跨域）</p>
+<p>用户查看这篇博客，获取访问者的cookie信息</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="HTML"><figure class="iseeu highlight /html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>博客内容<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>博客内容<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>博客内容<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript">alert(<span class="built_in">document</span>.cookie)</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></div>
 
+<p>预防：替换&lt;&gt;特殊字符</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="TXT"><figure class="iseeu highlight /txt"><table><tr><td class="code"><pre><span class="line">&lt; 符号 -&gt; &amp;lt; </span><br><span class="line">&gt; 符号 -&gt; &amp;gt;</span><br></pre></td></tr></table></figure></div>
+
+<p>前后端都要替换</p>
 <hr>
-<h1 id="2-字符串去重"><a href="#2-字符串去重" class="headerlink" title="2.字符串去重"></a>2.字符串去重</h1><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> str = <span class="string">&#x27;1122234434444aabb&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">String</span>.prototype.unique = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> temp = &#123;&#125;,</span><br><span class="line">        newArr = [];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="built_in">this</span>.length; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span>(!temp.hasOwnProperty(<span class="built_in">this</span>[i])) &#123;</span><br><span class="line">        temp[<span class="built_in">this</span>[i]] = <span class="built_in">this</span>[i];</span><br><span class="line">        newArr += <span class="built_in">this</span>[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> newArr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(str.unique());  <span class="comment">// 1234ab</span></span><br></pre></td></tr></table></figure></div>
+<h1 id="2-CSRF-跨站请求伪造"><a href="#2-CSRF-跨站请求伪造" class="headerlink" title="2.CSRF 跨站请求伪造"></a>2.CSRF 跨站请求伪造</h1><p>资源网站中虚拟货币付费接口，没有任何验证</p>
+<p>img标签可以跨域，引导登录用户点击图片，其内容指向付费链接</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="HTML"><figure class="iseeu highlight /html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">xxx.com/pay?id</span>=<span class="string">200</span> /&gt;</span></span><br></pre></td></tr></table></figure></div>
 
+<p>预防：使用POST接口(POST想要跨域需要后端认证)</p>
+<p>增加用户验证(密码，短信验证码)</p>
 <hr>
 ]]></content>
       <categories>
@@ -1460,6 +1439,27 @@
 <blockquote>
 <p>内容参考自：<a href="https://www.cnblogs.com/memphis-f/p/12029567.html">https://www.cnblogs.com/memphis-f/p/12029567.html</a></p>
 </blockquote>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JavaScript-数组去重和字符串去重</title>
+    <url>/2021/01/24/JavaScript-%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D%E5%92%8C%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8E%BB%E9%87%8D/</url>
+    <content><![CDATA[<p>面试常考题-数组去重和字符串去重</p>
+<hr>
+<a id="more"></a>
+
+<h1 id="1-数组去重"><a href="#1-数组去重" class="headerlink" title="1.数组去重"></a>1.数组去重</h1><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> arr  = [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;a&#x27;</span>];</span><br><span class="line"></span><br><span class="line"><span class="built_in">Array</span>.prototype.unique = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> temp = &#123;&#125;,</span><br><span class="line">        newArr = [];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="built_in">this</span>.length; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span> (!temp.hasOwnProperty(<span class="built_in">this</span>[i])) &#123;</span><br><span class="line">            temp[<span class="built_in">this</span>[i]] = <span class="built_in">this</span>[i];</span><br><span class="line">            newArr.push(<span class="built_in">this</span>[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> newArr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> arr1 = arr.unique();</span><br><span class="line"><span class="built_in">console</span>.log(arr1);  <span class="comment">// [0, 1, 2, 3, &quot;a&quot;]</span></span><br></pre></td></tr></table></figure></div>
+
+<hr>
+<h1 id="2-字符串去重"><a href="#2-字符串去重" class="headerlink" title="2.字符串去重"></a>2.字符串去重</h1><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> str = <span class="string">&#x27;1122234434444aabb&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">String</span>.prototype.unique = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> temp = &#123;&#125;,</span><br><span class="line">        newArr = [];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="built_in">this</span>.length; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span>(!temp.hasOwnProperty(<span class="built_in">this</span>[i])) &#123;</span><br><span class="line">        temp[<span class="built_in">this</span>[i]] = <span class="built_in">this</span>[i];</span><br><span class="line">        newArr += <span class="built_in">this</span>[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> newArr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(str.unique());  <span class="comment">// 1234ab</span></span><br></pre></td></tr></table></figure></div>
+
+<hr>
 ]]></content>
       <categories>
         <category>JavaScript</category>
@@ -1646,6 +1646,97 @@
       </tags>
   </entry>
   <entry>
+    <title>JavaScript-轻松弄懂this指向</title>
+    <url>/2020/12/13/JavaScript-%E8%BD%BB%E6%9D%BE%E5%BC%84%E6%87%82this%E6%8C%87%E5%90%91/</url>
+    <content><![CDATA[<p>阅读全文，了解更多</p>
+<hr>
+<a id="more"></a>
+
+<p>this取值是在函数执行时确定的，不是在函数定义时确定的</p>
+<h1 id="1-常见使用场景"><a href="#1-常见使用场景" class="headerlink" title="1.常见使用场景"></a>1.常见使用场景</h1><p>想要弄清楚this的指向，首先我们需要先了解this的几种常见使用场景：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="built_in">this</span>.a)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a = <span class="number">1</span></span><br><span class="line">foo()   <span class="comment">// 直接调用（全局调用）</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">  a: <span class="number">2</span>,</span><br><span class="line">  foo: foo</span><br><span class="line">&#125;</span><br><span class="line">obj.foo()   <span class="comment">// XX对象的方法</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> c = <span class="keyword">new</span> foo()   <span class="comment">// 构造函数     </span></span><br></pre></td></tr></table></figure></div>
+
+<p>上面这段代码涉及了this的3个常见使用场景，这三种场景this的指向在绝大部分情况下是固定的，我们记住即可：</p>
+<ul>
+<li>直接调用：直接调用时，函数（本文中指foo函数）无论被放在任何地方，this一定指向window</li>
+<li>对象的方法：谁调用了函数，this就指向谁 </li>
+<li>构造函数： 对于构造函数来说，this被绑定在实例对象上，任何方式都不能改变</li>
+</ul>
+<hr>
+<p>对于大部分代码来说，this的指向无外乎以上三种情况，下面来介绍this特殊的使用场景：</p>
+<h1 id="2-箭头函数"><a href="#2-箭头函数" class="headerlink" title="2.箭头函数"></a>2.箭头函数</h1><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="function">() =&gt;</span> &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="built_in">this</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">a()()() <span class="comment">// window</span></span><br></pre></td></tr></table></figure></div>
+
+<p>上面这段代码看似复杂，其实很简单，首先箭头函数中是不绑定this的，箭头函数中的this只取决于<font color=#ff503e><strong>箭头函数外层的第一个非箭头函数的作用域</strong></font>中的this。这个示例中，最外层是a，this指向window，<font color=#ff503e><strong>另外注意对箭头函数使用bind这类函数是无效的：</strong></font></p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="string">&#x27;window&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> fn = <span class="function">() =&gt;</span> <span class="built_in">console</span>.log(<span class="built_in">this</span>.name)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">    name: <span class="string">&#x27;CalDey&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line">fn() <span class="comment">// window</span></span><br><span class="line">fn.bind(person) <span class="comment">// window</span></span><br></pre></td></tr></table></figure></div>
+
+<p>异步this指向window，可以通过箭头函数解决异步指向问题</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> person = &#123;</span><br><span class="line">    name: <span class="string">&#x27;CalDey&#x27;</span>,</span><br><span class="line">    <span class="function"><span class="title">sayHi</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="built_in">this</span>)</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="function"><span class="title">wait</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="comment">// 异步</span></span><br><span class="line">        <span class="built_in">setTimeout</span>(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="built_in">this</span>)</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">person.sayHi(); <span class="comment">// 当前对象</span></span><br><span class="line">person.wait();  <span class="comment">// window</span></span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> person = &#123;</span><br><span class="line">    name: <span class="string">&#x27;CalDey&#x27;</span>,</span><br><span class="line">    <span class="function"><span class="title">sayHi</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="built_in">this</span>)</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="function"><span class="title">wait</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="built_in">this</span>)</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">person.sayHi(); <span class="comment">// 当前对象</span></span><br><span class="line">person.wait();  <span class="comment">// 当前对象</span></span><br></pre></td></tr></table></figure></div>
+
+<hr>
+<h1 id="3-call-bind-apply"><a href="#3-call-bind-apply" class="headerlink" title="3.call,bind,apply"></a>3.call,bind,apply</h1><p>this取决第一个参数，如果第一个参数为空，那么就是window。<font color=#ff503e><strong>如果同时调用多个bind，this指向永远由第一个bind决定：</strong></font></p>
+<iframe width="100%" height="400" src="//jsrun.net/8kaKp/embedded/js/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<hr>
+<h1 id="4-嵌套函数"><a href="#4-嵌套函数" class="headerlink" title="4.嵌套函数"></a>4.嵌套函数</h1><p>上文中提到过，对于对象的方法来说，谁调用this就指向谁，这个结论在大多数情况中都适用。不过也有例外，比如嵌套函数：在非严格模式的js语法中，如果一个对象内存在方法，则该方法的this指向当前对象。<font color=#ff503e><strong>若方法中再次包含函数方法，则该嵌套函数指向全局，this指向window。</strong></font></p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line">name = <span class="string">&quot;window&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  name: <span class="string">&quot;obj&quot;</span>,</span><br><span class="line">  func: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="built_in">this</span>.name)</span><br><span class="line">      <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; </span><br><span class="line">          <span class="built_in">console</span>.log(<span class="built_in">this</span>.name)</span><br><span class="line">       &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">obj.func()()    <span class="comment">// obj-&gt;window</span></span><br></pre></td></tr></table></figure></div>
+
+<hr>
+<h1 id="5-简易流程图"><a href="#5-简易流程图" class="headerlink" title="5.简易流程图"></a>5.简易流程图</h1><p>以上就是this指向在不同场景下遵循的基本规则，事实上常常会出现多个规则同时存在的情况，这就需要我们根据不同规则之间的优先级顺序来判断this指向了：</p>
+<p><img src="https://gitee.com/caldey/BlogImage/raw/master/img/this%E6%8C%87%E5%90%91%E6%B5%81%E7%A8%8B%E5%9B%BE.PNG" alt="this指向流程图"></p>
+<hr>
+<h1 id="6-一些面试题"><a href="#6-一些面试题" class="headerlink" title="6.一些面试题"></a>6.一些面试题</h1><p>下面我们通过几道面试题来加深对this指向的理解</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 第一题</span></span><br><span class="line"><span class="keyword">var</span> name = <span class="string">&#x27;window&#x27;</span></span><br><span class="line"><span class="keyword">var</span> person1 = &#123;</span><br><span class="line">  name: <span class="string">&#x27;person1&#x27;</span>,</span><br><span class="line">  foo1: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">this</span>.name)</span><br><span class="line">  &#125;,</span><br><span class="line">  foo2: <span class="function">() =&gt;</span> <span class="built_in">console</span>.log(<span class="built_in">this</span>.name),</span><br><span class="line">  foo3: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="built_in">this</span>.name)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  foo4: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="built_in">this</span>.name)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> person2 = &#123; <span class="attr">name</span>: <span class="string">&#x27;person2&#x27;</span> &#125;</span><br><span class="line">person1.foo1()</span><br><span class="line">person1.foo1.call(person2)</span><br><span class="line">person1.foo2()</span><br><span class="line">person1.foo2.call(person2)</span><br><span class="line">person1.foo3()()</span><br><span class="line">person1.foo3.call(person2)()</span><br><span class="line">person1.foo3().call(person2)</span><br><span class="line">person1.foo4()()</span><br><span class="line">person1.foo4.call(person2)()</span><br><span class="line">person1.foo4().call(person2)</span><br></pre></td></tr></table></figure></div>
+
+<details>
+    <summary>点我查看答案</summary>
+    <div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// this指向调用对象person1</span></span><br><span class="line">person1.foo1()  <span class="comment">// person1</span></span><br><span class="line"><span class="comment">// call参数为person2，this绑定person2</span></span><br><span class="line">person1.foo1.call(person2)  <span class="comment">// person2</span></span><br><span class="line"><span class="comment">// foo2是箭头函数，this指向箭头函数外部第一个普通函数，指向window</span></span><br><span class="line">person1.foo2()  <span class="comment">// window</span></span><br><span class="line"><span class="comment">// foo2为箭头函数，call对箭头函数无效</span></span><br><span class="line">person1.foo2.call(person2)  <span class="comment">// window</span></span><br><span class="line"><span class="comment">// foo3为嵌套函数，指向window</span></span><br><span class="line">person1.foo3()()    <span class="comment">// window</span></span><br><span class="line"><span class="comment">// foo3为嵌套函数绑定person2，内部函数call参数为空，仍然指向window</span></span><br><span class="line">person1.foo3.call(person2)()    <span class="comment">// window</span></span><br><span class="line"><span class="comment">// 内部函数call参数为person2，绑定person2</span></span><br><span class="line">person1.foo3().call(person2)    <span class="comment">// person2</span></span><br><span class="line"><span class="comment">// foo4返回一个箭头函数，this指向箭头函数外部第一个普通函数，指向person1</span></span><br><span class="line">person1.foo4()()    <span class="comment">// person1</span></span><br><span class="line"><span class="comment">// foo4绑定person2，返回一个箭头函数，箭头函数指向person2</span></span><br><span class="line">person1.foo4.call(person2)()    <span class="comment">// person2</span></span><br><span class="line"><span class="comment">// foo4返回箭头函数，call对箭头函数无效</span></span><br><span class="line">person1.foo4().call(person2)    <span class="comment">// person1</span></span><br></pre></td></tr></table></figure></div>
+</details>
+
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 第二题</span></span><br><span class="line"><span class="keyword">var</span> name = <span class="string">&#x27;window&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>) </span>&#123; </span><br><span class="line">    <span class="built_in">this</span>.name = name </span><br><span class="line">    <span class="built_in">this</span>.foo1 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;  </span><br><span class="line">        <span class="built_in">console</span>.log(<span class="built_in">this</span>.name) </span><br><span class="line">    &#125;,  </span><br><span class="line">    <span class="built_in">this</span>.foo2 = <span class="function">() =&gt;</span> <span class="built_in">console</span>.log(<span class="built_in">this</span>.name),  </span><br><span class="line">    <span class="built_in">this</span>.foo3 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;  </span><br><span class="line">        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;   </span><br><span class="line">            <span class="built_in">console</span>.log(<span class="built_in">this</span>.name)  </span><br><span class="line">        &#125; </span><br><span class="line">    &#125;,  </span><br><span class="line">    <span class="built_in">this</span>.foo4 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;  </span><br><span class="line">        <span class="keyword">return</span> <span class="function">() =&gt;</span> &#123;   </span><br><span class="line">            <span class="built_in">console</span>.log(<span class="built_in">this</span>.name)  </span><br><span class="line">        &#125; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> person1 = <span class="keyword">new</span> Person(<span class="string">&#x27;person1&#x27;</span>)</span><br><span class="line"><span class="keyword">var</span> person2 = <span class="keyword">new</span> Person(<span class="string">&#x27;person2&#x27;</span>)</span><br><span class="line">person1.foo1()</span><br><span class="line">person1.foo1.call(person2)</span><br><span class="line">person1.foo2()</span><br><span class="line">person1.foo2.call(person2)</span><br><span class="line">person1.foo3()()</span><br><span class="line">person1.foo3.call(person2)()</span><br><span class="line">person1.foo3().call(person2)</span><br><span class="line">person1.foo4()()</span><br><span class="line">person1.foo4.call(person2)()</span><br><span class="line">person1.foo4().call(person2)</span><br></pre></td></tr></table></figure></div>
+
+<details>
+    <summary>点我查看答案</summary>
+    <div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line">person1.foo1()   <span class="comment">// person1</span></span><br><span class="line">person1.foo1.call(person2)   <span class="comment">// person2</span></span><br><span class="line">person1.foo2()   <span class="comment">// person1</span></span><br><span class="line">person1.foo2.call(person2)   <span class="comment">// person1</span></span><br><span class="line">person1.foo3()()   <span class="comment">// window</span></span><br><span class="line">person1.foo3.call(person2)()   <span class="comment">// window</span></span><br><span class="line">person1.foo3().call(person2)   <span class="comment">// person2</span></span><br><span class="line">person1.foo4()()   <span class="comment">// person1</span></span><br><span class="line">person1.foo4.call(person2)()   <span class="comment">// person2</span></span><br><span class="line">person1.foo4().call(person2)   <span class="comment">// person1</span></span><br></pre></td></tr></table></figure></div>
+</details>
+
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 第三题</span></span><br><span class="line"><span class="keyword">var</span> name = <span class="string">&#x27;window&#x27;</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>) </span>&#123; </span><br><span class="line">    <span class="built_in">this</span>.name = name</span><br><span class="line">    <span class="built_in">this</span>.obj = &#123;  </span><br><span class="line">        name: <span class="string">&#x27;obj&#x27;</span>,</span><br><span class="line">          foo1: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;   </span><br><span class="line">            <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;    </span><br><span class="line">                <span class="built_in">console</span>.log(<span class="built_in">this</span>.name)   </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;,</span><br><span class="line">          foo2: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;   </span><br><span class="line">            <span class="keyword">return</span> <span class="function">() =&gt;</span> &#123;    </span><br><span class="line">                <span class="built_in">console</span>.log(<span class="built_in">this</span>.name)   </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> person1 = <span class="keyword">new</span> Person(<span class="string">&#x27;person1&#x27;</span>)</span><br><span class="line"><span class="keyword">var</span> person2 = <span class="keyword">new</span> Person(<span class="string">&#x27;person2&#x27;</span>)</span><br><span class="line">person1.obj.foo1()()</span><br><span class="line">person1.obj.foo1.call(person2)()</span><br><span class="line">person1.obj.foo1().call(person2)</span><br><span class="line">person1.obj.foo2()()</span><br><span class="line">person1.obj.foo2.call(person2)()</span><br><span class="line">person1.obj.foo2().call(person2)</span><br></pre></td></tr></table></figure></div>
+
+<details>
+    <summary>点我查看答案</summary>
+    <div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line">person1.obj.foo1()() <span class="comment">// window</span></span><br><span class="line">person1.obj.foo1.call(person2)() <span class="comment">// window</span></span><br><span class="line">person1.obj.foo1().call(person2) <span class="comment">// person2</span></span><br><span class="line">person1.obj.foo2()() <span class="comment">// obj</span></span><br><span class="line">person1.obj.foo2.call(person2)() <span class="comment">// person2</span></span><br><span class="line">person1.obj.foo2().call(person2) <span class="comment">// obj</span></span><br></pre></td></tr></table></figure></div>
+</details>
+
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 第四题</span></span><br><span class="line">name = <span class="string">&quot;window&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  name: <span class="string">&quot;obj&quot;</span>,</span><br><span class="line">  func0: <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">this</span>.name);</span><br><span class="line">    <span class="keyword">return</span> <span class="function">() =&gt;</span> <span class="built_in">console</span>.log(<span class="built_in">this</span>.name);</span><br><span class="line">  &#125;,</span><br><span class="line">  func1: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">this</span>.name);</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="built_in">console</span>.log(<span class="built_in">this</span>.name); &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  func2: <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">this</span>.name);</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="built_in">console</span>.log(<span class="built_in">this</span>.name); &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  func3: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">this</span>.name);</span><br><span class="line">    <span class="keyword">return</span> <span class="function">() =&gt;</span> <span class="built_in">console</span>.log(<span class="built_in">this</span>.name);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> env = &#123;</span><br><span class="line">  name: <span class="string">&quot;env&quot;</span>,</span><br><span class="line">  func0: obj.func0(),</span><br><span class="line">  func1: obj.func1(),</span><br><span class="line">  func2: obj.func2(),</span><br><span class="line">  func3: obj.func3()</span><br><span class="line">&#125;</span><br><span class="line">env.func0();</span><br><span class="line">env.func1();</span><br><span class="line">env.func2();</span><br><span class="line">env.func3();</span><br></pre></td></tr></table></figure></div>
+
+<details>
+    <summary>点我查看答案</summary>
+    <div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// console.log(obj.func0) // () =&gt; &#123; console.log(this.name); return () =&gt; console.log(this.name); &#125;    </span></span><br><span class="line"><span class="comment">// console.log(env.func0)  // () =&gt; console.log(this.name)</span></span><br><span class="line">func0: obj.func0(), <span class="comment">// window</span></span><br><span class="line">func1: obj.func1(), <span class="comment">// obj</span></span><br><span class="line">func2: obj.func2(), <span class="comment">// window</span></span><br><span class="line">func3: obj.func3()  <span class="comment">// obj</span></span><br><span class="line">env.func0(); <span class="comment">// window</span></span><br><span class="line">env.func1(); <span class="comment">// env</span></span><br><span class="line">env.func2(); <span class="comment">// env</span></span><br><span class="line">env.func3(); <span class="comment">// obj</span></span><br></pre></td></tr></table></figure></div>
+</details>
+
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 第五题</span></span><br><span class="line"><span class="keyword">var</span> name = <span class="string">&quot;Window&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> object = &#123;</span><br><span class="line">　　　　name : <span class="string">&quot;My Object&quot;</span>,</span><br><span class="line"></span><br><span class="line">　　　　getNameFunc : <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">　　　　　　<span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">　　　　　　　　<span class="keyword">return</span> <span class="built_in">this</span>.name;</span><br><span class="line">　　　　　　&#125;;</span><br><span class="line">　　　　&#125;</span><br><span class="line">　　&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(object.getNameFunc()());    <span class="comment">// Window</span></span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 第六题</span></span><br><span class="line">　　<span class="keyword">var</span> name = <span class="string">&quot;Window&quot;</span>;</span><br><span class="line"></span><br><span class="line">　　<span class="keyword">var</span> object = &#123;</span><br><span class="line">　　　　name : <span class="string">&quot;My Object&quot;</span>,</span><br><span class="line"></span><br><span class="line">　　　　getNameFunc : <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">　　　　　　<span class="keyword">var</span> that = <span class="built_in">this</span>;</span><br><span class="line">　　　　　　<span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">　　　　　　　　<span class="keyword">return</span> that.name;</span><br><span class="line">　　　　　　&#125;;</span><br><span class="line"></span><br><span class="line">　　　　&#125;</span><br><span class="line"></span><br><span class="line">　　&#125;;</span><br><span class="line"></span><br><span class="line">　　<span class="built_in">console</span>.log(object.getNameFunc()());    <span class="comment">// My Object</span></span><br></pre></td></tr></table></figure></div>
+
+<blockquote>
+<p>this对象是动态的，随时会改变，而var that = this之后，that不会改变，仍然指向之前的this，这样就不会找不到原来的对象</p>
+</blockquote>
+<hr>
+<p>7.补充</p>
+<p>事件处理函数内部的this总是指向被绑定DOM元素</p>
+<blockquote>
+<p>内容参考自：<br><a href="https://www.jianshu.com/p/b1e0eb9151f9">JavaScript之彻底搞懂this的指向</a><br><a href="http://caibaojian.com/interview-map/frontend/#this">前端面试之道</a></p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>JavaScript-轻松理解原型和原型链</title>
     <url>/2020/12/16/JavaScript-%E8%BD%BB%E6%9D%BE%E7%90%86%E8%A7%A3%E5%8E%9F%E5%9E%8B%E5%92%8C%E5%8E%9F%E5%9E%8B%E9%93%BE/</url>
     <content><![CDATA[<p>阅读全文，了解更多</p>
@@ -1742,88 +1833,29 @@
       </tags>
   </entry>
   <entry>
-    <title>JavaScript-轻松弄懂this指向</title>
-    <url>/2020/12/13/JavaScript-%E8%BD%BB%E6%9D%BE%E5%BC%84%E6%87%82this%E6%8C%87%E5%90%91/</url>
+    <title>JavaScript-防抖和节流</title>
+    <url>/2021/02/22/JavaScript-%E9%98%B2%E6%8A%96%E5%92%8C%E8%8A%82%E6%B5%81/</url>
     <content><![CDATA[<p>阅读全文，了解更多</p>
 <hr>
 <a id="more"></a>
 
-<p>this取值是在函数执行时确定的，不是在函数定义时确定的</p>
-<h1 id="1-常见使用场景"><a href="#1-常见使用场景" class="headerlink" title="1.常见使用场景"></a>1.常见使用场景</h1><p>想要弄清楚this的指向，首先我们需要先了解this的几种常见使用场景：</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="built_in">this</span>.a)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a = <span class="number">1</span></span><br><span class="line">foo()   <span class="comment">// 直接调用（全局调用）</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">  a: <span class="number">2</span>,</span><br><span class="line">  foo: foo</span><br><span class="line">&#125;</span><br><span class="line">obj.foo()   <span class="comment">// XX对象的方法</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> c = <span class="keyword">new</span> foo()   <span class="comment">// 构造函数     </span></span><br></pre></td></tr></table></figure></div>
+<h1 id="1-防抖-debounce"><a href="#1-防抖-debounce" class="headerlink" title="1.防抖(debounce)"></a>1.防抖(debounce)</h1><p>监听输入框，框内文字变化后触发change事件，如果监听keyup事件，输入过程中会频繁触发change事件</p>
+<p>防抖：用户输入结束或暂停时，才会触发change事件（设置间隔时间）</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;input type=<span class="string">&quot;text&quot;</span> id=<span class="string">&quot;input&quot;</span>&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="keyword">const</span> input = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;input&#x27;</span>)</span><br><span class="line">  <span class="keyword">let</span> timer = <span class="literal">null</span></span><br><span class="line">  input.addEventListener(<span class="string">&#x27;keyup&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (timer) &#123;</span><br><span class="line">      <span class="built_in">clearTimeout</span>(timer)</span><br><span class="line">    &#125;</span><br><span class="line">    timer = <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(input.value)</span><br><span class="line">      <span class="comment">// 清空定时器</span></span><br><span class="line">      timer = <span class="literal">null</span></span><br><span class="line">    &#125;, <span class="number">300</span>)</span><br><span class="line">  &#125;, <span class="literal">false</span>)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></div>
 
-<p>上面这段代码涉及了this的3个常见使用场景，这三种场景this的指向在绝大部分情况下是固定的，我们记住即可：</p>
-<ul>
-<li>直接调用：直接调用时，函数（本文中指foo函数）无论被放在任何地方，this一定指向window</li>
-<li>对象的方法：谁调用了函数，this就指向谁 </li>
-<li>构造函数： 对于构造函数来说，this被绑定在实例对象上，任何方式都不能改变</li>
-</ul>
-<hr>
-<p>对于大部分代码来说，this的指向无外乎以上三种情况，下面来介绍this特殊的使用场景：</p>
-<h1 id="2-箭头函数"><a href="#2-箭头函数" class="headerlink" title="2.箭头函数"></a>2.箭头函数</h1><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="function">() =&gt;</span> &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="built_in">this</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">a()()() <span class="comment">// window</span></span><br></pre></td></tr></table></figure></div>
-
-<p>上面这段代码看似复杂，其实很简单，首先箭头函数中是不绑定this的，箭头函数中的this只取决于<font color=#ff503e><strong>箭头函数外层的第一个非箭头函数的作用域</strong></font>中的this。这个示例中，最外层是a，this指向window，<font color=#ff503e><strong>另外注意对箭头函数使用bind这类函数是无效的：</strong></font></p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="string">&#x27;window&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> fn = <span class="function">() =&gt;</span> <span class="built_in">console</span>.log(<span class="built_in">this</span>.name)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">    name: <span class="string">&#x27;CalDey&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line">fn() <span class="comment">// window</span></span><br><span class="line">fn.bind(person) <span class="comment">// window</span></span><br></pre></td></tr></table></figure></div>
-
-<p>异步this指向window，可以通过箭头函数解决异步指向问题</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> person = &#123;</span><br><span class="line">    name: <span class="string">&#x27;CalDey&#x27;</span>,</span><br><span class="line">    <span class="function"><span class="title">sayHi</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="built_in">this</span>)</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="function"><span class="title">wait</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="comment">// 异步</span></span><br><span class="line">        <span class="built_in">setTimeout</span>(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="built_in">this</span>)</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">person.sayHi(); <span class="comment">// 当前对象</span></span><br><span class="line">person.wait();  <span class="comment">// window</span></span><br></pre></td></tr></table></figure></div>
-
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> person = &#123;</span><br><span class="line">    name: <span class="string">&#x27;CalDey&#x27;</span>,</span><br><span class="line">    <span class="function"><span class="title">sayHi</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="built_in">this</span>)</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="function"><span class="title">wait</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="built_in">this</span>)</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">person.sayHi(); <span class="comment">// 当前对象</span></span><br><span class="line">person.wait();  <span class="comment">// 当前对象</span></span><br></pre></td></tr></table></figure></div>
+<p>封装debounce函数</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;input type=<span class="string">&quot;text&quot;</span> id=<span class="string">&quot;input&quot;</span>&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="keyword">const</span> input = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;input&#x27;</span>)</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">debounce</span>(<span class="params">fn, delay = <span class="number">500</span></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// timer在闭包中</span></span><br><span class="line">    <span class="keyword">let</span> timer = <span class="literal">null</span></span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (timer) &#123;</span><br><span class="line">        <span class="built_in">clearTimeout</span>(timer)</span><br><span class="line">      &#125;</span><br><span class="line">      timer = <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">        fn.apply(<span class="built_in">this</span>, <span class="built_in">arguments</span>)</span><br><span class="line">        timer = <span class="literal">null</span></span><br><span class="line">      &#125;, delay)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  input.addEventListener(<span class="string">&#x27;keyup&#x27;</span>, debounce(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(input.value)</span><br><span class="line">  &#125;, <span class="number">1000</span>), <span class="literal">false</span>)</span><br><span class="line">&lt;/script&gt;   </span><br></pre></td></tr></table></figure></div>
 
 <hr>
-<h1 id="3-call-bind-apply"><a href="#3-call-bind-apply" class="headerlink" title="3.call,bind,apply"></a>3.call,bind,apply</h1><p>this取决第一个参数，如果第一个参数为空，那么就是window。<font color=#ff503e><strong>如果同时调用多个bind，this指向永远由第一个bind决定：</strong></font></p>
-<iframe width="100%" height="400" src="//jsrun.net/8kaKp/embedded/js/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<h1 id="2-节流-throttle"><a href="#2-节流-throttle" class="headerlink" title="2.节流(throttle)"></a>2.节流(throttle)</h1><p>拖拽一个元素时，时刻获取到元素被拖拽的位置</p>
+<p>直接用drag事件，会频繁触发，容易造成卡顿</p>
+<p>节流：无论拖拽的速度多块，都每隔100ms触发一次</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;div id=<span class="string">&quot;div&quot;</span> draggable=<span class="string">&quot;true&quot;</span> </span><br><span class="line">  style=<span class="string">&quot;border: 1px solid #ccc; width: 200px; height: 100px;&quot;</span>&gt;</span><br><span class="line">  可拖拽</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="keyword">const</span> div = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;div&#x27;</span>)</span><br><span class="line">  <span class="keyword">let</span> timer = <span class="literal">null</span></span><br><span class="line"></span><br><span class="line">  div.addEventListener(<span class="string">&#x27;drag&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(timer) &#123;</span><br><span class="line">      <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  timer = <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(e.offsetX, e.offsetY)</span><br><span class="line">    timer = <span class="literal">null</span></span><br><span class="line">    &#125;, <span class="number">100</span>)</span><br><span class="line">  &#125;, <span class="literal">false</span>)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></div>
+
+<p>封装throttle函数</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;div id=<span class="string">&quot;div&quot;</span> draggable=<span class="string">&quot;true&quot;</span> </span><br><span class="line">  style=<span class="string">&quot;border: 1px solid #ccc; width: 200px; height: 100px;&quot;</span>&gt;</span><br><span class="line">  可拖拽</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="keyword">const</span> div = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;div&#x27;</span>)</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">throttle</span>(<span class="params">fn, delay = <span class="number">100</span></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> timer = <span class="literal">null</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (timer) &#123;</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">      &#125;</span><br><span class="line">      timer = <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">        fn.apply(<span class="built_in">this</span>, <span class="built_in">arguments</span>)</span><br><span class="line">        timer = <span class="literal">null</span></span><br><span class="line">      &#125;, delay)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  div.addEventListener(<span class="string">&#x27;drag&#x27;</span>, throttle(<span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(e.offsetX, e.offsetY)</span><br><span class="line">  &#125;, <span class="number">200</span>), <span class="literal">false</span>)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></div>
 
 <hr>
-<h1 id="4-嵌套函数"><a href="#4-嵌套函数" class="headerlink" title="4.嵌套函数"></a>4.嵌套函数</h1><p>上文中提到过，对于对象的方法来说，谁调用this就指向谁，这个结论在大多数情况中都适用。不过也有例外，比如嵌套函数：在非严格模式的js语法中，如果一个对象内存在方法，则该方法的this指向当前对象。<font color=#ff503e><strong>若方法中再次包含函数方法，则该嵌套函数指向全局，this指向window。</strong></font></p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line">name = <span class="string">&quot;window&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  name: <span class="string">&quot;obj&quot;</span>,</span><br><span class="line">  func: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="built_in">this</span>.name)</span><br><span class="line">      <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; </span><br><span class="line">          <span class="built_in">console</span>.log(<span class="built_in">this</span>.name)</span><br><span class="line">       &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">obj.func()()    <span class="comment">// obj-&gt;window</span></span><br></pre></td></tr></table></figure></div>
-
-<hr>
-<h1 id="5-简易流程图"><a href="#5-简易流程图" class="headerlink" title="5.简易流程图"></a>5.简易流程图</h1><p>以上就是this指向在不同场景下遵循的基本规则，事实上常常会出现多个规则同时存在的情况，这就需要我们根据不同规则之间的优先级顺序来判断this指向了：</p>
-<p><img src="https://gitee.com/caldey/BlogImage/raw/master/img/this%E6%8C%87%E5%90%91%E6%B5%81%E7%A8%8B%E5%9B%BE.PNG" alt="this指向流程图"></p>
-<hr>
-<h1 id="6-一些面试题"><a href="#6-一些面试题" class="headerlink" title="6.一些面试题"></a>6.一些面试题</h1><p>下面我们通过几道面试题来加深对this指向的理解</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 第一题</span></span><br><span class="line"><span class="keyword">var</span> name = <span class="string">&#x27;window&#x27;</span></span><br><span class="line"><span class="keyword">var</span> person1 = &#123;</span><br><span class="line">  name: <span class="string">&#x27;person1&#x27;</span>,</span><br><span class="line">  foo1: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">this</span>.name)</span><br><span class="line">  &#125;,</span><br><span class="line">  foo2: <span class="function">() =&gt;</span> <span class="built_in">console</span>.log(<span class="built_in">this</span>.name),</span><br><span class="line">  foo3: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="built_in">this</span>.name)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  foo4: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="built_in">this</span>.name)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> person2 = &#123; <span class="attr">name</span>: <span class="string">&#x27;person2&#x27;</span> &#125;</span><br><span class="line">person1.foo1()</span><br><span class="line">person1.foo1.call(person2)</span><br><span class="line">person1.foo2()</span><br><span class="line">person1.foo2.call(person2)</span><br><span class="line">person1.foo3()()</span><br><span class="line">person1.foo3.call(person2)()</span><br><span class="line">person1.foo3().call(person2)</span><br><span class="line">person1.foo4()()</span><br><span class="line">person1.foo4.call(person2)()</span><br><span class="line">person1.foo4().call(person2)</span><br></pre></td></tr></table></figure></div>
-
-<details>
-    <summary>点我查看答案</summary>
-    <div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// this指向调用对象person1</span></span><br><span class="line">person1.foo1()  <span class="comment">// person1</span></span><br><span class="line"><span class="comment">// call参数为person2，this绑定person2</span></span><br><span class="line">person1.foo1.call(person2)  <span class="comment">// person2</span></span><br><span class="line"><span class="comment">// foo2是箭头函数，this指向箭头函数外部第一个普通函数，指向window</span></span><br><span class="line">person1.foo2()  <span class="comment">// window</span></span><br><span class="line"><span class="comment">// foo2为箭头函数，call对箭头函数无效</span></span><br><span class="line">person1.foo2.call(person2)  <span class="comment">// window</span></span><br><span class="line"><span class="comment">// foo3为嵌套函数，指向window</span></span><br><span class="line">person1.foo3()()    <span class="comment">// window</span></span><br><span class="line"><span class="comment">// foo3为嵌套函数绑定person2，内部函数call参数为空，仍然指向window</span></span><br><span class="line">person1.foo3.call(person2)()    <span class="comment">// window</span></span><br><span class="line"><span class="comment">// 内部函数call参数为person2，绑定person2</span></span><br><span class="line">person1.foo3().call(person2)    <span class="comment">// person2</span></span><br><span class="line"><span class="comment">// foo4返回一个箭头函数，this指向箭头函数外部第一个普通函数，指向person1</span></span><br><span class="line">person1.foo4()()    <span class="comment">// person1</span></span><br><span class="line"><span class="comment">// foo4绑定person2，返回一个箭头函数，箭头函数指向person2</span></span><br><span class="line">person1.foo4.call(person2)()    <span class="comment">// person2</span></span><br><span class="line"><span class="comment">// foo4返回箭头函数，call对箭头函数无效</span></span><br><span class="line">person1.foo4().call(person2)    <span class="comment">// person1</span></span><br></pre></td></tr></table></figure></div>
-</details>
-
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 第二题</span></span><br><span class="line"><span class="keyword">var</span> name = <span class="string">&#x27;window&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>) </span>&#123; </span><br><span class="line">    <span class="built_in">this</span>.name = name </span><br><span class="line">    <span class="built_in">this</span>.foo1 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;  </span><br><span class="line">        <span class="built_in">console</span>.log(<span class="built_in">this</span>.name) </span><br><span class="line">    &#125;,  </span><br><span class="line">    <span class="built_in">this</span>.foo2 = <span class="function">() =&gt;</span> <span class="built_in">console</span>.log(<span class="built_in">this</span>.name),  </span><br><span class="line">    <span class="built_in">this</span>.foo3 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;  </span><br><span class="line">        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;   </span><br><span class="line">            <span class="built_in">console</span>.log(<span class="built_in">this</span>.name)  </span><br><span class="line">        &#125; </span><br><span class="line">    &#125;,  </span><br><span class="line">    <span class="built_in">this</span>.foo4 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;  </span><br><span class="line">        <span class="keyword">return</span> <span class="function">() =&gt;</span> &#123;   </span><br><span class="line">            <span class="built_in">console</span>.log(<span class="built_in">this</span>.name)  </span><br><span class="line">        &#125; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> person1 = <span class="keyword">new</span> Person(<span class="string">&#x27;person1&#x27;</span>)</span><br><span class="line"><span class="keyword">var</span> person2 = <span class="keyword">new</span> Person(<span class="string">&#x27;person2&#x27;</span>)</span><br><span class="line">person1.foo1()</span><br><span class="line">person1.foo1.call(person2)</span><br><span class="line">person1.foo2()</span><br><span class="line">person1.foo2.call(person2)</span><br><span class="line">person1.foo3()()</span><br><span class="line">person1.foo3.call(person2)()</span><br><span class="line">person1.foo3().call(person2)</span><br><span class="line">person1.foo4()()</span><br><span class="line">person1.foo4.call(person2)()</span><br><span class="line">person1.foo4().call(person2)</span><br></pre></td></tr></table></figure></div>
-
-<details>
-    <summary>点我查看答案</summary>
-    <div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line">person1.foo1()   <span class="comment">// person1</span></span><br><span class="line">person1.foo1.call(person2)   <span class="comment">// person2</span></span><br><span class="line">person1.foo2()   <span class="comment">// person1</span></span><br><span class="line">person1.foo2.call(person2)   <span class="comment">// person1</span></span><br><span class="line">person1.foo3()()   <span class="comment">// window</span></span><br><span class="line">person1.foo3.call(person2)()   <span class="comment">// window</span></span><br><span class="line">person1.foo3().call(person2)   <span class="comment">// person2</span></span><br><span class="line">person1.foo4()()   <span class="comment">// person1</span></span><br><span class="line">person1.foo4.call(person2)()   <span class="comment">// person2</span></span><br><span class="line">person1.foo4().call(person2)   <span class="comment">// person1</span></span><br></pre></td></tr></table></figure></div>
-</details>
-
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 第三题</span></span><br><span class="line"><span class="keyword">var</span> name = <span class="string">&#x27;window&#x27;</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>) </span>&#123; </span><br><span class="line">    <span class="built_in">this</span>.name = name</span><br><span class="line">    <span class="built_in">this</span>.obj = &#123;  </span><br><span class="line">        name: <span class="string">&#x27;obj&#x27;</span>,</span><br><span class="line">          foo1: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;   </span><br><span class="line">            <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;    </span><br><span class="line">                <span class="built_in">console</span>.log(<span class="built_in">this</span>.name)   </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;,</span><br><span class="line">          foo2: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;   </span><br><span class="line">            <span class="keyword">return</span> <span class="function">() =&gt;</span> &#123;    </span><br><span class="line">                <span class="built_in">console</span>.log(<span class="built_in">this</span>.name)   </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> person1 = <span class="keyword">new</span> Person(<span class="string">&#x27;person1&#x27;</span>)</span><br><span class="line"><span class="keyword">var</span> person2 = <span class="keyword">new</span> Person(<span class="string">&#x27;person2&#x27;</span>)</span><br><span class="line">person1.obj.foo1()()</span><br><span class="line">person1.obj.foo1.call(person2)()</span><br><span class="line">person1.obj.foo1().call(person2)</span><br><span class="line">person1.obj.foo2()()</span><br><span class="line">person1.obj.foo2.call(person2)()</span><br><span class="line">person1.obj.foo2().call(person2)</span><br></pre></td></tr></table></figure></div>
-
-<details>
-    <summary>点我查看答案</summary>
-    <div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line">person1.obj.foo1()() <span class="comment">// window</span></span><br><span class="line">person1.obj.foo1.call(person2)() <span class="comment">// window</span></span><br><span class="line">person1.obj.foo1().call(person2) <span class="comment">// person2</span></span><br><span class="line">person1.obj.foo2()() <span class="comment">// obj</span></span><br><span class="line">person1.obj.foo2.call(person2)() <span class="comment">// person2</span></span><br><span class="line">person1.obj.foo2().call(person2) <span class="comment">// obj</span></span><br></pre></td></tr></table></figure></div>
-</details>
-
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 第四题</span></span><br><span class="line">name = <span class="string">&quot;window&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  name: <span class="string">&quot;obj&quot;</span>,</span><br><span class="line">  func0: <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">this</span>.name);</span><br><span class="line">    <span class="keyword">return</span> <span class="function">() =&gt;</span> <span class="built_in">console</span>.log(<span class="built_in">this</span>.name);</span><br><span class="line">  &#125;,</span><br><span class="line">  func1: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">this</span>.name);</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="built_in">console</span>.log(<span class="built_in">this</span>.name); &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  func2: <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">this</span>.name);</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="built_in">console</span>.log(<span class="built_in">this</span>.name); &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  func3: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">this</span>.name);</span><br><span class="line">    <span class="keyword">return</span> <span class="function">() =&gt;</span> <span class="built_in">console</span>.log(<span class="built_in">this</span>.name);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> env = &#123;</span><br><span class="line">  name: <span class="string">&quot;env&quot;</span>,</span><br><span class="line">  func0: obj.func0(),</span><br><span class="line">  func1: obj.func1(),</span><br><span class="line">  func2: obj.func2(),</span><br><span class="line">  func3: obj.func3()</span><br><span class="line">&#125;</span><br><span class="line">env.func0();</span><br><span class="line">env.func1();</span><br><span class="line">env.func2();</span><br><span class="line">env.func3();</span><br></pre></td></tr></table></figure></div>
-
-<details>
-    <summary>点我查看答案</summary>
-    <div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// console.log(obj.func0) // () =&gt; &#123; console.log(this.name); return () =&gt; console.log(this.name); &#125;    </span></span><br><span class="line"><span class="comment">// console.log(env.func0)  // () =&gt; console.log(this.name)</span></span><br><span class="line">func0: obj.func0(), <span class="comment">// window</span></span><br><span class="line">func1: obj.func1(), <span class="comment">// obj</span></span><br><span class="line">func2: obj.func2(), <span class="comment">// window</span></span><br><span class="line">func3: obj.func3()  <span class="comment">// obj</span></span><br><span class="line">env.func0(); <span class="comment">// window</span></span><br><span class="line">env.func1(); <span class="comment">// env</span></span><br><span class="line">env.func2(); <span class="comment">// env</span></span><br><span class="line">env.func3(); <span class="comment">// obj</span></span><br></pre></td></tr></table></figure></div>
-</details>
-
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 第五题</span></span><br><span class="line"><span class="keyword">var</span> name = <span class="string">&quot;Window&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> object = &#123;</span><br><span class="line">　　　　name : <span class="string">&quot;My Object&quot;</span>,</span><br><span class="line"></span><br><span class="line">　　　　getNameFunc : <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">　　　　　　<span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">　　　　　　　　<span class="keyword">return</span> <span class="built_in">this</span>.name;</span><br><span class="line">　　　　　　&#125;;</span><br><span class="line">　　　　&#125;</span><br><span class="line">　　&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(object.getNameFunc()());    <span class="comment">// Window</span></span><br></pre></td></tr></table></figure></div>
-
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 第六题</span></span><br><span class="line">　　<span class="keyword">var</span> name = <span class="string">&quot;Window&quot;</span>;</span><br><span class="line"></span><br><span class="line">　　<span class="keyword">var</span> object = &#123;</span><br><span class="line">　　　　name : <span class="string">&quot;My Object&quot;</span>,</span><br><span class="line"></span><br><span class="line">　　　　getNameFunc : <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">　　　　　　<span class="keyword">var</span> that = <span class="built_in">this</span>;</span><br><span class="line">　　　　　　<span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">　　　　　　　　<span class="keyword">return</span> that.name;</span><br><span class="line">　　　　　　&#125;;</span><br><span class="line"></span><br><span class="line">　　　　&#125;</span><br><span class="line"></span><br><span class="line">　　&#125;;</span><br><span class="line"></span><br><span class="line">　　<span class="built_in">console</span>.log(object.getNameFunc()());    <span class="comment">// My Object</span></span><br></pre></td></tr></table></figure></div>
-
-<blockquote>
-<p>this对象是动态的，随时会改变，而var that = this之后，that不会改变，仍然指向之前的this，这样就不会找不到原来的对象</p>
-</blockquote>
-<hr>
-<p>7.补充</p>
-<p>事件处理函数内部的this总是指向被绑定DOM元素</p>
-<blockquote>
-<p>内容参考自：<br><a href="https://www.jianshu.com/p/b1e0eb9151f9">JavaScript之彻底搞懂this的指向</a><br><a href="http://caibaojian.com/interview-map/frontend/#this">前端面试之道</a></p>
-</blockquote>
 ]]></content>
       <categories>
         <category>JavaScript</category>
@@ -2429,108 +2461,6 @@
       </tags>
   </entry>
   <entry>
-    <title>JavaScript-防抖和节流</title>
-    <url>/2021/02/22/JavaScript-%E9%98%B2%E6%8A%96%E5%92%8C%E8%8A%82%E6%B5%81/</url>
-    <content><![CDATA[<p>阅读全文，了解更多</p>
-<hr>
-<a id="more"></a>
-
-<h1 id="1-防抖-debounce"><a href="#1-防抖-debounce" class="headerlink" title="1.防抖(debounce)"></a>1.防抖(debounce)</h1><p>监听输入框，框内文字变化后触发change事件，如果监听keyup事件，输入过程中会频繁触发change事件</p>
-<p>防抖：用户输入结束或暂停时，才会触发change事件（设置间隔时间）</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;input type=<span class="string">&quot;text&quot;</span> id=<span class="string">&quot;input&quot;</span>&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="keyword">const</span> input = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;input&#x27;</span>)</span><br><span class="line">  <span class="keyword">let</span> timer = <span class="literal">null</span></span><br><span class="line">  input.addEventListener(<span class="string">&#x27;keyup&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (timer) &#123;</span><br><span class="line">      <span class="built_in">clearTimeout</span>(timer)</span><br><span class="line">    &#125;</span><br><span class="line">    timer = <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(input.value)</span><br><span class="line">      <span class="comment">// 清空定时器</span></span><br><span class="line">      timer = <span class="literal">null</span></span><br><span class="line">    &#125;, <span class="number">300</span>)</span><br><span class="line">  &#125;, <span class="literal">false</span>)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></div>
-
-<p>封装debounce函数</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;input type=<span class="string">&quot;text&quot;</span> id=<span class="string">&quot;input&quot;</span>&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="keyword">const</span> input = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;input&#x27;</span>)</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">debounce</span>(<span class="params">fn, delay = <span class="number">500</span></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// timer在闭包中</span></span><br><span class="line">    <span class="keyword">let</span> timer = <span class="literal">null</span></span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (timer) &#123;</span><br><span class="line">        <span class="built_in">clearTimeout</span>(timer)</span><br><span class="line">      &#125;</span><br><span class="line">      timer = <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">        fn.apply(<span class="built_in">this</span>, <span class="built_in">arguments</span>)</span><br><span class="line">        timer = <span class="literal">null</span></span><br><span class="line">      &#125;, delay)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  input.addEventListener(<span class="string">&#x27;keyup&#x27;</span>, debounce(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(input.value)</span><br><span class="line">  &#125;, <span class="number">1000</span>), <span class="literal">false</span>)</span><br><span class="line">&lt;/script&gt;   </span><br></pre></td></tr></table></figure></div>
-
-<hr>
-<h1 id="2-节流-throttle"><a href="#2-节流-throttle" class="headerlink" title="2.节流(throttle)"></a>2.节流(throttle)</h1><p>拖拽一个元素时，时刻获取到元素被拖拽的位置</p>
-<p>直接用drag事件，会频繁触发，容易造成卡顿</p>
-<p>节流：无论拖拽的速度多块，都每隔100ms触发一次</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;div id=<span class="string">&quot;div&quot;</span> draggable=<span class="string">&quot;true&quot;</span> </span><br><span class="line">  style=<span class="string">&quot;border: 1px solid #ccc; width: 200px; height: 100px;&quot;</span>&gt;</span><br><span class="line">  可拖拽</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="keyword">const</span> div = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;div&#x27;</span>)</span><br><span class="line">  <span class="keyword">let</span> timer = <span class="literal">null</span></span><br><span class="line"></span><br><span class="line">  div.addEventListener(<span class="string">&#x27;drag&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(timer) &#123;</span><br><span class="line">      <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  timer = <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(e.offsetX, e.offsetY)</span><br><span class="line">    timer = <span class="literal">null</span></span><br><span class="line">    &#125;, <span class="number">100</span>)</span><br><span class="line">  &#125;, <span class="literal">false</span>)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></div>
-
-<p>封装throttle函数</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;div id=<span class="string">&quot;div&quot;</span> draggable=<span class="string">&quot;true&quot;</span> </span><br><span class="line">  style=<span class="string">&quot;border: 1px solid #ccc; width: 200px; height: 100px;&quot;</span>&gt;</span><br><span class="line">  可拖拽</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="keyword">const</span> div = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;div&#x27;</span>)</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">throttle</span>(<span class="params">fn, delay = <span class="number">100</span></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> timer = <span class="literal">null</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (timer) &#123;</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">      &#125;</span><br><span class="line">      timer = <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">        fn.apply(<span class="built_in">this</span>, <span class="built_in">arguments</span>)</span><br><span class="line">        timer = <span class="literal">null</span></span><br><span class="line">      &#125;, delay)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  div.addEventListener(<span class="string">&#x27;drag&#x27;</span>, throttle(<span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(e.offsetX, e.offsetY)</span><br><span class="line">  &#125;, <span class="number">200</span>), <span class="literal">false</span>)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></div>
-
-<hr>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>JavaScript</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Vue-变化的文本</title>
-    <url>/2021/01/12/Vue-%E5%8F%98%E5%8C%96%E7%9A%84%E6%96%87%E6%9C%AC/</url>
-    <content><![CDATA[<p>通过Vue实现文本自动更新</p>
-<hr>
-<a id="more"></a>
-
-<iframe width="100%" height="300" src="//jsrun.net/p4IKp/embedded/all/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
-
-<hr>
-]]></content>
-      <categories>
-        <category>Vue</category>
-      </categories>
-      <tags>
-        <tag>Vue</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Vue-基本语法</title>
-    <url>/2021/01/12/Vue-%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/</url>
-    <content><![CDATA[<p>通过代码快速入门Vue基础语法</p>
-<hr>
-<a id="more"></a>
-
-<h1 id="1-模版语法"><a href="#1-模版语法" class="headerlink" title="1.模版语法"></a>1.模版语法</h1><p>插值和指令</p>
-<iframe width="100%" height="400" src="//jsrun.net/L4IKp/embedded/all/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
-
-<p><a href="https://cn.vuejs.org/v2/guide/syntax.html">详细了解模版语法</a></p>
-<hr>
-<h1 id="2-Class与Style绑定"><a href="#2-Class与Style绑定" class="headerlink" title="2.Class与Style绑定"></a>2.Class与Style绑定</h1><iframe width="100%" height="400" src="//jsrun.net/94IKp/embedded/all/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
-
-<p><a href="https://cn.vuejs.org/v2/guide/class-and-style.html">详细了解class与style绑定</a></p>
-<hr>
-<h1 id="3-条件渲染"><a href="#3-条件渲染" class="headerlink" title="3.条件渲染"></a>3.条件渲染</h1><p>v-if为惰性渲染，如果初始条件为false，不会渲染该条件块<br>v-show无论什么条件下都会被渲染</p>
-<p>如果需要频繁切换，使用v-show比较好；如果条件很少改变，应使用v-if</p>
-<iframe width="100%" height="300" src="//jsrun.net/74IKp/embedded/all/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
-
-<p><a href="https://cn.vuejs.org/v2/guide/conditional.html">详细了解条件渲染</a></p>
-<hr>
-<h1 id="4-列表渲染"><a href="#4-列表渲染" class="headerlink" title="4.列表渲染"></a>4.列表渲染</h1><iframe width="100%" height="300" src="//jsrun.net/d4IKp/embedded/all/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
-
-<p><a href="https://cn.vuejs.org/v2/guide/list.html">详细了解列表渲染</a></p>
-<hr>
-<h1 id="5-事件处理"><a href="#5-事件处理" class="headerlink" title="5.事件处理"></a>5.事件处理</h1><iframe width="100%" height="300" src="//jsrun.net/J4IKp/embedded/all/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
-
-<p><a href="https://cn.vuejs.org/v2/guide/events.html">详细了解事件处理</a></p>
-<hr>
-<h1 id="6-表单输入绑定"><a href="#6-表单输入绑定" class="headerlink" title="6.表单输入绑定"></a>6.表单输入绑定</h1><iframe width="100%" height="400" src="//jsrun.net/m4IKp/embedded/all/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
-
-<p><a href="https://cn.vuejs.org/v2/guide/forms.html">详细了解表单输入绑定</a></p>
-<hr>
-<h1 id="7-组件基础"><a href="#7-组件基础" class="headerlink" title="7.组件基础"></a>7.组件基础</h1><p>组件全局注册</p>
-<iframe width="100%" height="300" src="//jsrun.net/yKaKp/embedded/all/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
-
-<p><a href="https://cn.vuejs.org/v2/guide/components.html">详细了解组件基础</a></p>
-<hr>
-<h1 id="8-组件注册"><a href="#8-组件注册" class="headerlink" title="8.组件注册"></a>8.组件注册</h1><p>组件局部注册</p>
-<iframe width="100%" height="300" src="//jsrun.net/IKaKp/embedded/all/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
-
-<p><a href="https://cn.vuejs.org/v2/guide/components-registration.html">详细了解组件注册</a></p>
-<hr>
-]]></content>
-      <categories>
-        <category>Vue</category>
-      </categories>
-      <tags>
-        <tag>Vue</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>JavaScript进阶02-作用域链和闭包原理</title>
     <url>/2021/02/19/JavaScript%E8%BF%9B%E9%98%B602-%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE%E5%92%8C%E9%97%AD%E5%8C%85%E5%8E%9F%E7%90%86/</url>
     <content><![CDATA[<p>阅读全文，了解更多</p>
@@ -2603,6 +2533,96 @@
       </tags>
   </entry>
   <entry>
+    <title>Vue-生命周期</title>
+    <url>/2021/01/12/Vue-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/</url>
+    <content><![CDATA[<p>Vue的生命周期</p>
+<hr>
+<a id="more"></a>
+
+<p><img src="https://cn.vuejs.org/images/lifecycle.png"></p>
+<hr>
+<h1 id="Vue的创建过程"><a href="#Vue的创建过程" class="headerlink" title="Vue的创建过程"></a>Vue的创建过程</h1><iframe width="100%" height="300" src="//jsrun.net/k4IKp/embedded/all/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<hr>
+]]></content>
+      <categories>
+        <category>Vue</category>
+      </categories>
+      <tags>
+        <tag>Vue</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Vue-基本语法</title>
+    <url>/2021/01/12/Vue-%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/</url>
+    <content><![CDATA[<p>通过代码快速入门Vue基础语法</p>
+<hr>
+<a id="more"></a>
+
+<h1 id="1-模版语法"><a href="#1-模版语法" class="headerlink" title="1.模版语法"></a>1.模版语法</h1><p>插值和指令</p>
+<iframe width="100%" height="400" src="//jsrun.net/L4IKp/embedded/all/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<p><a href="https://cn.vuejs.org/v2/guide/syntax.html">详细了解模版语法</a></p>
+<hr>
+<h1 id="2-Class与Style绑定"><a href="#2-Class与Style绑定" class="headerlink" title="2.Class与Style绑定"></a>2.Class与Style绑定</h1><iframe width="100%" height="400" src="//jsrun.net/94IKp/embedded/all/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<p><a href="https://cn.vuejs.org/v2/guide/class-and-style.html">详细了解class与style绑定</a></p>
+<hr>
+<h1 id="3-条件渲染"><a href="#3-条件渲染" class="headerlink" title="3.条件渲染"></a>3.条件渲染</h1><p>v-if为惰性渲染，如果初始条件为false，不会渲染该条件块<br>v-show无论什么条件下都会被渲染</p>
+<p>如果需要频繁切换，使用v-show比较好；如果条件很少改变，应使用v-if</p>
+<iframe width="100%" height="300" src="//jsrun.net/74IKp/embedded/all/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<p><a href="https://cn.vuejs.org/v2/guide/conditional.html">详细了解条件渲染</a></p>
+<hr>
+<h1 id="4-列表渲染"><a href="#4-列表渲染" class="headerlink" title="4.列表渲染"></a>4.列表渲染</h1><iframe width="100%" height="300" src="//jsrun.net/d4IKp/embedded/all/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<p><a href="https://cn.vuejs.org/v2/guide/list.html">详细了解列表渲染</a></p>
+<hr>
+<h1 id="5-事件处理"><a href="#5-事件处理" class="headerlink" title="5.事件处理"></a>5.事件处理</h1><iframe width="100%" height="300" src="//jsrun.net/J4IKp/embedded/all/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<p><a href="https://cn.vuejs.org/v2/guide/events.html">详细了解事件处理</a></p>
+<hr>
+<h1 id="6-表单输入绑定"><a href="#6-表单输入绑定" class="headerlink" title="6.表单输入绑定"></a>6.表单输入绑定</h1><iframe width="100%" height="400" src="//jsrun.net/m4IKp/embedded/all/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<p><a href="https://cn.vuejs.org/v2/guide/forms.html">详细了解表单输入绑定</a></p>
+<hr>
+<h1 id="7-组件基础"><a href="#7-组件基础" class="headerlink" title="7.组件基础"></a>7.组件基础</h1><p>组件全局注册</p>
+<iframe width="100%" height="300" src="//jsrun.net/yKaKp/embedded/all/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<p><a href="https://cn.vuejs.org/v2/guide/components.html">详细了解组件基础</a></p>
+<hr>
+<h1 id="8-组件注册"><a href="#8-组件注册" class="headerlink" title="8.组件注册"></a>8.组件注册</h1><p>组件局部注册</p>
+<iframe width="100%" height="300" src="//jsrun.net/IKaKp/embedded/all/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<p><a href="https://cn.vuejs.org/v2/guide/components-registration.html">详细了解组件注册</a></p>
+<hr>
+]]></content>
+      <categories>
+        <category>Vue</category>
+      </categories>
+      <tags>
+        <tag>Vue</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Vue-变化的文本</title>
+    <url>/2021/01/12/Vue-%E5%8F%98%E5%8C%96%E7%9A%84%E6%96%87%E6%9C%AC/</url>
+    <content><![CDATA[<p>通过Vue实现文本自动更新</p>
+<hr>
+<a id="more"></a>
+
+<iframe width="100%" height="300" src="//jsrun.net/p4IKp/embedded/all/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<hr>
+]]></content>
+      <categories>
+        <category>Vue</category>
+      </categories>
+      <tags>
+        <tag>Vue</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Vue常见面试题汇总</title>
     <url>/2021/02/24/Vue%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98%E6%B1%87%E6%80%BB/</url>
     <content><![CDATA[<p>阅读全文，了解更多</p>
@@ -2654,23 +2674,39 @@
       </tags>
   </entry>
   <entry>
-    <title>Vue-生命周期</title>
-    <url>/2021/01/12/Vue-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/</url>
-    <content><![CDATA[<p>Vue的生命周期</p>
+    <title>js-斐波拉契数列</title>
+    <url>/2021/01/15/js-%E6%96%90%E6%B3%A2%E6%8B%89%E5%A5%91%E6%95%B0%E5%88%97/</url>
+    <content><![CDATA[<p>阅读全文，了解更多</p>
 <hr>
 <a id="more"></a>
 
-<p><img src="https://cn.vuejs.org/images/lifecycle.png"></p>
-<hr>
-<h1 id="Vue的创建过程"><a href="#Vue的创建过程" class="headerlink" title="Vue的创建过程"></a>Vue的创建过程</h1><iframe width="100%" height="300" src="//jsrun.net/k4IKp/embedded/all/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<iframe width="100%" height="300" src="//jsrun.net/JiaKp/embedded/js/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 
 <hr>
 ]]></content>
       <categories>
-        <category>Vue</category>
+        <category>JavaScript</category>
       </categories>
       <tags>
-        <tag>Vue</tag>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>js-通过递归封装n的阶乘</title>
+    <url>/2021/01/15/js-%E9%80%9A%E8%BF%87%E9%80%92%E5%BD%92%E5%B0%81%E8%A3%85n%E7%9A%84%E9%98%B6%E4%B9%98/</url>
+    <content><![CDATA[<p>阅读全文，了解更多</p>
+<hr>
+<a id="more"></a>
+
+<iframe width="100%" height="300" src="//jsrun.net/diaKp/embedded/js/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<hr>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
       </tags>
   </entry>
   <entry>
@@ -2839,42 +2875,6 @@
       </categories>
       <tags>
         <tag>CSS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>js-通过递归封装n的阶乘</title>
-    <url>/2021/01/15/js-%E9%80%9A%E8%BF%87%E9%80%92%E5%BD%92%E5%B0%81%E8%A3%85n%E7%9A%84%E9%98%B6%E4%B9%98/</url>
-    <content><![CDATA[<p>阅读全文，了解更多</p>
-<hr>
-<a id="more"></a>
-
-<iframe width="100%" height="300" src="//jsrun.net/diaKp/embedded/js/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
-
-<hr>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>JavaScript</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>js-斐波拉契数列</title>
-    <url>/2021/01/15/js-%E6%96%90%E6%B3%A2%E6%8B%89%E5%A5%91%E6%95%B0%E5%88%97/</url>
-    <content><![CDATA[<p>阅读全文，了解更多</p>
-<hr>
-<a id="more"></a>
-
-<iframe width="100%" height="300" src="//jsrun.net/JiaKp/embedded/js/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
-
-<hr>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>JavaScript</tag>
       </tags>
   </entry>
   <entry>
