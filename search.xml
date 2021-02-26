@@ -165,45 +165,6 @@
       </tags>
   </entry>
   <entry>
-    <title>DOM事件流</title>
-    <url>/2021/01/03/DOM%E4%BA%8B%E4%BB%B6%E6%B5%81/</url>
-    <content><![CDATA[<p>阅读全文，了解更多</p>
-<hr>
-<a id="more"></a>
-
-<h1 id="1-什么是事件流？"><a href="#1-什么是事件流？" class="headerlink" title="1.什么是事件流？"></a>1.什么是事件流？</h1><p>HTML与js交互是通过事件驱动实现的，比如点击事件onclick，事件流描述了从页面中接收事件的顺序，包括三个阶段：</p>
-<ul>
-<li>捕获阶段</li>
-<li>目标阶段</li>
-<li>冒泡阶段</li>
-</ul>
-<p>addEventListener: 这个方法接收三个参数，要处理的事件名，事件处理函数和一个布尔值，这个布尔值参数如果是true，在事件捕获阶段调用事件处理函数，如果为false，则在事件冒泡阶段调用事件处理函数。</p>
-<p>捕获阶段执行顺序：document -&gt; html -&gt; body -&gt; father -&gt; son</p>
-<iframe width="100%" height="300" src="//jsrun.net/ZnIKp/embedded/all/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
-
-<p>冒泡阶段执行顺序：son -&gt; father -&gt; body -&gt; html -&gt; document</p>
-<iframe width="100%" height="300" src="//jsrun.net/hnIKp/embedded/all/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
-
-<hr>
-<h1 id="2-阻止事件的默认行为"><a href="#2-阻止事件的默认行为" class="headerlink" title="2.阻止事件的默认行为"></a>2.阻止事件的默认行为</h1><p>preventDefault()</p>
-<iframe width="100%" height="200" src="//jsrun.net/XnIKp/embedded/all/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
-
-<hr>
-<h1 id="3-阻止事件冒泡"><a href="#3-阻止事件冒泡" class="headerlink" title="3.阻止事件冒泡"></a>3.阻止事件冒泡</h1><iframe width="100%" height="300" src="//jsrun.net/WnIKp/embedded/all/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
-
-<hr>
-<h1 id="4-事件委托"><a href="#4-事件委托" class="headerlink" title="4.事件委托"></a>4.事件委托</h1><iframe width="100%" height="300" src="//jsrun.net/fnIKp/embedded/all/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
-
-<hr>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>JavaScript</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>ES6-var,let,const的区别</title>
     <url>/2020/12/18/ES6-var-let-const%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
     <content><![CDATA[<p>阅读全文，了解更多</p>
@@ -505,37 +466,6 @@
       </tags>
   </entry>
   <entry>
-    <title>JavaScipt-跨域</title>
-    <url>/2021/02/21/JavaScipt-%E8%B7%A8%E5%9F%9F/</url>
-    <content><![CDATA[<p>阅读全文，了解更多</p>
-<hr>
-<a id="more"></a>
-
-<h1 id="1-什么是跨域？"><a href="#1-什么是跨域？" class="headerlink" title="1.什么是跨域？"></a>1.什么是跨域？</h1><p>ajax请求时，浏览器要求当前网页和server必须同源（保证安全，同源策略）<br>同源：协议，域名，端口三者必须一致<br>不同源的请求会被浏览器禁止</p>
-<p>https(协议)://<a href="http://www.baidu.com(域名)/">www.baidu.com(域名)</a> :443(端口号)</p>
-<p>只有浏览器才会出现跨域问题</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> url = <span class="string">&#x27;https://www.baidu.com&#x27;</span></span><br><span class="line"><span class="keyword">const</span> xhr = <span class="keyword">new</span> XMLHttpRequest()</span><br><span class="line">xhr.open(<span class="string">&#x27;GET&#x27;</span>, url, <span class="literal">true</span>)</span><br><span class="line">xhr.send(<span class="literal">null</span>)</span><br><span class="line"><span class="comment">// Access to XMLHttpRequest at &#x27;https://www.baidu.com/&#x27; from origin &#x27;http://127.0.0.1:5500&#x27; has been blocked by CORS policy: No &#x27;Access-Control-Allow-Origin&#x27; header is present on the requested resource.</span></span><br></pre></td></tr></table></figure></div>
-
-<h1 id="2-解决跨域"><a href="#2-解决跨域" class="headerlink" title="2.解决跨域"></a>2.解决跨域</h1><h2 id="2-1-CORS跨域资源共享（后端）"><a href="#2-1-CORS跨域资源共享（后端）" class="headerlink" title="2.1.CORS跨域资源共享（后端）"></a>2.1.CORS跨域资源共享（后端）</h2><p>Access-Control-Allow-Origin:*<br>允许所有域名来跨域请求，*是通配符，没有任何限制</p>
-<p>Access-Control-Allow-Origin:<a href="http://127.0.0.1:5500/">http://127.0.0.1:5500</a><br>只允许指定域名的跨域请求</p>
-<p>CORS跨域过程：</p>
-<p>①浏览器发送跨域请求<br>②后端在响应头中添加Access-Control-Allow-Origin<br>③浏览器接收到响应<br>④同域请求，前后端交互完成<br>⑤如果允许跨域，前后端交互完成<br>⑥不满足跨域条件，前后端交互失败</p>
-<p>CORS兼容性：IE10↑</p>
-<h2 id="2-2-JSONP"><a href="#2-2-JSONP" class="headerlink" title="2.2.JSONP"></a>2.2.JSONP</h2><p>JSONP实现原理： script标签</p>
-<p>使用JSONP实现跨域：</p>
-<p>①服务器端准备好JSONP接口<br>②手动加载JSONP或动态加载（script标签）<br>③声明函数</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    <span class="comment">// 手动加载</span></span><br><span class="line">    <span class="comment">// const handleResponse = data =&gt; &#123;</span></span><br><span class="line">    <span class="comment">//     console.log(data)</span></span><br><span class="line">    <span class="comment">// &#125;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 自动加载</span></span><br><span class="line">    <span class="keyword">const</span> script = <span class="built_in">document</span>.createElement(<span class="string">&#x27;script&#x27;</span>);</span><br><span class="line">    script.src = <span class="string">&#x27;https://www.imooc.com/api/http/jsonp?callback=handleResponse&#x27;</span></span><br><span class="line">    <span class="built_in">document</span>.body.appendChild(script);</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;script src=<span class="string">&quot;https://www.imooc.com/api/http/jsonp?callback=handleResponse&quot;</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure></div>
-
-<hr>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>JavaScript</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>JavaScipt-Ajax</title>
     <url>/2021/02/21/JavaScipt-Ajax/</url>
     <content><![CDATA[<p>阅读全文，了解更多</p>
@@ -602,6 +532,37 @@
 
 <h1 id="8-4-timeout事件"><a href="#8-4-timeout事件" class="headerlink" title="8.4.timeout事件"></a>8.4.timeout事件</h1><p>请求超时触发</p>
 <div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> url = <span class="string">&#x27;https://www.imooc123.com/api/http/search/suggest?words=js&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">xhr.addEventListener(<span class="string">&#x27;load&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span>((xhr.status &gt;= <span class="number">200</span> &amp;&amp; xhr.status &lt; <span class="number">300</span>) ||</span><br><span class="line">      (xhr.status === <span class="number">304</span>)) &#123;</span><br><span class="line">          <span class="built_in">console</span>.log(xhr.response)</span><br><span class="line">      &#125;</span><br><span class="line">&#125;, <span class="literal">false</span>);</span><br><span class="line">xhr.addEventListener(<span class="string">&#x27;timeout&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;timeout&#x27;</span>)</span><br><span class="line">&#125;, <span class="literal">false</span>);</span><br><span class="line">xhr.open(<span class="string">&#x27;GET&#x27;</span>, url, <span class="literal">true</span>);</span><br><span class="line">xhr.timeout = <span class="number">1</span>;</span><br><span class="line">xhr.send(<span class="literal">null</span>);</span><br></pre></td></tr></table></figure></div>
+
+<hr>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JavaScipt-跨域</title>
+    <url>/2021/02/21/JavaScipt-%E8%B7%A8%E5%9F%9F/</url>
+    <content><![CDATA[<p>阅读全文，了解更多</p>
+<hr>
+<a id="more"></a>
+
+<h1 id="1-什么是跨域？"><a href="#1-什么是跨域？" class="headerlink" title="1.什么是跨域？"></a>1.什么是跨域？</h1><p>ajax请求时，浏览器要求当前网页和server必须同源（保证安全，同源策略）<br>同源：协议，域名，端口三者必须一致<br>不同源的请求会被浏览器禁止</p>
+<p>https(协议)://<a href="http://www.baidu.com(域名)/">www.baidu.com(域名)</a> :443(端口号)</p>
+<p>只有浏览器才会出现跨域问题</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> url = <span class="string">&#x27;https://www.baidu.com&#x27;</span></span><br><span class="line"><span class="keyword">const</span> xhr = <span class="keyword">new</span> XMLHttpRequest()</span><br><span class="line">xhr.open(<span class="string">&#x27;GET&#x27;</span>, url, <span class="literal">true</span>)</span><br><span class="line">xhr.send(<span class="literal">null</span>)</span><br><span class="line"><span class="comment">// Access to XMLHttpRequest at &#x27;https://www.baidu.com/&#x27; from origin &#x27;http://127.0.0.1:5500&#x27; has been blocked by CORS policy: No &#x27;Access-Control-Allow-Origin&#x27; header is present on the requested resource.</span></span><br></pre></td></tr></table></figure></div>
+
+<h1 id="2-解决跨域"><a href="#2-解决跨域" class="headerlink" title="2.解决跨域"></a>2.解决跨域</h1><h2 id="2-1-CORS跨域资源共享（后端）"><a href="#2-1-CORS跨域资源共享（后端）" class="headerlink" title="2.1.CORS跨域资源共享（后端）"></a>2.1.CORS跨域资源共享（后端）</h2><p>Access-Control-Allow-Origin:*<br>允许所有域名来跨域请求，*是通配符，没有任何限制</p>
+<p>Access-Control-Allow-Origin:<a href="http://127.0.0.1:5500/">http://127.0.0.1:5500</a><br>只允许指定域名的跨域请求</p>
+<p>CORS跨域过程：</p>
+<p>①浏览器发送跨域请求<br>②后端在响应头中添加Access-Control-Allow-Origin<br>③浏览器接收到响应<br>④同域请求，前后端交互完成<br>⑤如果允许跨域，前后端交互完成<br>⑥不满足跨域条件，前后端交互失败</p>
+<p>CORS兼容性：IE10↑</p>
+<h2 id="2-2-JSONP"><a href="#2-2-JSONP" class="headerlink" title="2.2.JSONP"></a>2.2.JSONP</h2><p>JSONP实现原理： script标签</p>
+<p>使用JSONP实现跨域：</p>
+<p>①服务器端准备好JSONP接口<br>②手动加载JSONP或动态加载（script标签）<br>③声明函数</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    <span class="comment">// 手动加载</span></span><br><span class="line">    <span class="comment">// const handleResponse = data =&gt; &#123;</span></span><br><span class="line">    <span class="comment">//     console.log(data)</span></span><br><span class="line">    <span class="comment">// &#125;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 自动加载</span></span><br><span class="line">    <span class="keyword">const</span> script = <span class="built_in">document</span>.createElement(<span class="string">&#x27;script&#x27;</span>);</span><br><span class="line">    script.src = <span class="string">&#x27;https://www.imooc.com/api/http/jsonp?callback=handleResponse&#x27;</span></span><br><span class="line">    <span class="built_in">document</span>.body.appendChild(script);</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;script src=<span class="string">&quot;https://www.imooc.com/api/http/jsonp?callback=handleResponse&quot;</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure></div>
 
 <hr>
 ]]></content>
@@ -785,6 +746,69 @@
       </tags>
   </entry>
   <entry>
+    <title>DOM事件流</title>
+    <url>/2021/01/03/DOM%E4%BA%8B%E4%BB%B6%E6%B5%81/</url>
+    <content><![CDATA[<p>阅读全文，了解更多</p>
+<hr>
+<a id="more"></a>
+
+<h1 id="1-什么是事件流？"><a href="#1-什么是事件流？" class="headerlink" title="1.什么是事件流？"></a>1.什么是事件流？</h1><p>HTML与js交互是通过事件驱动实现的，比如点击事件onclick，事件流描述了从页面中接收事件的顺序，包括三个阶段：</p>
+<ul>
+<li>捕获阶段</li>
+<li>目标阶段</li>
+<li>冒泡阶段</li>
+</ul>
+<p>addEventListener: 这个方法接收三个参数，要处理的事件名，事件处理函数和一个布尔值，这个布尔值参数如果是true，在事件捕获阶段调用事件处理函数，如果为false，则在事件冒泡阶段调用事件处理函数。</p>
+<p>捕获阶段执行顺序：document -&gt; html -&gt; body -&gt; father -&gt; son</p>
+<iframe width="100%" height="300" src="//jsrun.net/ZnIKp/embedded/all/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<p>冒泡阶段执行顺序：son -&gt; father -&gt; body -&gt; html -&gt; document</p>
+<iframe width="100%" height="300" src="//jsrun.net/hnIKp/embedded/all/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<hr>
+<h1 id="2-阻止事件的默认行为"><a href="#2-阻止事件的默认行为" class="headerlink" title="2.阻止事件的默认行为"></a>2.阻止事件的默认行为</h1><p>preventDefault()</p>
+<iframe width="100%" height="200" src="//jsrun.net/XnIKp/embedded/all/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<hr>
+<h1 id="3-阻止事件冒泡"><a href="#3-阻止事件冒泡" class="headerlink" title="3.阻止事件冒泡"></a>3.阻止事件冒泡</h1><iframe width="100%" height="300" src="//jsrun.net/WnIKp/embedded/all/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<hr>
+<h1 id="4-事件委托"><a href="#4-事件委托" class="headerlink" title="4.事件委托"></a>4.事件委托</h1><iframe width="100%" height="300" src="//jsrun.net/fnIKp/embedded/all/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<hr>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JavaScript-axios</title>
+    <url>/2021/02/22/JavaScript-axios/</url>
+    <content><![CDATA[<p>阅读全文，了解更多</p>
+<hr>
+<a id="more"></a>
+
+<h1 id="1-axios"><a href="#1-axios" class="headerlink" title="1.axios"></a>1.axios</h1><p>axios是一个基于Promise的HTTP库，第三方Ajax库</p>
+<p><a href="http://www.axios-js.com/zh-cn/docs">axios中文文档</a></p>
+<h1 id="1-1-GET"><a href="#1-1-GET" class="headerlink" title="1.1.GET"></a>1.1.GET</h1><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line">&lt;script src=<span class="string">&quot;https://unpkg.com/axios@0.19.2/dist/axios.min.js&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line"><span class="keyword">const</span> url = <span class="string">&#x27;https://www.imooc.com/api/http/search/suggest?words=js&#x27;</span>;</span><br><span class="line">axios.get(url, &#123;</span><br><span class="line">    params: &#123;</span><br><span class="line">    username: <span class="string">&#x27;alex&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line">.then(<span class="function"><span class="params">response</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(response);</span><br><span class="line">&#125;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></div>
+
+<hr>
+<h2 id="1-2-POST"><a href="#1-2-POST" class="headerlink" title="1.2.POST"></a>1.2.POST</h2><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line">&lt;script src=<span class="string">&quot;https://unpkg.com/axios@0.19.2/dist/axios.min.js&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line"><span class="keyword">const</span> url = <span class="string">&#x27;https://www.imooc.com/api/http/search/suggest?words=js&#x27;</span>;</span><br><span class="line">axios.post(url, <span class="string">&#x27;username=alex&amp;age=18&#x27;</span>)</span><br><span class="line">.then(<span class="function"><span class="params">response</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(response);</span><br><span class="line">&#125;)</span><br><span class="line">.catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(err);</span><br><span class="line">&#125;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></div>
+
+<hr>
+<h2 id="1-3-PUT和DELETE"><a href="#1-3-PUT和DELETE" class="headerlink" title="1.3.PUT和DELETE"></a>1.3.PUT和DELETE</h2><hr>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>JavaScript-async/await</title>
     <url>/2021/02/21/JavaScript-async-await/</url>
     <content><![CDATA[<p>阅读全文，了解更多</p>
@@ -842,30 +866,6 @@
       </tags>
   </entry>
   <entry>
-    <title>JavaScript-axios</title>
-    <url>/2021/02/22/JavaScript-axios/</url>
-    <content><![CDATA[<p>阅读全文，了解更多</p>
-<hr>
-<a id="more"></a>
-
-<h1 id="1-axios"><a href="#1-axios" class="headerlink" title="1.axios"></a>1.axios</h1><p>axios是一个基于Promise的HTTP库，第三方Ajax库</p>
-<p><a href="http://www.axios-js.com/zh-cn/docs">axios中文文档</a></p>
-<h1 id="1-1-GET"><a href="#1-1-GET" class="headerlink" title="1.1.GET"></a>1.1.GET</h1><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line">&lt;script src=<span class="string">&quot;https://unpkg.com/axios@0.19.2/dist/axios.min.js&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line"><span class="keyword">const</span> url = <span class="string">&#x27;https://www.imooc.com/api/http/search/suggest?words=js&#x27;</span>;</span><br><span class="line">axios.get(url, &#123;</span><br><span class="line">    params: &#123;</span><br><span class="line">    username: <span class="string">&#x27;alex&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line">.then(<span class="function"><span class="params">response</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(response);</span><br><span class="line">&#125;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></div>
-
-<hr>
-<h2 id="1-2-POST"><a href="#1-2-POST" class="headerlink" title="1.2.POST"></a>1.2.POST</h2><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line">&lt;script src=<span class="string">&quot;https://unpkg.com/axios@0.19.2/dist/axios.min.js&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line"><span class="keyword">const</span> url = <span class="string">&#x27;https://www.imooc.com/api/http/search/suggest?words=js&#x27;</span>;</span><br><span class="line">axios.post(url, <span class="string">&#x27;username=alex&amp;age=18&#x27;</span>)</span><br><span class="line">.then(<span class="function"><span class="params">response</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(response);</span><br><span class="line">&#125;)</span><br><span class="line">.catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(err);</span><br><span class="line">&#125;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></div>
-
-<hr>
-<h2 id="1-3-PUT和DELETE"><a href="#1-3-PUT和DELETE" class="headerlink" title="1.3.PUT和DELETE"></a>1.3.PUT和DELETE</h2><hr>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>JavaScript</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>JavaScipt-event loop</title>
     <url>/2021/02/21/JavaScript-event%20loop/</url>
     <content><![CDATA[<p>阅读全文，了解更多</p>
@@ -904,27 +904,23 @@
       </tags>
   </entry>
   <entry>
-    <title>JavaScript-两张图弄懂基本类型和引用类型的复制过程</title>
-    <url>/2020/12/17/JavaScript-%E4%B8%A4%E5%BC%A0%E5%9B%BE%E5%BC%84%E6%87%82%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%A4%8D%E5%88%B6%E8%BF%87%E7%A8%8B/</url>
+    <title>JavaScript-json与对象相互转化</title>
+    <url>/2021/02/01/JavaScript-json%E4%B8%8E%E5%AF%B9%E8%B1%A1%E7%9B%B8%E4%BA%92%E8%BD%AC%E5%8C%96/</url>
     <content><![CDATA[<p>阅读全文，了解更多</p>
 <hr>
 <a id="more"></a>
 
-<h1 id="1-基本类型值的复制"><a href="#1-基本类型值的复制" class="headerlink" title="1.基本类型值的复制"></a>1.基本类型值的复制</h1><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> num1 = <span class="number">5</span>；</span><br><span class="line"><span class="keyword">var</span> num2 = num1;</span><br><span class="line"><span class="built_in">console</span>.log(num1, num2); <span class="comment">// 5,5</span></span><br><span class="line"><span class="keyword">var</span> num2 = <span class="number">50</span>;</span><br><span class="line"><span class="built_in">console</span>.log(num1, num2); <span class="comment">// 5,50</span></span><br></pre></td></tr></table></figure></div>
+<h1 id="1-JSON转对象"><a href="#1-JSON转对象" class="headerlink" title="1.JSON转对象"></a>1.JSON转对象</h1><p>JSON.parse()</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="HTML"><figure class="iseeu highlight /html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">data-info</span>=<span class="string">&#x27;&#123;&quot;name&quot;: &quot;CalDey&quot;, &quot;age&quot;: 25&#125;&#x27;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></div>
 
-<p><img src="https://gitee.com/caldey/BlogImage/raw/master/img/%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B.PNG"></p>
-<p>我们设置num1中的值为5，声明一个新变量num2复制num1中的值，num2的值也是5，但这两个5是相互独立，互不影响的，如果我们修改num2中的值，num1的值不会发生改变。</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// JSON.parse() -&gt; JSON转对象</span></span><br><span class="line"><span class="keyword">var</span> oDiv = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&#x27;div&#x27;</span>)[<span class="number">0</span>],</span><br><span class="line">    info = oDiv.getAttribute(<span class="string">&#x27;data-info&#x27;</span>);</span><br><span class="line">    </span><br><span class="line"><span class="keyword">var</span> jsonData = <span class="built_in">JSON</span>.parse(info);</span><br><span class="line"><span class="built_in">console</span>.log(jsonData);</span><br><span class="line"><span class="comment">// &#123;name: &quot;CalDey&quot;, age: 25&#125;</span></span><br></pre></td></tr></table></figure></div>
+
 <hr>
-<h1 id="2-引用类型值的复制"><a href="#2-引用类型值的复制" class="headerlink" title="2.引用类型值的复制"></a>2.引用类型值的复制</h1><p>相比于基本类型来说，引用类型稍显复杂:</p>
-<p>与基本类型不同，基本类型存储的是值，而引用类型存储的是地址（指针）</p>
-<p>基本类型值保存在栈(steak)中，而引用类型的值是由保存在栈内存(steak)的引用地址指向堆内存(heap)中存储的对象。当对象创建后，计算机会在内存中开辟一个空间存放数据，而我们要想访问到这个空间，就需要一个指向这个地址的指针。</p>
-<p>我们结合图片和代码分析整个过程：</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> Obj1 = &#123;&#125;;</span><br><span class="line"><span class="keyword">var</span> Obj2 = Obj1;</span><br><span class="line">Obj2.name = <span class="string">&#x27;CalDey&#x27;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(Obj1.name) <span class="comment">// CalDey</span></span><br></pre></td></tr></table></figure></div>
+<h1 id="2-对象转JSON"><a href="#2-对象转JSON" class="headerlink" title="2.对象转JSON"></a>2.对象转JSON</h1><p>JSON.stringify()</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="HTML"><figure class="iseeu highlight /html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></div>
 
-<p><img src="https://gitee.com/caldey/BlogImage/raw/master/img/%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B.PNG"></p>
-<p>从图中我们可以看出，复制前的Obj1和复制后的Obj2的储存在栈内存中的值都是一个引用地址，指向堆内存中同一个对象。当我们改变对象的属性，Obj1和Obj2的值都会发生改变：当为Obj2添加name属性后，可以通过Obj1来访问这个这个属性。</p>
-<p>为什么这样设计？</p>
-<p>基本类型数据相对来说非常小，可以直接在栈中存储，且不会影响性能。但引用类型如JSON，能够存储许多数据，直接存储在栈中复制过程缓慢，影响性能</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// JSON.stringify() -&gt; 对象转JSON</span></span><br><span class="line"><span class="keyword">var</span> oDiv = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&#x27;div&#x27;</span>)[<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    name: <span class="string">&#x27;CalDey&#x27;</span>,</span><br><span class="line">    age: <span class="number">23</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> str = <span class="built_in">JSON</span>.stringify(obj);</span><br><span class="line">oDiv.setAttribute(<span class="string">&#x27;data-info&#x27;</span>, str);</span><br></pre></td></tr></table></figure></div>
+
 <hr>
 ]]></content>
       <categories>
@@ -959,6 +955,37 @@
 <hr>
 <h1 id="3-window-onload和DOMContentLoaded"><a href="#3-window-onload和DOMContentLoaded" class="headerlink" title="3.window.onload和DOMContentLoaded"></a>3.window.onload和DOMContentLoaded</h1><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">window</span>.addEventListener(<span class="string">&#x27;load&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 页面资源全部加载完后执行，包括图片和视频</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.addEventListener(<span class="string">&#x27;DOMContentLoaded&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// DOM渲染完成后即可执行，此时图片和视频可能还没有加载完成</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div>
 
+<hr>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JavaScript-两张图弄懂基本类型和引用类型的复制过程</title>
+    <url>/2020/12/17/JavaScript-%E4%B8%A4%E5%BC%A0%E5%9B%BE%E5%BC%84%E6%87%82%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%A4%8D%E5%88%B6%E8%BF%87%E7%A8%8B/</url>
+    <content><![CDATA[<p>阅读全文，了解更多</p>
+<hr>
+<a id="more"></a>
+
+<h1 id="1-基本类型值的复制"><a href="#1-基本类型值的复制" class="headerlink" title="1.基本类型值的复制"></a>1.基本类型值的复制</h1><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> num1 = <span class="number">5</span>；</span><br><span class="line"><span class="keyword">var</span> num2 = num1;</span><br><span class="line"><span class="built_in">console</span>.log(num1, num2); <span class="comment">// 5,5</span></span><br><span class="line"><span class="keyword">var</span> num2 = <span class="number">50</span>;</span><br><span class="line"><span class="built_in">console</span>.log(num1, num2); <span class="comment">// 5,50</span></span><br></pre></td></tr></table></figure></div>
+
+<p><img src="https://gitee.com/caldey/BlogImage/raw/master/img/%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B.PNG"></p>
+<p>我们设置num1中的值为5，声明一个新变量num2复制num1中的值，num2的值也是5，但这两个5是相互独立，互不影响的，如果我们修改num2中的值，num1的值不会发生改变。</p>
+<hr>
+<h1 id="2-引用类型值的复制"><a href="#2-引用类型值的复制" class="headerlink" title="2.引用类型值的复制"></a>2.引用类型值的复制</h1><p>相比于基本类型来说，引用类型稍显复杂:</p>
+<p>与基本类型不同，基本类型存储的是值，而引用类型存储的是地址（指针）</p>
+<p>基本类型值保存在栈(steak)中，而引用类型的值是由保存在栈内存(steak)的引用地址指向堆内存(heap)中存储的对象。当对象创建后，计算机会在内存中开辟一个空间存放数据，而我们要想访问到这个空间，就需要一个指向这个地址的指针。</p>
+<p>我们结合图片和代码分析整个过程：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> Obj1 = &#123;&#125;;</span><br><span class="line"><span class="keyword">var</span> Obj2 = Obj1;</span><br><span class="line">Obj2.name = <span class="string">&#x27;CalDey&#x27;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(Obj1.name) <span class="comment">// CalDey</span></span><br></pre></td></tr></table></figure></div>
+
+<p><img src="https://gitee.com/caldey/BlogImage/raw/master/img/%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B.PNG"></p>
+<p>从图中我们可以看出，复制前的Obj1和复制后的Obj2的储存在栈内存中的值都是一个引用地址，指向堆内存中同一个对象。当我们改变对象的属性，Obj1和Obj2的值都会发生改变：当为Obj2添加name属性后，可以通过Obj1来访问这个这个属性。</p>
+<p>为什么这样设计？</p>
+<p>基本类型数据相对来说非常小，可以直接在栈中存储，且不会影响性能。但引用类型如JSON，能够存储许多数据，直接存储在栈中复制过程缓慢，影响性能</p>
 <hr>
 ]]></content>
       <categories>
@@ -1019,6 +1046,35 @@
 <blockquote>
 <p>内容参考自：<br><a href="http://www.ruanyifeng.com/blog/2009/08/learning_javascript_closures.html">学习Javascript闭包（Closure）</a><br><a href="https://juejin.cn/book/6844733763675488269/section/6844733763759374350">前端面试之道</a><br><a href="https://zhuanlan.zhihu.com/p/22486908?refer=study-fe">「每日一题」JS 中的闭包是什么？</a></p>
 </blockquote>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JavaScript-同步和异步</title>
+    <url>/2021/02/20/JavaScript-%E5%90%8C%E6%AD%A5%E5%92%8C%E5%BC%82%E6%AD%A5/</url>
+    <content><![CDATA[<p>阅读全文，了解更多</p>
+<hr>
+<a id="more"></a>
+
+<h1 id="1-同步和异步"><a href="#1-同步和异步" class="headerlink" title="1.同步和异步"></a>1.同步和异步</h1><p>JS是单线程语言，同一时间只能够做一件事</p>
+<p>类似生活中的去超市排队结账，正常情况下，一位收银员只能为一位顾客结账，其他顾客需要在后面排队等候</p>
+<p>为什么JS要设计成单线程？</p>
+<p>JS和DOM渲染公用同一线程，因为JS可以操作DOM，如果存在多线程，一个线程添加DOM节点，另一个线程删除这个节点，就会发生冲突</p>
+<p>但如果遇到定时任务或者ajax请求超时的时候，会发生阻塞，一直处于等待状态，因此，JS被设计成同步和异步</p>
+<p>同步：只有前一个任务执行完毕，才能执行后一个任务<br>异步：当同步任务执行到某个 WebAPI 时，就会触发异步操作，此时浏览器会单独开线程去处理这些异步任务。</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 同步</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">100</span>)</span><br><span class="line">alert(<span class="number">200</span>)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">300</span>)</span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 异步（callback回调函数）</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">100</span>)</span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">200</span>)</span><br><span class="line">&#125;, <span class="number">1000</span>)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">300</span>)</span><br></pre></td></tr></table></figure></div>
+
+<p>同步会阻塞代码执行，异步不会阻塞代码执行</p>
+<hr>
+<h1 id="2-异步的使用场景"><a href="#2-异步的使用场景" class="headerlink" title="2.异步的使用场景"></a>2.异步的使用场景</h1><p>网络请求：ajax图片加载<br>定时任务：setTimeout</p>
+<hr>
 ]]></content>
       <categories>
         <category>JavaScript</category>
@@ -1250,62 +1306,6 @@
       </tags>
   </entry>
   <entry>
-    <title>JavaScript-json与对象相互转化</title>
-    <url>/2021/02/01/JavaScript-json%E4%B8%8E%E5%AF%B9%E8%B1%A1%E7%9B%B8%E4%BA%92%E8%BD%AC%E5%8C%96/</url>
-    <content><![CDATA[<p>阅读全文，了解更多</p>
-<hr>
-<a id="more"></a>
-
-<h1 id="1-JSON转对象"><a href="#1-JSON转对象" class="headerlink" title="1.JSON转对象"></a>1.JSON转对象</h1><p>JSON.parse()</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="HTML"><figure class="iseeu highlight /html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">data-info</span>=<span class="string">&#x27;&#123;&quot;name&quot;: &quot;CalDey&quot;, &quot;age&quot;: 25&#125;&#x27;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></div>
-
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// JSON.parse() -&gt; JSON转对象</span></span><br><span class="line"><span class="keyword">var</span> oDiv = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&#x27;div&#x27;</span>)[<span class="number">0</span>],</span><br><span class="line">    info = oDiv.getAttribute(<span class="string">&#x27;data-info&#x27;</span>);</span><br><span class="line">    </span><br><span class="line"><span class="keyword">var</span> jsonData = <span class="built_in">JSON</span>.parse(info);</span><br><span class="line"><span class="built_in">console</span>.log(jsonData);</span><br><span class="line"><span class="comment">// &#123;name: &quot;CalDey&quot;, age: 25&#125;</span></span><br></pre></td></tr></table></figure></div>
-
-<hr>
-<h1 id="2-对象转JSON"><a href="#2-对象转JSON" class="headerlink" title="2.对象转JSON"></a>2.对象转JSON</h1><p>JSON.stringify()</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="HTML"><figure class="iseeu highlight /html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></div>
-
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// JSON.stringify() -&gt; 对象转JSON</span></span><br><span class="line"><span class="keyword">var</span> oDiv = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&#x27;div&#x27;</span>)[<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    name: <span class="string">&#x27;CalDey&#x27;</span>,</span><br><span class="line">    age: <span class="number">23</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> str = <span class="built_in">JSON</span>.stringify(obj);</span><br><span class="line">oDiv.setAttribute(<span class="string">&#x27;data-info&#x27;</span>, str);</span><br></pre></td></tr></table></figure></div>
-
-<hr>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>JavaScript</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JavaScript-同步和异步</title>
-    <url>/2021/02/20/JavaScript-%E5%90%8C%E6%AD%A5%E5%92%8C%E5%BC%82%E6%AD%A5/</url>
-    <content><![CDATA[<p>阅读全文，了解更多</p>
-<hr>
-<a id="more"></a>
-
-<h1 id="1-同步和异步"><a href="#1-同步和异步" class="headerlink" title="1.同步和异步"></a>1.同步和异步</h1><p>JS是单线程语言，同一时间只能够做一件事</p>
-<p>类似生活中的去超市排队结账，正常情况下，一位收银员只能为一位顾客结账，其他顾客需要在后面排队等候</p>
-<p>为什么JS要设计成单线程？</p>
-<p>JS和DOM渲染公用同一线程，因为JS可以操作DOM，如果存在多线程，一个线程添加DOM节点，另一个线程删除这个节点，就会发生冲突</p>
-<p>但如果遇到定时任务或者ajax请求超时的时候，会发生阻塞，一直处于等待状态，因此，JS被设计成同步和异步</p>
-<p>同步：只有前一个任务执行完毕，才能执行后一个任务<br>异步：当同步任务执行到某个 WebAPI 时，就会触发异步操作，此时浏览器会单独开线程去处理这些异步任务。</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 同步</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">100</span>)</span><br><span class="line">alert(<span class="number">200</span>)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">300</span>)</span><br></pre></td></tr></table></figure></div>
-
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 异步（callback回调函数）</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">100</span>)</span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">200</span>)</span><br><span class="line">&#125;, <span class="number">1000</span>)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">300</span>)</span><br></pre></td></tr></table></figure></div>
-
-<p>同步会阻塞代码执行，异步不会阻塞代码执行</p>
-<hr>
-<h1 id="2-异步的使用场景"><a href="#2-异步的使用场景" class="headerlink" title="2.异步的使用场景"></a>2.异步的使用场景</h1><p>网络请求：ajax图片加载<br>定时任务：setTimeout</p>
-<hr>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>JavaScript</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>JavaScript-安全</title>
     <url>/2021/02/22/JavaScript-%E5%AE%89%E5%85%A8/</url>
     <content><![CDATA[<p>阅读全文，了解更多</p>
@@ -1384,6 +1384,27 @@
       </tags>
   </entry>
   <entry>
+    <title>JavaScript-数组去重和字符串去重</title>
+    <url>/2021/01/24/JavaScript-%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D%E5%92%8C%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8E%BB%E9%87%8D/</url>
+    <content><![CDATA[<p>面试常考题-数组去重和字符串去重</p>
+<hr>
+<a id="more"></a>
+
+<h1 id="1-数组去重"><a href="#1-数组去重" class="headerlink" title="1.数组去重"></a>1.数组去重</h1><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> arr  = [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;a&#x27;</span>];</span><br><span class="line"></span><br><span class="line"><span class="built_in">Array</span>.prototype.unique = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> temp = &#123;&#125;,</span><br><span class="line">        newArr = [];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="built_in">this</span>.length; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span> (!temp.hasOwnProperty(<span class="built_in">this</span>[i])) &#123;</span><br><span class="line">            temp[<span class="built_in">this</span>[i]] = <span class="built_in">this</span>[i];</span><br><span class="line">            newArr.push(<span class="built_in">this</span>[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> newArr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> arr1 = arr.unique();</span><br><span class="line"><span class="built_in">console</span>.log(arr1);  <span class="comment">// [0, 1, 2, 3, &quot;a&quot;]</span></span><br></pre></td></tr></table></figure></div>
+
+<hr>
+<h1 id="2-字符串去重"><a href="#2-字符串去重" class="headerlink" title="2.字符串去重"></a>2.字符串去重</h1><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> str = <span class="string">&#x27;1122234434444aabb&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">String</span>.prototype.unique = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> temp = &#123;&#125;,</span><br><span class="line">        newArr = [];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="built_in">this</span>.length; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span>(!temp.hasOwnProperty(<span class="built_in">this</span>[i])) &#123;</span><br><span class="line">        temp[<span class="built_in">this</span>[i]] = <span class="built_in">this</span>[i];</span><br><span class="line">        newArr += <span class="built_in">this</span>[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> newArr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(str.unique());  <span class="comment">// 1234ab</span></span><br></pre></td></tr></table></figure></div>
+
+<hr>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>JavaScript-浅析new命令的执行过程</title>
     <url>/2020/12/09/JavaScript-%E6%B5%85%E6%9E%90new%E5%91%BD%E4%BB%A4%E7%9A%84%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B/</url>
     <content><![CDATA[<p>本文简单的分析了在new命令执行的过程中发生了什么，以及如何自己封装一个new命令。</p>
@@ -1448,16 +1469,43 @@
       </tags>
   </entry>
   <entry>
-    <title>JavaScript-数组去重和字符串去重</title>
-    <url>/2021/01/24/JavaScript-%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D%E5%92%8C%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8E%BB%E9%87%8D/</url>
-    <content><![CDATA[<p>面试常考题-数组去重和字符串去重</p>
+    <title>JavaSciprt-立即执行函数</title>
+    <url>/2021/02/20/JavaScript-%E7%AB%8B%E5%8D%B3%E6%89%A7%E8%A1%8C%E5%87%BD%E6%95%B0/</url>
+    <content><![CDATA[<p>阅读全文，了解更多</p>
 <hr>
 <a id="more"></a>
 
-<h1 id="1-数组去重"><a href="#1-数组去重" class="headerlink" title="1.数组去重"></a>1.数组去重</h1><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> arr  = [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;a&#x27;</span>];</span><br><span class="line"></span><br><span class="line"><span class="built_in">Array</span>.prototype.unique = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> temp = &#123;&#125;,</span><br><span class="line">        newArr = [];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="built_in">this</span>.length; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span> (!temp.hasOwnProperty(<span class="built_in">this</span>[i])) &#123;</span><br><span class="line">            temp[<span class="built_in">this</span>[i]] = <span class="built_in">this</span>[i];</span><br><span class="line">            newArr.push(<span class="built_in">this</span>[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> newArr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> arr1 = arr.unique();</span><br><span class="line"><span class="built_in">console</span>.log(arr1);  <span class="comment">// [0, 1, 2, 3, &quot;a&quot;]</span></span><br></pre></td></tr></table></figure></div>
+<h1 id="1-什么是立即执行函数？"><a href="#1-什么是立即执行函数？" class="headerlink" title="1.什么是立即执行函数？"></a>1.什么是立即执行函数？</h1><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line">add(<span class="number">1</span>, <span class="number">2</span>);</span><br><span class="line">add(<span class="number">4</span>, <span class="number">5</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(a + b)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>普通函数通过手动调用执行，执行完毕后不会释放，可以重复调用</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">1</span>,</span><br><span class="line">        b = <span class="number">2</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(a + b)</span><br><span class="line">&#125;)();</span><br><span class="line">test(); <span class="comment">// test is not defined</span></span><br></pre></td></tr></table></figure></div>
+
+<p>立即执行函数自动执行，执行完毕后立即释放，不能再次调用</p>
+<p>立即执行函数也可以像普通函数一样传参和获取返回值</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 传参</span></span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(a + b)</span><br><span class="line">&#125;)(<span class="number">1</span>, <span class="number">2</span>);</span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 通过全局变量接受，获取返回值</span></span><br><span class="line"><span class="keyword">var</span> num = (<span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;)(<span class="number">2</span>, <span class="number">4</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(num);</span><br></pre></td></tr></table></figure></div>
 
 <hr>
-<h1 id="2-字符串去重"><a href="#2-字符串去重" class="headerlink" title="2.字符串去重"></a>2.字符串去重</h1><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> str = <span class="string">&#x27;1122234434444aabb&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">String</span>.prototype.unique = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> temp = &#123;&#125;,</span><br><span class="line">        newArr = [];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="built_in">this</span>.length; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span>(!temp.hasOwnProperty(<span class="built_in">this</span>[i])) &#123;</span><br><span class="line">        temp[<span class="built_in">this</span>[i]] = <span class="built_in">this</span>[i];</span><br><span class="line">        newArr += <span class="built_in">this</span>[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> newArr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(str.unique());  <span class="comment">// 1234ab</span></span><br></pre></td></tr></table></figure></div>
+<h1 id="2-函数表达式"><a href="#2-函数表达式" class="headerlink" title="2.函数表达式"></a>2.函数表达式</h1><p>只有函数表达式可以被执行符号()执行</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;&#125;(); <span class="comment">// 不可执行</span></span><br><span class="line"><span class="keyword">var</span> test = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125; ();    <span class="comment">// 可执行</span></span><br><span class="line">(<span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;&#125;)();  <span class="comment">// 可执行</span></span><br><span class="line">(<span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;&#125;());   <span class="comment">// 可执行</span></span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> test = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(test);   <span class="comment">// function() &#123;&#125;</span></span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> test = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">&#125;();</span><br><span class="line"><span class="comment">// 函数执行完成后销毁</span></span><br><span class="line"><span class="built_in">console</span>.log(test);  <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure></div>
+
+<p>可以通过隐式转换将函数声明转化为函数表达式( + - * / &amp;&amp; || …)</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line">+ <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">1</span>)</span><br><span class="line">&#125;();</span><br></pre></td></tr></table></figure></div>
+
+<hr>
+<h1 id="3-使用场景"><a href="#3-使用场景" class="headerlink" title="3.使用场景"></a>3.使用场景</h1><p>通过立即执行函数打印0-9</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">        (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="built_in">document</span>.write(i + <span class="string">&#x27; &#x27;</span>);</span><br><span class="line">        &#125;)(i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test();</span><br></pre></td></tr></table></figure></div>
+
+<p>setTimeout</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> i;</span><br><span class="line"><span class="keyword">for</span>(i = <span class="number">1</span>; i &lt;= <span class="number">3</span>; i++) &#123;</span><br><span class="line">    (<span class="function"><span class="keyword">function</span>(<span class="params">j</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">setTimeout</span>(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(j)</span><br><span class="line">    &#125;, <span class="number">0</span>)</span><br><span class="line">    &#125;)(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>封装简易插件</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 封装简易计算器</span></span><br><span class="line"><span class="keyword">var</span> modules = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">plus</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> a + b;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">minus</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> a - b;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">mul</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> a * b;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">div</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> a / b;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        plus,</span><br><span class="line">        minus,</span><br><span class="line">        mul,</span><br><span class="line">        div</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)()</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(modules.plus(<span class="number">5</span>,<span class="number">8</span>));</span><br><span class="line"><span class="built_in">console</span>.log(modules.minus(<span class="number">5</span>,<span class="number">8</span>));</span><br><span class="line"><span class="built_in">console</span>.log(modules.mul(<span class="number">5</span>,<span class="number">8</span>));</span><br><span class="line"><span class="built_in">console</span>.log(modules.div(<span class="number">5</span>,<span class="number">8</span>));</span><br></pre></td></tr></table></figure></div>
 
 <hr>
 ]]></content>
@@ -1548,54 +1596,6 @@
 <blockquote>
 <p>内容参考自：<br><a href="https://juejin.cn/book/6844733763675488269/section/6844733763759374350">前端面试之道</a><br><a href="https://github.com/ljianshu/Blog/issues/5">浅拷贝与深拷贝</a><br><a href="https://segmentfault.com/a/1190000020255831">如何写出一个惊艳面试官的深拷贝?</a></p>
 </blockquote>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>JavaScript</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JavaSciprt-立即执行函数</title>
-    <url>/2021/02/20/JavaScript-%E7%AB%8B%E5%8D%B3%E6%89%A7%E8%A1%8C%E5%87%BD%E6%95%B0/</url>
-    <content><![CDATA[<p>阅读全文，了解更多</p>
-<hr>
-<a id="more"></a>
-
-<h1 id="1-什么是立即执行函数？"><a href="#1-什么是立即执行函数？" class="headerlink" title="1.什么是立即执行函数？"></a>1.什么是立即执行函数？</h1><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line">add(<span class="number">1</span>, <span class="number">2</span>);</span><br><span class="line">add(<span class="number">4</span>, <span class="number">5</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(a + b)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-<p>普通函数通过手动调用执行，执行完毕后不会释放，可以重复调用</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">1</span>,</span><br><span class="line">        b = <span class="number">2</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(a + b)</span><br><span class="line">&#125;)();</span><br><span class="line">test(); <span class="comment">// test is not defined</span></span><br></pre></td></tr></table></figure></div>
-
-<p>立即执行函数自动执行，执行完毕后立即释放，不能再次调用</p>
-<p>立即执行函数也可以像普通函数一样传参和获取返回值</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 传参</span></span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(a + b)</span><br><span class="line">&#125;)(<span class="number">1</span>, <span class="number">2</span>);</span><br></pre></td></tr></table></figure></div>
-
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 通过全局变量接受，获取返回值</span></span><br><span class="line"><span class="keyword">var</span> num = (<span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;)(<span class="number">2</span>, <span class="number">4</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(num);</span><br></pre></td></tr></table></figure></div>
-
-<hr>
-<h1 id="2-函数表达式"><a href="#2-函数表达式" class="headerlink" title="2.函数表达式"></a>2.函数表达式</h1><p>只有函数表达式可以被执行符号()执行</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;&#125;(); <span class="comment">// 不可执行</span></span><br><span class="line"><span class="keyword">var</span> test = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125; ();    <span class="comment">// 可执行</span></span><br><span class="line">(<span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;&#125;)();  <span class="comment">// 可执行</span></span><br><span class="line">(<span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;&#125;());   <span class="comment">// 可执行</span></span><br></pre></td></tr></table></figure></div>
-
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> test = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(test);   <span class="comment">// function() &#123;&#125;</span></span><br></pre></td></tr></table></figure></div>
-
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> test = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">&#125;();</span><br><span class="line"><span class="comment">// 函数执行完成后销毁</span></span><br><span class="line"><span class="built_in">console</span>.log(test);  <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure></div>
-
-<p>可以通过隐式转换将函数声明转化为函数表达式( + - * / &amp;&amp; || …)</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line">+ <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">1</span>)</span><br><span class="line">&#125;();</span><br></pre></td></tr></table></figure></div>
-
-<hr>
-<h1 id="3-使用场景"><a href="#3-使用场景" class="headerlink" title="3.使用场景"></a>3.使用场景</h1><p>通过立即执行函数打印0-9</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">        (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="built_in">document</span>.write(i + <span class="string">&#x27; &#x27;</span>);</span><br><span class="line">        &#125;)(i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test();</span><br></pre></td></tr></table></figure></div>
-
-<p>setTimeout</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> i;</span><br><span class="line"><span class="keyword">for</span>(i = <span class="number">1</span>; i &lt;= <span class="number">3</span>; i++) &#123;</span><br><span class="line">    (<span class="function"><span class="keyword">function</span>(<span class="params">j</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">setTimeout</span>(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(j)</span><br><span class="line">    &#125;, <span class="number">0</span>)</span><br><span class="line">    &#125;)(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-<p>封装简易插件</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 封装简易计算器</span></span><br><span class="line"><span class="keyword">var</span> modules = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">plus</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> a + b;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">minus</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> a - b;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">mul</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> a * b;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">div</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> a / b;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        plus,</span><br><span class="line">        minus,</span><br><span class="line">        mul,</span><br><span class="line">        div</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)()</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(modules.plus(<span class="number">5</span>,<span class="number">8</span>));</span><br><span class="line"><span class="built_in">console</span>.log(modules.minus(<span class="number">5</span>,<span class="number">8</span>));</span><br><span class="line"><span class="built_in">console</span>.log(modules.mul(<span class="number">5</span>,<span class="number">8</span>));</span><br><span class="line"><span class="built_in">console</span>.log(modules.div(<span class="number">5</span>,<span class="number">8</span>));</span><br></pre></td></tr></table></figure></div>
-
-<hr>
 ]]></content>
       <categories>
         <category>JavaScript</category>
@@ -2207,6 +2207,105 @@
       </tags>
   </entry>
   <entry>
+    <title>JavaScript进阶01-AO和GO</title>
+    <url>/2021/02/19/JavaScript%E8%BF%9B%E9%98%B601-AO%E5%92%8CGO/</url>
+    <content><![CDATA[<p>阅读全文，了解更多</p>
+<hr>
+<a id="more"></a>
+
+<p>在学习作用域前，首先要彻底弄懂AO和GO</p>
+<h1 id="1-AO"><a href="#1-AO" class="headerlink" title="1.AO"></a>1.AO</h1><p>AO Activetion Object 活跃对象（函数上下文）</p>
+<p>AO的执行过程：</p>
+<ul>
+<li>1.寻找函数中的形参和变量声明</li>
+<li>2.实参赋值给形参</li>
+<li>3.寻找函数声明，赋值</li>
+<li>4.执行</li>
+</ul>
+<p>AO的执行顺序：<br>形参 -&gt; 变量声明 -&gt; 实参 -&gt; 函数声明 -&gt; 赋值</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(a); <span class="comment">// 1</span></span><br><span class="line">    c = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">var</span> c;</span><br><span class="line">    a = <span class="number">5</span>;</span><br><span class="line">    b = <span class="number">6</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(b); <span class="comment">// 6</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">b</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">d</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">    <span class="built_in">console</span>.log(d); <span class="comment">// function d() &#123;&#125;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test(<span class="number">1</span>);</span><br></pre></td></tr></table></figure></div>
+
+<p>AO的执行过程如下：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line">AO = &#123;</span><br><span class="line">    a: <span class="literal">undefined</span>(形参) -&gt; <span class="number">1</span>（实参）-&gt; <span class="number">5</span>（赋值）</span><br><span class="line">    b: <span class="literal">undefined</span>(形参) -&gt; <span class="function"><span class="keyword">function</span> <span class="title">b</span> (<span class="params"></span>) </span>&#123;&#125;(函数声明) -&gt; <span class="number">6</span>(赋值)</span><br><span class="line">    c: <span class="literal">undefined</span>(变量声明) -&gt; <span class="number">0</span>(赋值)</span><br><span class="line">    d: <span class="function"><span class="keyword">function</span> <span class="title">d</span>(<span class="params"></span>) </span>&#123;&#125;(函数声明)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>通过AO的执行顺序便可以轻松区分复杂函数中变量在不同位置的值,注意变量提升和函数提升</p>
+<blockquote>
+<p>注意:AO是函数上下文，每一个函数都有自己的AO</p>
+</blockquote>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a;</span><br><span class="line">    a = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(a)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(test()) <span class="comment">// function a() &#123;&#125;</span></span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line">AO = &#123;</span><br><span class="line">    a: <span class="literal">undefined</span> -&gt; <span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;&#125; <span class="comment">// 变量提升后直接return</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    a = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">return</span> a;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(test()) <span class="comment">// 2</span></span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line">AO = &#123;</span><br><span class="line">    a: <span class="literal">undefined</span> -&gt; <span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;&#125; -&gt; <span class="number">1</span> -&gt; <span class="number">2</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<hr>
+<h1 id="2-GO"><a href="#2-GO" class="headerlink" title="2.GO"></a>2.GO</h1><p>GO Global Object 全局上下文</p>
+<p>GO的执行顺序:<br>变量声明 -&gt; 函数声明 -&gt; 赋值</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">2</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br></pre></td></tr></table></figure></div>
+
+<p>GO的执行过程如下：</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line">GO = &#123;</span><br><span class="line">    a: <span class="literal">undefined</span>(变量声明) -&gt; <span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;&#125;(函数声明) -&gt; <span class="number">1</span>(赋值)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<blockquote>
+<p>注意：var a = 1分为变量提升和变量赋值</p>
+</blockquote>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(a, b);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"><span class="keyword">var</span> b = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;</span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line">GO = &#123;</span><br><span class="line">    a: <span class="literal">undefined</span> -&gt; <span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">    b: <span class="literal">undefined</span> -&gt; <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;(赋值)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<blockquote>
+<p>注意：console的发生位置在提升后，赋值前，因此b此时为undefined</p>
+</blockquote>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test1</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test2</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">2</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test2();</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test3</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    test1();</span><br><span class="line">    test2()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test3();</span><br></pre></td></tr></table></figure></div>
+
+<p>GO中存储的全局函数可随时被重复调用</p>
+<hr>
+<h1 id="3-预编译"><a href="#3-预编译" class="headerlink" title="3.预编译"></a>3.预编译</h1><p>预编译阶段只发生变量声明和函数声明，没有初始化行为（赋值），只有执行阶段才进行变量初始化</p>
+<h1 id="4-AO-GO面试题"><a href="#4-AO-GO面试题" class="headerlink" title="4.AO,GO面试题"></a>4.AO,GO面试题</h1><p>第一题</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = b = <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(b); <span class="comment">// 1</span></span><br><span class="line">&#125;</span><br><span class="line">test();</span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line">GO = &#123;</span><br><span class="line">    b: <span class="number">1</span></span><br><span class="line">&#125;</span><br><span class="line">AO = &#123;</span><br><span class="line">    a: <span class="literal">undefined</span> -&gt; <span class="number">1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<blockquote>
+<p>注意： 函数中b未声明直接赋值为1，b为全局变量</p>
+</blockquote>
+<p>imply global 暗示全局变量</p>
+<p>第二题</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> b = <span class="number">3</span>;</span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params">a</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">    <span class="keyword">var</span> b = <span class="number">5</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(b);</span><br><span class="line">&#125;</span><br><span class="line">a(<span class="number">1</span>);</span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line">GO: &#123;</span><br><span class="line">    a: <span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">    b: <span class="literal">undefined</span> -&gt; <span class="number">3</span></span><br><span class="line">&#125;</span><br><span class="line">AO: &#123;</span><br><span class="line">    a: <span class="literal">undefined</span> -&gt; <span class="number">1</span> -&gt; <span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;&#125; -&gt; <span class="number">2</span></span><br><span class="line">    b: <span class="literal">undefined</span> -&gt; <span class="number">5</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>第三题</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line">a = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line">    a = <span class="number">2</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">3</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line">&#125;</span><br><span class="line">test()</span><br><span class="line"><span class="keyword">var</span> a;</span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line">GO = &#123;</span><br><span class="line">    a: <span class="literal">undefined</span> -&gt; <span class="number">1</span></span><br><span class="line">    test: <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line">AO = &#123;</span><br><span class="line">    a: <span class="literal">undefined</span> -&gt; <span class="number">2</span> -&gt; <span class="number">3</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>第四题</p>
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(b);</span><br><span class="line">    <span class="keyword">if</span> (a) &#123;</span><br><span class="line">        <span class="keyword">var</span> b = <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.log(b);</span><br><span class="line"></span><br><span class="line">    c = <span class="number">3</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(c);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a;</span><br><span class="line">test();</span><br><span class="line">a = <span class="number">1</span>;</span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line">GO = &#123;</span><br><span class="line">    a: <span class="literal">undefined</span> -&gt; <span class="number">1</span></span><br><span class="line">    test: <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line">AO = &#123;</span><br><span class="line">    b: <span class="literal">undefined</span> <span class="comment">// 预编译只看判断条件中的变量声明</span></span><br><span class="line">    c: <span class="number">3</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<hr>
+<h1 id="4-思考题"><a href="#4-思考题" class="headerlink" title="4.思考题"></a>4.思考题</h1><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line">a = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">e</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">    <span class="built_in">arguments</span>[<span class="number">0</span>] = <span class="number">2</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(e);</span><br><span class="line">    <span class="keyword">if</span> (a) &#123;</span><br><span class="line">        <span class="keyword">var</span> b = <span class="number">3</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> c;</span><br><span class="line">    a = <span class="number">4</span>;</span><br><span class="line">    <span class="keyword">var</span> a;</span><br><span class="line">    <span class="built_in">console</span>.log(b);</span><br><span class="line">    f = <span class="number">5</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(c);</span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a;</span><br><span class="line">test(<span class="number">1</span>);</span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br><span class="line"><span class="built_in">console</span>.log(f);</span><br></pre></td></tr></table></figure></div>
+
+<details>
+    <summary>点我查看答案</summary>
+    <div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// arguments[0] = 2 是赋值</span></span><br><span class="line">GO = &#123;</span><br><span class="line">    a: <span class="literal">undefined</span> -&gt; <span class="number">1</span></span><br><span class="line">    test: <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">    f: <span class="number">5</span></span><br><span class="line">&#125;</span><br><span class="line">AO = &#123;</span><br><span class="line">    e:  <span class="literal">undefined</span> -&gt; <span class="number">1</span> -&gt; <span class="function"><span class="keyword">function</span> <span class="title">e</span>(<span class="params"></span>) </span>&#123;&#125; -&gt; <span class="number">2</span></span><br><span class="line">    a: <span class="literal">undefined</span> -&gt; <span class="number">4</span></span><br><span class="line">    b: <span class="literal">undefined</span></span><br><span class="line">    c: <span class="literal">undefined</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+</details>
+
+<hr>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+        <tag>JavaScript进阶</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>JavaScript常见面试题汇总</title>
     <url>/2021/02/23/JavaScript%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98%E6%B1%87%E6%80%BB/</url>
     <content><![CDATA[<p>阅读全文，了解更多</p>
@@ -2362,102 +2461,55 @@
       </tags>
   </entry>
   <entry>
-    <title>JavaScript进阶01-AO和GO</title>
-    <url>/2021/02/19/JavaScript%E8%BF%9B%E9%98%B601-AO%E5%92%8CGO/</url>
-    <content><![CDATA[<p>阅读全文，了解更多</p>
+    <title>Vue-基本语法</title>
+    <url>/2021/01/12/Vue-%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/</url>
+    <content><![CDATA[<p>通过代码快速入门Vue基础语法</p>
 <hr>
 <a id="more"></a>
 
-<p>在学习作用域前，首先要彻底弄懂AO和GO</p>
-<h1 id="1-AO"><a href="#1-AO" class="headerlink" title="1.AO"></a>1.AO</h1><p>AO Activetion Object 活跃对象（函数上下文）</p>
-<p>AO的执行过程：</p>
-<ul>
-<li>1.寻找函数中的形参和变量声明</li>
-<li>2.实参赋值给形参</li>
-<li>3.寻找函数声明，赋值</li>
-<li>4.执行</li>
-</ul>
-<p>AO的执行顺序：<br>形参 -&gt; 变量声明 -&gt; 实参 -&gt; 函数声明 -&gt; 赋值</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(a); <span class="comment">// 1</span></span><br><span class="line">    c = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">var</span> c;</span><br><span class="line">    a = <span class="number">5</span>;</span><br><span class="line">    b = <span class="number">6</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(b); <span class="comment">// 6</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">b</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">d</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">    <span class="built_in">console</span>.log(d); <span class="comment">// function d() &#123;&#125;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test(<span class="number">1</span>);</span><br></pre></td></tr></table></figure></div>
+<h1 id="1-模版语法"><a href="#1-模版语法" class="headerlink" title="1.模版语法"></a>1.模版语法</h1><p>插值和指令</p>
+<iframe width="100%" height="400" src="//jsrun.net/L4IKp/embedded/all/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 
-<p>AO的执行过程如下：</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line">AO = &#123;</span><br><span class="line">    a: <span class="literal">undefined</span>(形参) -&gt; <span class="number">1</span>（实参）-&gt; <span class="number">5</span>（赋值）</span><br><span class="line">    b: <span class="literal">undefined</span>(形参) -&gt; <span class="function"><span class="keyword">function</span> <span class="title">b</span> (<span class="params"></span>) </span>&#123;&#125;(函数声明) -&gt; <span class="number">6</span>(赋值)</span><br><span class="line">    c: <span class="literal">undefined</span>(变量声明) -&gt; <span class="number">0</span>(赋值)</span><br><span class="line">    d: <span class="function"><span class="keyword">function</span> <span class="title">d</span>(<span class="params"></span>) </span>&#123;&#125;(函数声明)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-<p>通过AO的执行顺序便可以轻松区分复杂函数中变量在不同位置的值,注意变量提升和函数提升</p>
-<blockquote>
-<p>注意:AO是函数上下文，每一个函数都有自己的AO</p>
-</blockquote>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a;</span><br><span class="line">    a = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(a)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(test()) <span class="comment">// function a() &#123;&#125;</span></span><br></pre></td></tr></table></figure></div>
-
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line">AO = &#123;</span><br><span class="line">    a: <span class="literal">undefined</span> -&gt; <span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;&#125; <span class="comment">// 变量提升后直接return</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    a = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">return</span> a;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(test()) <span class="comment">// 2</span></span><br></pre></td></tr></table></figure></div>
-
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line">AO = &#123;</span><br><span class="line">    a: <span class="literal">undefined</span> -&gt; <span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;&#125; -&gt; <span class="number">1</span> -&gt; <span class="number">2</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
+<p><a href="https://cn.vuejs.org/v2/guide/syntax.html">详细了解模版语法</a></p>
 <hr>
-<h1 id="2-GO"><a href="#2-GO" class="headerlink" title="2.GO"></a>2.GO</h1><p>GO Global Object 全局上下文</p>
-<p>GO的执行顺序:<br>变量声明 -&gt; 函数声明 -&gt; 赋值</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">2</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br></pre></td></tr></table></figure></div>
+<h1 id="2-Class与Style绑定"><a href="#2-Class与Style绑定" class="headerlink" title="2.Class与Style绑定"></a>2.Class与Style绑定</h1><iframe width="100%" height="400" src="//jsrun.net/94IKp/embedded/all/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 
-<p>GO的执行过程如下：</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line">GO = &#123;</span><br><span class="line">    a: <span class="literal">undefined</span>(变量声明) -&gt; <span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;&#125;(函数声明) -&gt; <span class="number">1</span>(赋值)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-<blockquote>
-<p>注意：var a = 1分为变量提升和变量赋值</p>
-</blockquote>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(a, b);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"><span class="keyword">var</span> b = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;</span><br></pre></td></tr></table></figure></div>
-
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line">GO = &#123;</span><br><span class="line">    a: <span class="literal">undefined</span> -&gt; <span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">    b: <span class="literal">undefined</span> -&gt; <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;(赋值)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-<blockquote>
-<p>注意：console的发生位置在提升后，赋值前，因此b此时为undefined</p>
-</blockquote>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test1</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test2</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">2</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test2();</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test3</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    test1();</span><br><span class="line">    test2()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test3();</span><br></pre></td></tr></table></figure></div>
-
-<p>GO中存储的全局函数可随时被重复调用</p>
+<p><a href="https://cn.vuejs.org/v2/guide/class-and-style.html">详细了解class与style绑定</a></p>
 <hr>
-<h1 id="3-预编译"><a href="#3-预编译" class="headerlink" title="3.预编译"></a>3.预编译</h1><p>预编译阶段只发生变量声明和函数声明，没有初始化行为（赋值），只有执行阶段才进行变量初始化</p>
-<h1 id="4-AO-GO面试题"><a href="#4-AO-GO面试题" class="headerlink" title="4.AO,GO面试题"></a>4.AO,GO面试题</h1><p>第一题</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = b = <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(b); <span class="comment">// 1</span></span><br><span class="line">&#125;</span><br><span class="line">test();</span><br></pre></td></tr></table></figure></div>
+<h1 id="3-条件渲染"><a href="#3-条件渲染" class="headerlink" title="3.条件渲染"></a>3.条件渲染</h1><p>v-if为惰性渲染，如果初始条件为false，不会渲染该条件块<br>v-show无论什么条件下都会被渲染</p>
+<p>如果需要频繁切换，使用v-show比较好；如果条件很少改变，应使用v-if</p>
+<iframe width="100%" height="300" src="//jsrun.net/74IKp/embedded/all/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line">GO = &#123;</span><br><span class="line">    b: <span class="number">1</span></span><br><span class="line">&#125;</span><br><span class="line">AO = &#123;</span><br><span class="line">    a: <span class="literal">undefined</span> -&gt; <span class="number">1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-<blockquote>
-<p>注意： 函数中b未声明直接赋值为1，b为全局变量</p>
-</blockquote>
-<p>imply global 暗示全局变量</p>
-<p>第二题</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> b = <span class="number">3</span>;</span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params">a</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">    <span class="keyword">var</span> b = <span class="number">5</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(b);</span><br><span class="line">&#125;</span><br><span class="line">a(<span class="number">1</span>);</span><br></pre></td></tr></table></figure></div>
-
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line">GO: &#123;</span><br><span class="line">    a: <span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">    b: <span class="literal">undefined</span> -&gt; <span class="number">3</span></span><br><span class="line">&#125;</span><br><span class="line">AO: &#123;</span><br><span class="line">    a: <span class="literal">undefined</span> -&gt; <span class="number">1</span> -&gt; <span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;&#125; -&gt; <span class="number">2</span></span><br><span class="line">    b: <span class="literal">undefined</span> -&gt; <span class="number">5</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-<p>第三题</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line">a = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line">    a = <span class="number">2</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">3</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line">&#125;</span><br><span class="line">test()</span><br><span class="line"><span class="keyword">var</span> a;</span><br></pre></td></tr></table></figure></div>
-
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line">GO = &#123;</span><br><span class="line">    a: <span class="literal">undefined</span> -&gt; <span class="number">1</span></span><br><span class="line">    test: <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line">AO = &#123;</span><br><span class="line">    a: <span class="literal">undefined</span> -&gt; <span class="number">2</span> -&gt; <span class="number">3</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-<p>第四题</p>
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(b);</span><br><span class="line">    <span class="keyword">if</span> (a) &#123;</span><br><span class="line">        <span class="keyword">var</span> b = <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.log(b);</span><br><span class="line"></span><br><span class="line">    c = <span class="number">3</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(c);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a;</span><br><span class="line">test();</span><br><span class="line">a = <span class="number">1</span>;</span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br></pre></td></tr></table></figure></div>
-
-<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line">GO = &#123;</span><br><span class="line">    a: <span class="literal">undefined</span> -&gt; <span class="number">1</span></span><br><span class="line">    test: <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line">AO = &#123;</span><br><span class="line">    b: <span class="literal">undefined</span> <span class="comment">// 预编译只看判断条件中的变量声明</span></span><br><span class="line">    c: <span class="number">3</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
+<p><a href="https://cn.vuejs.org/v2/guide/conditional.html">详细了解条件渲染</a></p>
 <hr>
-<h1 id="4-思考题"><a href="#4-思考题" class="headerlink" title="4.思考题"></a>4.思考题</h1><div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line">a = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">e</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">    <span class="built_in">arguments</span>[<span class="number">0</span>] = <span class="number">2</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(e);</span><br><span class="line">    <span class="keyword">if</span> (a) &#123;</span><br><span class="line">        <span class="keyword">var</span> b = <span class="number">3</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> c;</span><br><span class="line">    a = <span class="number">4</span>;</span><br><span class="line">    <span class="keyword">var</span> a;</span><br><span class="line">    <span class="built_in">console</span>.log(b);</span><br><span class="line">    f = <span class="number">5</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(c);</span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a;</span><br><span class="line">test(<span class="number">1</span>);</span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br><span class="line"><span class="built_in">console</span>.log(f);</span><br></pre></td></tr></table></figure></div>
+<h1 id="4-列表渲染"><a href="#4-列表渲染" class="headerlink" title="4.列表渲染"></a>4.列表渲染</h1><iframe width="100%" height="300" src="//jsrun.net/d4IKp/embedded/all/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 
-<details>
-    <summary>点我查看答案</summary>
-    <div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// arguments[0] = 2 是赋值</span></span><br><span class="line">GO = &#123;</span><br><span class="line">    a: <span class="literal">undefined</span> -&gt; <span class="number">1</span></span><br><span class="line">    test: <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">    f: <span class="number">5</span></span><br><span class="line">&#125;</span><br><span class="line">AO = &#123;</span><br><span class="line">    e:  <span class="literal">undefined</span> -&gt; <span class="number">1</span> -&gt; <span class="function"><span class="keyword">function</span> <span class="title">e</span>(<span class="params"></span>) </span>&#123;&#125; -&gt; <span class="number">2</span></span><br><span class="line">    a: <span class="literal">undefined</span> -&gt; <span class="number">4</span></span><br><span class="line">    b: <span class="literal">undefined</span></span><br><span class="line">    c: <span class="literal">undefined</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-</details>
+<p><a href="https://cn.vuejs.org/v2/guide/list.html">详细了解列表渲染</a></p>
+<hr>
+<h1 id="5-事件处理"><a href="#5-事件处理" class="headerlink" title="5.事件处理"></a>5.事件处理</h1><iframe width="100%" height="300" src="//jsrun.net/J4IKp/embedded/all/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 
+<p><a href="https://cn.vuejs.org/v2/guide/events.html">详细了解事件处理</a></p>
+<hr>
+<h1 id="6-表单输入绑定"><a href="#6-表单输入绑定" class="headerlink" title="6.表单输入绑定"></a>6.表单输入绑定</h1><iframe width="100%" height="400" src="//jsrun.net/m4IKp/embedded/all/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<p><a href="https://cn.vuejs.org/v2/guide/forms.html">详细了解表单输入绑定</a></p>
+<hr>
+<h1 id="7-组件基础"><a href="#7-组件基础" class="headerlink" title="7.组件基础"></a>7.组件基础</h1><p>组件全局注册</p>
+<iframe width="100%" height="300" src="//jsrun.net/yKaKp/embedded/all/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<p><a href="https://cn.vuejs.org/v2/guide/components.html">详细了解组件基础</a></p>
+<hr>
+<h1 id="8-组件注册"><a href="#8-组件注册" class="headerlink" title="8.组件注册"></a>8.组件注册</h1><p>组件局部注册</p>
+<iframe width="100%" height="300" src="//jsrun.net/IKaKp/embedded/all/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<p><a href="https://cn.vuejs.org/v2/guide/components-registration.html">详细了解组件注册</a></p>
 <hr>
 ]]></content>
       <categories>
-        <category>JavaScript</category>
+        <category>Vue</category>
       </categories>
       <tags>
-        <tag>JavaScript</tag>
-        <tag>JavaScript进阶</tag>
+        <tag>Vue</tag>
       </tags>
   </entry>
   <entry>
@@ -2533,78 +2585,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Vue-生命周期</title>
-    <url>/2021/01/12/Vue-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/</url>
-    <content><![CDATA[<p>Vue的生命周期</p>
-<hr>
-<a id="more"></a>
-
-<p><img src="https://cn.vuejs.org/images/lifecycle.png"></p>
-<hr>
-<h1 id="Vue的创建过程"><a href="#Vue的创建过程" class="headerlink" title="Vue的创建过程"></a>Vue的创建过程</h1><iframe width="100%" height="300" src="//jsrun.net/k4IKp/embedded/all/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
-
-<hr>
-]]></content>
-      <categories>
-        <category>Vue</category>
-      </categories>
-      <tags>
-        <tag>Vue</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Vue-基本语法</title>
-    <url>/2021/01/12/Vue-%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/</url>
-    <content><![CDATA[<p>通过代码快速入门Vue基础语法</p>
-<hr>
-<a id="more"></a>
-
-<h1 id="1-模版语法"><a href="#1-模版语法" class="headerlink" title="1.模版语法"></a>1.模版语法</h1><p>插值和指令</p>
-<iframe width="100%" height="400" src="//jsrun.net/L4IKp/embedded/all/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
-
-<p><a href="https://cn.vuejs.org/v2/guide/syntax.html">详细了解模版语法</a></p>
-<hr>
-<h1 id="2-Class与Style绑定"><a href="#2-Class与Style绑定" class="headerlink" title="2.Class与Style绑定"></a>2.Class与Style绑定</h1><iframe width="100%" height="400" src="//jsrun.net/94IKp/embedded/all/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
-
-<p><a href="https://cn.vuejs.org/v2/guide/class-and-style.html">详细了解class与style绑定</a></p>
-<hr>
-<h1 id="3-条件渲染"><a href="#3-条件渲染" class="headerlink" title="3.条件渲染"></a>3.条件渲染</h1><p>v-if为惰性渲染，如果初始条件为false，不会渲染该条件块<br>v-show无论什么条件下都会被渲染</p>
-<p>如果需要频繁切换，使用v-show比较好；如果条件很少改变，应使用v-if</p>
-<iframe width="100%" height="300" src="//jsrun.net/74IKp/embedded/all/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
-
-<p><a href="https://cn.vuejs.org/v2/guide/conditional.html">详细了解条件渲染</a></p>
-<hr>
-<h1 id="4-列表渲染"><a href="#4-列表渲染" class="headerlink" title="4.列表渲染"></a>4.列表渲染</h1><iframe width="100%" height="300" src="//jsrun.net/d4IKp/embedded/all/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
-
-<p><a href="https://cn.vuejs.org/v2/guide/list.html">详细了解列表渲染</a></p>
-<hr>
-<h1 id="5-事件处理"><a href="#5-事件处理" class="headerlink" title="5.事件处理"></a>5.事件处理</h1><iframe width="100%" height="300" src="//jsrun.net/J4IKp/embedded/all/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
-
-<p><a href="https://cn.vuejs.org/v2/guide/events.html">详细了解事件处理</a></p>
-<hr>
-<h1 id="6-表单输入绑定"><a href="#6-表单输入绑定" class="headerlink" title="6.表单输入绑定"></a>6.表单输入绑定</h1><iframe width="100%" height="400" src="//jsrun.net/m4IKp/embedded/all/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
-
-<p><a href="https://cn.vuejs.org/v2/guide/forms.html">详细了解表单输入绑定</a></p>
-<hr>
-<h1 id="7-组件基础"><a href="#7-组件基础" class="headerlink" title="7.组件基础"></a>7.组件基础</h1><p>组件全局注册</p>
-<iframe width="100%" height="300" src="//jsrun.net/yKaKp/embedded/all/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
-
-<p><a href="https://cn.vuejs.org/v2/guide/components.html">详细了解组件基础</a></p>
-<hr>
-<h1 id="8-组件注册"><a href="#8-组件注册" class="headerlink" title="8.组件注册"></a>8.组件注册</h1><p>组件局部注册</p>
-<iframe width="100%" height="300" src="//jsrun.net/IKaKp/embedded/all/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
-
-<p><a href="https://cn.vuejs.org/v2/guide/components-registration.html">详细了解组件注册</a></p>
-<hr>
-]]></content>
-      <categories>
-        <category>Vue</category>
-      </categories>
-      <tags>
-        <tag>Vue</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Vue-变化的文本</title>
     <url>/2021/01/12/Vue-%E5%8F%98%E5%8C%96%E7%9A%84%E6%96%87%E6%9C%AC/</url>
     <content><![CDATA[<p>通过Vue实现文本自动更新</p>
@@ -2623,90 +2603,23 @@
       </tags>
   </entry>
   <entry>
-    <title>Vue常见面试题汇总</title>
-    <url>/2021/02/24/Vue%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98%E6%B1%87%E6%80%BB/</url>
-    <content><![CDATA[<p>阅读全文，了解更多</p>
+    <title>Vue-生命周期</title>
+    <url>/2021/01/12/Vue-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/</url>
+    <content><![CDATA[<p>Vue的生命周期</p>
 <hr>
 <a id="more"></a>
 
-<h1 id="1-v-if，v-show的区别？"><a href="#1-v-if，v-show的区别？" class="headerlink" title="1.v-if，v-show的区别？"></a>1.v-if，v-show的区别？</h1><p>v-if切换会重复创建和删除元素，会重复渲染DOM<br>v-show显示或隐藏元素，变换CSS样式</p>
-<p>何时使用？<br>v-if切换的开销高，v-show渲染的开销高<br>当需要频繁更新数据应使用v-show，反之v-if</p>
+<p><img src="https://cn.vuejs.org/images/lifecycle.png"></p>
 <hr>
-<h1 id="2-v-if和v-show为什么不推荐一起使用？"><a href="#2-v-if和v-show为什么不推荐一起使用？" class="headerlink" title="2.v-if和v-show为什么不推荐一起使用？"></a>2.v-if和v-show为什么不推荐一起使用？</h1><p>v-for优先级高于v-if，先循环后判断</p>
-<p>解决方法：不要把v-if和v-show写在同一个标签上</p>
-<hr>
-<h1 id="3-v-for为什么要指定key？"><a href="#3-v-for为什么要指定key？" class="headerlink" title="3.v-for为什么要指定key？"></a>3.v-for为什么要指定key？</h1><iframe width="100%" height="300" src="//jsrun.net/S5aKp/embedded/all/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<h1 id="Vue的创建过程"><a href="#Vue的创建过程" class="headerlink" title="Vue的创建过程"></a>Vue的创建过程</h1><iframe width="100%" height="300" src="//jsrun.net/k4IKp/embedded/all/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 
-<p>当使用v-for遍历数组时，如果没有指定key，当元素顺序发生变化时，DOM绑定的数据会更新，但顺序不会发生改变，key相当于唯一标识符</p>
-<hr>
-<h1 id="4-父子组件传值"><a href="#4-父子组件传值" class="headerlink" title="4.父子组件传值"></a>4.父子组件传值</h1><p>父组件可以通过props向子组件传递数据，子组件通过$emit向父子件传递数据</p>
-<iframe width="100%" height="300" src="//jsrun.net/KDaKp/embedded/all/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
-
-<hr>
-<h1 id="5-自定义事件"><a href="#5-自定义事件" class="headerlink" title="5.自定义事件"></a>5.自定义事件</h1><p>1.Event Bus：每个Vue实例都是一个Event Bus，都支持$on/$emit,可以为兄弟组件实例之间new一个Vue实例，作为Event Bus进行通信</p>
-<iframe width="100%" height="300" src="//jsrun.net/NraKp/embedded/all/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
-
-<p>2.Vuex：将状态或方法提取到Vuex，完成共享</p>
-<hr>
-<h1 id="6-Vue生命周期"><a href="#6-Vue生命周期" class="headerlink" title="6.Vue生命周期"></a>6.Vue生命周期</h1><p>①beforeCreate：初始化实例，创建Vue实例后触发的第一个钩子，此时data,methods,computed和watch上的数据和方法都不能被访问</p>
-<p>②created：实例创建完成后发生，当前阶段完成了数据观测，可以使用和更改数据，此时更改数据不会触发updated函数。可以做一些初始数据的获取，在当前阶段无法和DOM进行交互，如果需要，可以通过$nextTick来访问DOM</p>
-<p>③beforeMount：发生在挂载前，template已经导入渲染函数编译，当前阶段虚拟DOM已经创建完成，即将开始渲染，此时可以对数据进行修改，不会触发updated</p>
-<p>④mount：挂载完成后发生，当前阶段DOM挂载完毕，进行数据双向绑定，可以访问到DOM节点，使用$refs属性可以操作DOM</p>
-<p>⑤beforeUpdate：发生在更新前，也就是响应式数据发生更新，虚拟DOM重新渲染前被触发，可以在此阶段更改数数据，不会造成重渲染</p>
-<p>⑥updated：发生在更新完成后，当前阶段DOM已经完成更新，要注意避免在此期间更改数据，可能导致无限循环的更新</p>
-<p>⑦beforeDestroy：发生在实例销毁之前，当前阶段实例完全可以被使用，我们可以在这时进行善后工作，清除计时器，对全局事件解绑</p>
-<p>⑧destoryed：发生在实例销毁之后</p>
-<hr>
-<h1 id="7-Vue的响应式系统"><a href="#7-Vue的响应式系统" class="headerlink" title="7.Vue的响应式系统"></a>7.Vue的响应式系统</h1><p>Vue为MVVM框架，当数据模型data变化时，数据驱动视图更新，这样可以专注于数据本身而非DOM操作</p>
-<p>其原理是Object.defineProperty(Vue3.0为Proxy)，利用发布订阅模式，在getter中订阅，setter中发布通知，实现页面实时响应</p>
-<hr>
-<h1 id="8-computed和watch的区别"><a href="#8-computed和watch的区别" class="headerlink" title="8.computed和watch的区别"></a>8.computed和watch的区别</h1><p>计算属性computed和监听器watch都可以观察属性变化做出响应</p>
-<p>计算属性可以缓存，将一个或多个data属性经过计算返回一个新值。当依赖属性发生变化时，computed不会立刻重新计算，而是标记成脏数据，当下次computed被获取时，才会重新计算</p>
-<p>watch不具备缓存功能，被监听属性发生变化时，会立即执行该函数</p>
 <hr>
 ]]></content>
       <categories>
         <category>Vue</category>
       </categories>
       <tags>
-        <tag>面试</tag>
         <tag>Vue</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>js-斐波拉契数列</title>
-    <url>/2021/01/15/js-%E6%96%90%E6%B3%A2%E6%8B%89%E5%A5%91%E6%95%B0%E5%88%97/</url>
-    <content><![CDATA[<p>阅读全文，了解更多</p>
-<hr>
-<a id="more"></a>
-
-<iframe width="100%" height="300" src="//jsrun.net/JiaKp/embedded/js/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
-
-<hr>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>JavaScript</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>js-通过递归封装n的阶乘</title>
-    <url>/2021/01/15/js-%E9%80%9A%E8%BF%87%E9%80%92%E5%BD%92%E5%B0%81%E8%A3%85n%E7%9A%84%E9%98%B6%E4%B9%98/</url>
-    <content><![CDATA[<p>阅读全文，了解更多</p>
-<hr>
-<a id="more"></a>
-
-<iframe width="100%" height="300" src="//jsrun.net/diaKp/embedded/js/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
-
-<hr>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>JavaScript</tag>
       </tags>
   </entry>
   <entry>
@@ -2853,6 +2766,113 @@
       </tags>
   </entry>
   <entry>
+    <title>Vue常见面试题汇总</title>
+    <url>/2021/02/24/Vue%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98%E6%B1%87%E6%80%BB/</url>
+    <content><![CDATA[<p>阅读全文，了解更多</p>
+<hr>
+<a id="more"></a>
+
+<h1 id="1-v-if，v-show的区别？"><a href="#1-v-if，v-show的区别？" class="headerlink" title="1.v-if，v-show的区别？"></a>1.v-if，v-show的区别？</h1><p>v-if切换会重复创建和删除元素，会重复渲染DOM<br>v-show显示或隐藏元素，变换CSS样式</p>
+<p>何时使用？<br>v-if切换的开销高，v-show渲染的开销高<br>当需要频繁更新数据应使用v-show，反之v-if</p>
+<hr>
+<h1 id="2-v-if和v-show为什么不推荐一起使用？"><a href="#2-v-if和v-show为什么不推荐一起使用？" class="headerlink" title="2.v-if和v-show为什么不推荐一起使用？"></a>2.v-if和v-show为什么不推荐一起使用？</h1><p>v-for优先级高于v-if，先循环后判断</p>
+<p>解决方法：不要把v-if和v-show写在同一个标签上</p>
+<hr>
+<h1 id="3-v-for为什么要指定key？"><a href="#3-v-for为什么要指定key？" class="headerlink" title="3.v-for为什么要指定key？"></a>3.v-for为什么要指定key？</h1><iframe width="100%" height="300" src="//jsrun.net/S5aKp/embedded/all/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<p>当使用v-for遍历数组时，如果没有指定key，当元素顺序发生变化时，DOM绑定的数据会更新，但顺序不会发生改变，key相当于唯一标识符</p>
+<hr>
+<h1 id="4-父子组件传值"><a href="#4-父子组件传值" class="headerlink" title="4.父子组件传值"></a>4.父子组件传值</h1><p>父组件可以通过props向子组件传递数据，子组件通过$emit向父子件传递数据</p>
+<iframe width="100%" height="300" src="//jsrun.net/KDaKp/embedded/all/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<hr>
+<h1 id="5-自定义事件"><a href="#5-自定义事件" class="headerlink" title="5.自定义事件"></a>5.自定义事件</h1><p>1.Event Bus：每个Vue实例都是一个Event Bus，都支持$on/$emit,可以为兄弟组件实例之间new一个Vue实例，作为Event Bus进行通信</p>
+<iframe width="100%" height="300" src="//jsrun.net/NraKp/embedded/all/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<p>2.Vuex：将状态或方法提取到Vuex，完成共享</p>
+<hr>
+<h1 id="6-Vue生命周期"><a href="#6-Vue生命周期" class="headerlink" title="6.Vue生命周期"></a>6.Vue生命周期</h1><p>①beforeCreate：初始化实例，创建Vue实例后触发的第一个钩子，此时data,methods,computed和watch上的数据和方法都不能被访问</p>
+<p>②created：实例创建完成后发生，当前阶段完成了数据观测，可以使用和更改数据，此时更改数据不会触发updated函数。可以做一些初始数据的获取，在当前阶段无法和DOM进行交互，如果需要，可以通过$nextTick来访问DOM</p>
+<p>③beforeMount：发生在挂载前，template已经导入渲染函数编译，当前阶段虚拟DOM已经创建完成，即将开始渲染，此时可以对数据进行修改，不会触发updated</p>
+<p>④mount：挂载完成后发生，当前阶段DOM挂载完毕，进行数据双向绑定，可以访问到DOM节点，使用$refs属性可以操作DOM</p>
+<p>⑤beforeUpdate：发生在更新前，也就是响应式数据发生更新，虚拟DOM重新渲染前被触发，可以在此阶段更改数数据，不会造成重渲染</p>
+<p>⑥updated：发生在更新完成后，当前阶段DOM已经完成更新，要注意避免在此期间更改数据，可能导致无限循环的更新</p>
+<p>⑦beforeDestroy：发生在实例销毁之前，当前阶段实例完全可以被使用，我们可以在这时进行善后工作，清除计时器，对全局事件解绑</p>
+<p>⑧destoryed：发生在实例销毁之后</p>
+<hr>
+<h1 id="7-Vue的响应式系统"><a href="#7-Vue的响应式系统" class="headerlink" title="7.Vue的响应式系统"></a>7.Vue的响应式系统</h1><p>Vue为MVVM框架，当数据模型data变化时，数据驱动视图更新，这样可以专注于数据本身而非DOM操作</p>
+<p>其原理是Object.defineProperty(Vue3.0为Proxy)，利用发布订阅模式，在getter中订阅，setter中发布通知，实现页面实时响应</p>
+<hr>
+<h1 id="8-computed和watch的区别"><a href="#8-computed和watch的区别" class="headerlink" title="8.computed和watch的区别"></a>8.computed和watch的区别</h1><p>计算属性computed和监听器watch都可以观察属性变化做出响应</p>
+<p>计算属性可以缓存，将一个或多个data属性经过计算返回一个新值。当依赖属性发生变化时，computed不会立刻重新计算，而是标记成脏数据，当下次computed被获取时，才会重新计算</p>
+<p>watch不具备缓存功能，被监听属性发生变化时，会立即执行该函数</p>
+<hr>
+]]></content>
+      <categories>
+        <category>Vue</category>
+      </categories>
+      <tags>
+        <tag>面试</tag>
+        <tag>Vue</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>js-通过递归封装n的阶乘</title>
+    <url>/2021/01/15/js-%E9%80%9A%E8%BF%87%E9%80%92%E5%BD%92%E5%B0%81%E8%A3%85n%E7%9A%84%E9%98%B6%E4%B9%98/</url>
+    <content><![CDATA[<p>阅读全文，了解更多</p>
+<hr>
+<a id="more"></a>
+
+<iframe width="100%" height="300" src="//jsrun.net/diaKp/embedded/js/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<hr>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>js-斐波拉契数列</title>
+    <url>/2021/01/15/js-%E6%96%90%E6%B3%A2%E6%8B%89%E5%A5%91%E6%95%B0%E5%88%97/</url>
+    <content><![CDATA[<p>阅读全文，了解更多</p>
+<hr>
+<a id="more"></a>
+
+<iframe width="100%" height="300" src="//jsrun.net/JiaKp/embedded/js/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<hr>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>一张图理解CSS权重</title>
+    <url>/2021/01/07/%E4%B8%80%E5%BC%A0%E5%9B%BE%E7%90%86%E8%A7%A3CSS%E6%9D%83%E9%87%8D/</url>
+    <content><![CDATA[<p>一张图理解CSS权重</p>
+<hr>
+<a id="more"></a>
+
+<p><img src="https://gitee.com/caldey/BlogImage/raw/master/img/specifishity.png"></p>
+<hr>
+<blockquote>
+<p>内容参考自：<a href="https://specifishity.com/">https://specifishity.com/</a></p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>CSS</category>
+      </categories>
+      <tags>
+        <tag>CSS</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>一分钟了解text-overflow省略文本</title>
     <url>/2021/01/02/%E4%B8%80%E5%88%86%E9%92%9F%E4%BA%86%E8%A7%A3text-overflow%E7%9C%81%E7%95%A5%E6%96%87%E6%9C%AC/</url>
     <content><![CDATA[<p>阅读全文，了解更多</p>
@@ -2869,26 +2889,6 @@
 <iframe width="100%" height="300" src="//jsrun.net/3jIKp/embedded/all/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 
 <hr>
-]]></content>
-      <categories>
-        <category>CSS</category>
-      </categories>
-      <tags>
-        <tag>CSS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>一张图理解CSS权重</title>
-    <url>/2021/01/07/%E4%B8%80%E5%BC%A0%E5%9B%BE%E7%90%86%E8%A7%A3CSS%E6%9D%83%E9%87%8D/</url>
-    <content><![CDATA[<p>一张图理解CSS权重</p>
-<hr>
-<a id="more"></a>
-
-<p><img src="https://gitee.com/caldey/BlogImage/raw/master/img/specifishity.png"></p>
-<hr>
-<blockquote>
-<p>内容参考自：<a href="https://specifishity.com/">https://specifishity.com/</a></p>
-</blockquote>
 ]]></content>
       <categories>
         <category>CSS</category>
@@ -2973,6 +2973,27 @@
       </tags>
   </entry>
   <entry>
+    <title>滑动菜单demo</title>
+    <url>/2021/01/07/%E6%BB%91%E5%8A%A8%E8%8F%9C%E5%8D%95demo/</url>
+    <content><![CDATA[<p>一个简单的滑动菜单demo</p>
+<hr>
+<a id="more"></a>
+
+<iframe width="100%" height="500" src="//jsrun.net/MAIKp/embedded/all/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<hr>
+<blockquote>
+<p>内容参考自：<a href="https://mp.weixin.qq.com/s/hCbRtgZ9v0T9OJhJ15JAeA">第 6 天：设计一个左右滑动的菜单</a></p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>Demo</category>
+      </categories>
+      <tags>
+        <tag>Demo</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>实现一个简易的微信朋友圈Demo</title>
     <url>/2021/01/08/%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E7%AE%80%E6%98%93%E7%9A%84%E5%BE%AE%E4%BF%A1%E6%9C%8B%E5%8F%8B%E5%9C%88Demo/</url>
     <content><![CDATA[<p>实现一个简易的微信朋友圈Demo</p>
@@ -3013,27 +3034,6 @@
       </categories>
       <tags>
         <tag>日积月累</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>滑动菜单demo</title>
-    <url>/2021/01/07/%E6%BB%91%E5%8A%A8%E8%8F%9C%E5%8D%95demo/</url>
-    <content><![CDATA[<p>一个简单的滑动菜单demo</p>
-<hr>
-<a id="more"></a>
-
-<iframe width="100%" height="500" src="//jsrun.net/MAIKp/embedded/all/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
-
-<hr>
-<blockquote>
-<p>内容参考自：<a href="https://mp.weixin.qq.com/s/hCbRtgZ9v0T9OJhJ15JAeA">第 6 天：设计一个左右滑动的菜单</a></p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>Demo</category>
-      </categories>
-      <tags>
-        <tag>Demo</tag>
       </tags>
   </entry>
   <entry>
