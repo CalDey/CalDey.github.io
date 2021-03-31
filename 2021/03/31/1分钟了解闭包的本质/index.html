@@ -20,15 +20,20 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="CalDey-Blog">
-<meta property="og:url" content="http://example.com/archives/2020/12/index.html">
+  <meta name="description" content="阅读全文，了解更多">
+<meta property="og:type" content="article">
+<meta property="og:title" content="1分钟了解闭包的本质">
+<meta property="og:url" content="http://example.com/2021/03/31/1%E5%88%86%E9%92%9F%E4%BA%86%E8%A7%A3%E9%97%AD%E5%8C%85%E7%9A%84%E6%9C%AC%E8%B4%A8/index.html">
 <meta property="og:site_name" content="CalDey-Blog">
+<meta property="og:description" content="阅读全文，了解更多">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-03-31T07:55:31.000Z">
+<meta property="article:modified_time" content="2021-03-31T08:03:00.870Z">
 <meta property="article:author" content="CalDey">
+<meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/archives/2020/12/">
+<link rel="canonical" href="http://example.com/2021/03/31/1%E5%88%86%E9%92%9F%E4%BA%86%E8%A7%A3%E9%97%AD%E5%8C%85%E7%9A%84%E6%9C%AC%E8%B4%A8/">
 
 
 <script id="page-configurations">
@@ -36,12 +41,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>归档 | CalDey-Blog</title>
+  <title>1分钟了解闭包的本质 | CalDey-Blog</title>
   
 
 
@@ -178,235 +183,117 @@
         <div class="content-wrap">
           
 
-          <div class="content archive">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        
-        <span class="collection-header">不错! 目前共计 57 篇日志。 继续努力。</span>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/31/1%E5%88%86%E9%92%9F%E4%BA%86%E8%A7%A3%E9%97%AD%E5%8C%85%E7%9A%84%E6%9C%AC%E8%B4%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://gitee.com/caldey/BlogImage/raw/master/img/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20201202195621.jpg">
+      <meta itemprop="name" content="CalDey">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CalDey-Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          1分钟了解闭包的本质
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-03-31 15:55:31 / 修改时间：16:03:00" itemprop="dateCreated datePublished" datetime="2021-03-31T15:55:31+08:00">2021-03-31</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2020</span>
-    </div>
+        <p>阅读全文，了解更多</p>
+<hr>
+<a id="more"></a>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+<div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JS"><figure class="iseeu highlight /js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test1</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">test2</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> b = <span class="number">2</span>;</span><br><span class="line">        <span class="built_in">console</span>.log(a);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> test2;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> test3 = test1();</span><br><span class="line"><span class="built_in">console</span>.log(test3);</span><br><span class="line">test3();</span><br></pre></td></tr></table></figure></div>
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-12-21T16:37:58+08:00"
-              content="2020-12-21">
-          12-21
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/12/21/CSS-%E6%B8%85%E9%99%A4%E6%B5%AE%E5%8A%A8/" itemprop="url">
-            <span itemprop="name">CSS-清除浮动</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-12-20T22:01:04+08:00"
-              content="2020-12-20">
-          12-20
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/12/20/%E5%AE%9E%E7%8E%B0CSS%E6%B0%B4%E5%B9%B3%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD%E7%9A%848%E7%A7%8D%E6%96%B9%E6%B3%95/" itemprop="url">
-            <span itemprop="name">实现CSS水平垂直居中的8种方法</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-12-18T17:17:27+08:00"
-              content="2020-12-18">
-          12-18
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/12/18/ES6-%E5%8E%9F%E5%9E%8B%E7%BB%A7%E6%89%BF%E5%92%8Cclass%E7%BB%A7%E6%89%BF/" itemprop="url">
-            <span itemprop="name">ES6-原型继承和class继承</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-12-18T15:58:25+08:00"
-              content="2020-12-18">
-          12-18
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/12/18/ES6-var-let-const%E7%9A%84%E5%8C%BA%E5%88%AB/" itemprop="url">
-            <span itemprop="name">ES6-var,let,const的区别</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-12-17T23:28:19+08:00"
-              content="2020-12-17">
-          12-17
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/12/17/JavaScript-%E6%B5%85%E8%B0%88%E6%B7%B1%E6%B5%85%E6%8B%B7%E8%B4%9D/" itemprop="url">
-            <span itemprop="name">JavaScript-浅谈深浅拷贝</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-12-17T18:47:07+08:00"
-              content="2020-12-17">
-          12-17
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/12/17/JavaScript-%E4%B8%A4%E5%BC%A0%E5%9B%BE%E5%BC%84%E6%87%82%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%A4%8D%E5%88%B6%E8%BF%87%E7%A8%8B/" itemprop="url">
-            <span itemprop="name">JavaScript-两张图弄懂基本类型和引用类型的复制过程</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-12-17T15:45:51+08:00"
-              content="2020-12-17">
-          12-17
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/12/17/JavaScript-%E4%BB%80%E4%B9%88%E6%98%AF%E9%97%AD%E5%8C%85%EF%BC%9F/" itemprop="url">
-            <span itemprop="name">JavaScript-什么是闭包？</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-12-16T22:51:26+08:00"
-              content="2020-12-16">
-          12-16
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/12/16/JavaScript-1%E5%88%86%E9%92%9F%E5%88%86%E6%B8%85null%E5%92%8Cundefined/" itemprop="url">
-            <span itemprop="name">JavaScript-1分钟分清null和undefined</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-12-16T15:41:03+08:00"
-              content="2020-12-16">
-          12-16
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/12/16/JavaScript-%E8%BD%BB%E6%9D%BE%E7%90%86%E8%A7%A3%E5%8E%9F%E5%9E%8B%E5%92%8C%E5%8E%9F%E5%9E%8B%E9%93%BE/" itemprop="url">
-            <span itemprop="name">JavaScript-轻松理解原型和原型链</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-12-13T16:50:11+08:00"
-              content="2020-12-13">
-          12-13
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/12/13/JavaScript-%E8%BD%BB%E6%9D%BE%E5%BC%84%E6%87%82this%E6%8C%87%E5%90%91/" itemprop="url">
-            <span itemprop="name">JavaScript-轻松弄懂this指向</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
+<p>①当一个函数A被声明时，其作用域链第0位为GO<br>②函数A执行时，生成AO，其作用域链第0位变为函数A AO<br>③函数A内函数B被声明，此时其作用域链同函数A作用域链，将函数B return给全局<br>④函数A执行完毕，销毁自己的AO，函数A执行结果即函数B，声明全局变量接收函数B<br>⑤执行该函数，即执行函数B，此时函数B生成自己的AO，其作用域第0位由原来函数A AO替换为函数B AO<br>⑥函数B执行完毕，函数B销毁自己的AO，此时函数B 作用域链函数A的AO被保留下来<br>⑦由于自由变量（一个变量在当前作用域未被定义，但被使用了）的查找沿作用域链查找，找到函数A AO，因此函数外部可以访问到函数A中的变量值</p>
+<hr>
 
     </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>您的支持是我继续创作的动力</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="https://gitee.com/caldey/BlogImage/raw/master/img/wechat.jpg" alt="CalDey 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="https://gitee.com/caldey/BlogImage/raw/master/img/aliplay.jpg" alt="CalDey 支付宝">
+        <p>支付宝</p>
+      </div>
+
   </div>
-  
-  
-  
+</div>
 
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/03/31/JavaScript-Promise-Promise-all-Promise-race/" rel="prev" title="JavaScript-Promise,Promise.all,Promise.race">
+      <i class="fa fa-chevron-left"></i> JavaScript-Promise,Promise.all,Promise.race
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
   
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/2020/12/page/2/">2</a><a class="extend next" rel="next" href="/archives/2020/12/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
+  
+  
 
 
 
